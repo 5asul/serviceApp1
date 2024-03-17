@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_for_all/homePage.dart';
 import 'package:project_for_all/login.dart';
 import 'package:project_for_all/signUp.dart';
 
@@ -16,10 +17,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primaryColor: Color.fromRGBO(118, 171, 174,1.0),
+
+        hintColor: Colors.green,
+        brightness: Brightness.light,
       ),
-      home: LoginPage(),
+      home: HomePage(),
       routes: {
         "SignUp":(context) => SignUp(),
         "login":(context)=> LoginPage()

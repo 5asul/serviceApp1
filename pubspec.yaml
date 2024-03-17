@@ -39,6 +39,8 @@ dependencies:
   flutter_animate: ^4.5.0
   animations: ^2.0.11
   page_transition: ^2.1.0
+  arabic_font: ^0.0.9
+  curved_navigation_bar: ^1.0.3
 
 dev_dependencies:
   flutter_test:
