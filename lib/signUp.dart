@@ -43,7 +43,7 @@ class _SignUpState extends State<SignUp> with Crud {
       try {
         int response = await sqlDb.insertData("INSERT INTO 'users' ('username', 'email', 'password') VALUES ('${username.text}', '${email.text}', '${password.text}')");
         if (response > 0) {
-          Navigator.of(context).pushNamedAndRemoveUntil('container', (route) => false);
+          Navigator.of(context).pushNamedAndRemoveUntil('login', (route) => false);
         } else {
           // Handle signup failure gracefully (e.g., display an error message)
           print("Signup failed"); // Assuming 'message' is in response

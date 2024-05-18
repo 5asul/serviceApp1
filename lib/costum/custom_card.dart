@@ -9,11 +9,12 @@ class CustomCard extends StatelessWidget {
   const CustomCard({super.key, required this.time, required this.srevice_name, required this.id, this.user_id, this.ontap, });
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return InkWell(
       onTap: ontap,
       child: Container(
         margin: EdgeInsets.all(10.0),
-        height: 100.0,
+        height: screenSize.height * 0.15,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -27,12 +28,12 @@ class CustomCard extends StatelessWidget {
 
 
                 Text("oderer $id",style: TextStyle(
-                  fontSize: 30.0
+                  fontSize: screenSize.width*0.05,
                 ) ,
                 ),
                 Text("$srevice_name"),
                 Text('${time}'),
-                
+
               ],
             ),
           ),

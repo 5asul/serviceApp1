@@ -177,6 +177,7 @@ class _ServiceItemState extends State<ServiceItem> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return InkWell(
       onTap: ()=>null,
       onHover: (hovering){
@@ -199,8 +200,8 @@ class _ServiceItemState extends State<ServiceItem> {
             child: Row(
               children: [
                 Container(
-                  width: 100.0,
-                  height: 100.0,
+                  width: screenSize.width * 0.20,
+                  height: screenSize.height * 0.20,
                   child: Image.asset(widget.service.imagePath,
                   fit: BoxFit.cover,
                   ),
@@ -213,7 +214,7 @@ class _ServiceItemState extends State<ServiceItem> {
                     Text(
                       widget.service.name,
                       style: ArabicTextStyle(arabicFont: ArabicFont.arefRuqaa,
-                      fontSize: 15.0),
+                      fontSize: screenSize.width*0.05),
         
                       overflow: TextOverflow.ellipsis,
         
@@ -222,11 +223,11 @@ class _ServiceItemState extends State<ServiceItem> {
                     Container(
                       padding: EdgeInsets.only(left: 10.0),
                       alignment: AlignmentDirectional.centerEnd,
-                      width: 70.0,
+                      width: screenSize.width*0.20,
                       child: Text(
                         widget.service.description,
                         style: ArabicTextStyle(arabicFont: ArabicFont.amiri,
-                        fontSize: 12.0),
+                        fontSize: screenSize.width*0.05),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                       ),
