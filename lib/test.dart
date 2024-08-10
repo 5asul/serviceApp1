@@ -1,7 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'database/sqfLite.dart';
+import 'controller/database/sqfLite.dart';
 
 class TestApp extends StatefulWidget {
   const TestApp({super.key});
@@ -11,7 +9,7 @@ class TestApp extends StatefulWidget {
 }
 
 class _TestAppState extends State<TestApp> {
-  SqlDb sqlDb = SqlDb();
+  DatabaseHelper sqlDb = DatabaseHelper();
 
   @override
   void dispose() {
@@ -34,12 +32,11 @@ class _TestAppState extends State<TestApp> {
               MaterialButton(
                 onPressed: () async {
                   try {
-                    int response = await sqlDb.insertData("INSERT INTO 'users' ('username', 'email', 'password') VALUES ('ahmed', 'ahmed@gmail.com', 'ahmed123')");
+                    int response = await sqlDb.insertData(
+                        "INSERT INTO 'users' ('username', 'email', 'password') VALUES ('ahmed', 'ahmed@gmail.com', 'ahmed123')");
                     print(response);
-
                   } catch (e) {
                     print('insert error: $e');
-
                   }
                 },
                 color: Colors.amber,
@@ -49,12 +46,11 @@ class _TestAppState extends State<TestApp> {
               MaterialButton(
                 onPressed: () async {
                   try {
-                    List<Map> response = await sqlDb.readData("SELECT * FROM 'services'");
+                    List<Map> response =
+                        await sqlDb.readData("SELECT * FROM 'services'");
                     print(response);
-
                   } catch (e) {
                     print('read error: $e');
-
                   }
                 },
                 color: Colors.green,
@@ -64,12 +60,11 @@ class _TestAppState extends State<TestApp> {
               MaterialButton(
                 onPressed: () async {
                   try {
-                    int response = await sqlDb.deleteData("DELETE FROM 'users' WHERE id = 2 ");
+                    int response = await sqlDb
+                        .deleteData("DELETE FROM 'users' WHERE id = 2 ");
                     print("response: $response");
-
                   } catch (e) {
                     print('Delete error: $e');
-
                   }
                 },
                 color: Colors.red,
@@ -79,12 +74,11 @@ class _TestAppState extends State<TestApp> {
               MaterialButton(
                 onPressed: () async {
                   try {
-                    int response = await sqlDb.updateData("Update 'users' SET 'username' = 'ahmedeno' WHERE id = 3 ");
+                    int response = await sqlDb.updateData(
+                        "Update 'users' SET 'username' = 'ahmedeno' WHERE id = 3 ");
                     print("response: $response");
-
                   } catch (e) {
                     print('Update error: $e');
-
                   }
                 },
                 color: Colors.blueAccent,
