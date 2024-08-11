@@ -16,7 +16,7 @@ class Worker1Card extends StatelessWidget {
     bool isHovered = false;
     return InkWell(
       onTap: (){
-        Navigator.of(context).pushNamedAndRemoveUntil('worker profile', (route) => false);
+        Navigator.of(context).pushNamed('worker profile');
       },
       child: Container(
         width: screenSize.width*0.50,

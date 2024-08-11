@@ -15,20 +15,19 @@ class WorkerProfileCard extends StatelessWidget {
     var screenSize = MediaQuery.of(context).size;
     bool isHovered = false;
     return Container(
-      width: screenSize.width*0.95,
+      width: screenSize.width*1.0,
       height: screenSize.height*0.40,
-      margin: EdgeInsets.only(left: screenSize.width*0.045,
-          right: screenSize.width*0.05,
-          top: screenSize.height*0.01),
+      // margin: EdgeInsets.only(left: screenSize.width*0.045,
+      //     right: screenSize.width*0.05,
+      //     top: screenSize.height*0.01),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(1.0),
         child: Stack(
 
           children: [
             Container(
               decoration: BoxDecoration(
                   color: Colors.grey.shade300,
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(25.0),topRight: Radius.circular(25.0)),
                   image: DecorationImage(image: AssetImage(image),
                     fit: BoxFit.cover,)
               ),
@@ -49,9 +48,30 @@ class WorkerProfileCard extends StatelessWidget {
               ),
               // Add your child widgets here
             ),
+             Positioned(
+                top: screenSize.height*0.04,
+                left: screenSize.width*0.05,
+                child: Container(
+                  width: screenSize.width*0.09,
+                  height: screenSize.height*0.05,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(35.0),
+                      color: primary
+                  ),
+                  child: IconButton(
+                    onPressed: (){
+                      Navigator.of(context).pop();
+                    },
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
+                  ),
+                )
+            ),
             Positioned(
-                top: 15.0,
-                left: 15.0,
+                top: screenSize.height*0.04,
+                left: screenSize.width*0.9,
                 child: Container(
                   width: screenSize.width*0.07,
                   height: screenSize.height*0.04,
@@ -65,28 +85,10 @@ class WorkerProfileCard extends StatelessWidget {
                   ),
                 )
             ),
+
             Positioned(
-              top: 210.0,
-              left: 320.0,
-              child: Row(
-                children: [
-                  Text(
-                    rank,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.bold
-                    ),
-                  ),
-                  SizedBox(width: 2.0,),
-                  Icon(Icons.star,
-                    color: Colors.yellow,)
-                ],
-              ),
-            ),
-            Positioned(
-                top: 200.0,
-                left: 20.0,
+                top: screenSize.height*0.3,
+                left: screenSize.width*0.03,
                 child: Text(
                   name,
                   style: TextStyle(
@@ -97,13 +99,52 @@ class WorkerProfileCard extends StatelessWidget {
                 )
             ),
             Positioned(
-                top: 235,
-                left: 20.0,
+                top: screenSize.height*0.3,
+                left: screenSize.width*0.85,
+                child: IconButton(
+                  onPressed: (){
+                    isHovered? isHovered=false : isHovered=true;
+                  },
+                  icon: (isHovered==false)?Icon(
+                      Icons.favorite_border,
+                    size: screenSize.width*0.08,
+                    color: Colors.white
+                  ):Icon(
+                      Icons.favorite,
+                      size: screenSize.width*0.08,
+                      color: Colors.red
+                  ),
+                )
+            ),
+            Positioned(
+              top: screenSize.height*0.35,
+              left: screenSize.width*0.23,
+              child: Row(
+                children: [
+                  Icon(Icons.star,
+                    color: Colors.yellow,),
+                  SizedBox(width: 2.0,),
+                  Text(
+                    "${rank} (4,263 reviews)",
+                    style: TextStyle(
+                        color: Colors.white70,
+                        fontSize: screenSize.width*0.04,
+                        fontWeight: FontWeight.bold
+                    ),
+                  ),
+
+
+                ],
+              ),
+            ),
+            Positioned(
+              top: screenSize.height*0.35,
+              left: screenSize.width*0.03,
                 child: Text(
                   "$numberOfOrders Orders ",
                   style: TextStyle(
                       color: Colors.white70,
-                      fontSize: 15.0
+                      fontSize: screenSize.width*0.04
                   ),
                 )
             ),
