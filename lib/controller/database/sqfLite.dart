@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-class SqlDb {
+class DatabaseHelper {
   static Database? _db;
 
   Future<Database?> get db async {
@@ -16,7 +16,8 @@ class SqlDb {
   Future<Database> _initialDb() async {
     String databasePath = await getDatabasesPath();
     String path = join(databasePath, 'ahmed.db');
-    Database mydb = await openDatabase(path,
+    Database mydb = await openDatabase(
+      path,
       version: 2,
       onCreate: _onCreate,
       onUpgrade: _onUpgrade,
@@ -58,29 +59,29 @@ class SqlDb {
     }
   }
 
-
-  readData(String sql)async {
+  readData(String sql) async {
     Database? mydb = await db;
     List<Map> response = await mydb!.rawQuery(sql);
     return response;
   }
-  insertData(String sql)async {
+
+  insertData(String sql) async {
     Database? mydb = await db;
     int response = await mydb!.rawInsert(sql);
     return response;
   }
-  updateData(String sql)async {
+
+  updateData(String sql) async {
     Database? mydb = await db;
     int response = await mydb!.rawUpdate(sql);
     return response;
   }
-  deleteData(String sql)async {
+
+  deleteData(String sql) async {
     Database? mydb = await db;
     int response = await mydb!.rawDelete(sql);
     return response;
   }
-
-
 
   Future<void> close() async {
     final dbClient = await db;

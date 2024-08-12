@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:project_for_all/continerPage.dart';
-import 'package:project_for_all/costum/dropDowns.dart';
-import 'package:project_for_all/login.dart';
-import 'package:project_for_all/orders_page.dart';
-import 'package:project_for_all/signUp.dart';
+
+import 'package:project_for_all/widget/costum/dropDowns.dart';
+import 'package:project_for_all/nav_pages/add_order_page.dart';
+import 'package:project_for_all/screens/add_order_screen.dart';
+import 'package:project_for_all/nav_pages/homePage.dart';
+import 'package:project_for_all/screens/login_screen.dart';
+import 'package:project_for_all/screens/orders_screen.dart';
+import 'package:project_for_all/screens/select_role_screen.dart';
+import 'package:project_for_all/screens/sign_up_screen.dart';
+import 'package:project_for_all/screens/worker_profile_screen.dart';
 import 'package:project_for_all/test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'addOrderPage.dart';
-import 'homePage.dart';
+import 'containers/category_container_page.dart';
+import 'containers/home_container_page.dart';
 
 late SharedPreferences sharedPref;
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   sharedPref = await SharedPreferences.getInstance();
   runApp(const MyApp());
@@ -25,25 +30,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      
       theme: ThemeData(
-        primaryColor: Color.fromRGBO(118, 171, 174,1.0),
-
+        primaryColor: Color.fromRGBO(118, 171, 174, 1.0),
         hintColor: Colors.green,
         brightness: Brightness.light,
       ),
-
-      initialRoute: sharedPref.getString("id")==null ? "login" : "container",
+      initialRoute: sharedPref.getString("id") == null ? "login" : "container",
       routes: {
-        "SignUp":(context) => SignUp(),
-        "login":(context)=> LoginPage(),
-        "home":(context) => HomePage(),
-        "orders":(context) => Orders(),
-        "add order":(context) => AddOrder(),
-        "container":(context) => ContinerPage(),
-        "test":(context) => TestApp()
-
-
+        "SignUp": (context) => SignUpScreen(),
+        "login": (context) => LoginScreen(),
+        "home": (context) => HomePage(),
+        "orders": (context) => OrdersScreen(),
+        "add order": (context) => AddOrder(),
+        "add order1": (context) => AddOrderScreen(),
+        "container": (context) => HomeContainerPage(),
+        "categoryContainer": (context) => CategoriesContainerPage(),
+        "test": (context) => TestApp(),
+        "rolePage": (context) => SelectRoleScreen(),
+        "worker profile": (context) => WorkerProfileScreen(),
       },
     );
   }
