@@ -1,23 +1,26 @@
-import 'package:flutter/material.dart';
 
-import 'package:project_for_all/widget/costum/dropDowns.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:flutter/material.dart';
 import 'package:project_for_all/nav_pages/add_order_page.dart';
 import 'package:project_for_all/screens/add_order_screen.dart';
 import 'package:project_for_all/nav_pages/homePage.dart';
 import 'package:project_for_all/screens/login_screen.dart';
-import 'package:project_for_all/screens/orders_screen.dart';
+import 'package:project_for_all/nav_pages/orders_page.dart';
 import 'package:project_for_all/screens/select_role_screen.dart';
 import 'package:project_for_all/screens/sign_up_screen.dart';
 import 'package:project_for_all/screens/worker_profile_screen.dart';
 import 'package:project_for_all/test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'containers/category_container_page.dart';
 import 'containers/home_container_page.dart';
 
 late SharedPreferences sharedPref;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   sharedPref = await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
