@@ -1,4 +1,4 @@
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:project_for_all/controller/componentAPI/fun_api.dart';
@@ -21,7 +21,6 @@ class _SignUpScreenState extends State<SignUpScreen> with Crud {
   late final String? Function(String?) valid;
 
   bool isLoading = false;
-  Info _info = Info();
 
   TextEditingController username = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -218,7 +217,28 @@ class _SignUpScreenState extends State<SignUpScreen> with Crud {
                               color: primary,
                               child: MaterialButton(
                                 onPressed: () async {
-                                  await signUp();
+                                  try {
+                                    final credential = await FirebaseAuth
+                                        .instance
+                                        .createUserWithEmailAndPassword(
+                                      email: email.text,
+                                      password: password.text,
+                                    );
+                                    Navigator.of(context)
+                                        .pushReplacementNamed('login');
+                                  } on FirebaseAuthException catch (e) {
+                                    if (e.code == 'weak-password') {
+                                      print(
+                                          'The password provided is too weak.');
+                                    } else if (e.code ==
+                                        'email-already-in-use') {
+                                      print(
+                                          'The account already exists for that email.');
+                                    }
+                                  } catch (e) {
+                                    print(e);
+                                  }
+                                  //await signUp();
 
                                   // print(email.text);
                                   // print(password.text);

@@ -1,5 +1,6 @@
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:project_for_all/nav_pages/add_order_page.dart';
@@ -25,9 +26,27 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    FirebaseAuth.instance
+  .authStateChanges()
+  .listen((User? user) {
+    if (user == null) {
+      print('==========User is currently signed out!');
+    } else {
+      print('==========User is signed in!');
+    }
+  });
+    super.initState();
+  }
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -38,7 +57,7 @@ class MyApp extends StatelessWidget {
         hintColor: Colors.green,
         brightness: Brightness.light,
       ),
-      initialRoute: sharedPref.getString("id") == null ? "login" : "container",
+      initialRoute: FirebaseAuth.instance.currentUser == null  ? "login" : "container",
       routes: {
         "SignUp": (context) => SignUpScreen(),
         "login": (context) => LoginScreen(),
