@@ -1,4 +1,4 @@
-import 'package:project_for_all/constent/message.dart';
+import 'package:project_for_all/features/screens/auth_screens/constent/message.dart';
 
 validInput(String val, int min, int max) {
   if (val.isEmpty) {

@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
-import 'package:project_for_all/features/screens/user_home_screens/home_page/old_pages/all_worker.dart';
-import 'package:project_for_all/features/screens/user_home_screens/home_page/old_pages/cleaning_workers.dart';
-import 'package:project_for_all/features/screens/user_home_screens/home_page/old_pages/teaching_workers.dart';
+import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/cleaning_orders.dart';
+import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/teaching_orders.dart';
 
-import '../features/screens/user_home_screens/home_navigation_bar.dart';
+import '../home_navigation_bar.dart';
+import 'all_orders.dart';
 
-class CategoriesContainerPage extends StatefulWidget {
-  const CategoriesContainerPage({super.key});
+class OrdersScreen extends StatefulWidget {
+  const OrdersScreen({super.key});
 
   @override
-  State<CategoriesContainerPage> createState() =>
-      _CategoriesContainerPageState();
+  State<OrdersScreen> createState() =>
+      _OrdersScreenState();
 }
 
-class _CategoriesContainerPageState extends State<CategoriesContainerPage> {
+class _OrdersScreenState extends State<OrdersScreen> {
   int i = 0;
-  List<Widget> nav = [AllWorkers(), CleaningWorkers(), TeachingWorkers()];
+  List<Widget> nav = [AllOrders(), CleaningOrders(), TeachingOrders()];
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
