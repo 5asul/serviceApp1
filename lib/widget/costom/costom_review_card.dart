@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_for_all/features/screens/user_home_screens/home_navigation_bar.dart';
 
+import '../../config/theme/colors_theme.dart';
+
 class ReviewCard extends StatelessWidget {
   const ReviewCard({
     super.key,
@@ -39,7 +41,7 @@ class ReviewCard extends StatelessWidget {
                   'See All',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: primary
+                        color: ColorsTheme().primary
                       ),
                 ),
               )
@@ -88,18 +90,18 @@ class ReviewCard extends StatelessWidget {
                         height: screenSize.height*0.04,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(screenSize.width*0.06),
-                            border: Border.all(color: primary)
+                            border: Border.all(color: ColorsTheme().primary)
                         ),
                         child: Row(
                           children: [
-                            Icon(Icons.star,color: primary,
+                            Icon(Icons.star,color: ColorsTheme().primary,
                               size: screenSize.width*0.04,),
                             Container(
                               margin: EdgeInsets.only(left: screenSize.width*0.01),
                               child: Text(
                                 '5',
                                 style: TextStyle(
-                                    color: primary
+                                    color: ColorsTheme().primary
                                 ),
                               ),
                             ),

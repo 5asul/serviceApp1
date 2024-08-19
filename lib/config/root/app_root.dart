@@ -25,7 +25,7 @@ class AppRoutes {
         return _materialRoute(HomePage());
 
       case 'orders':
-        return _materialRoute(OrdersScreen());
+        return _materialRoute(OrdersPage());
 
       case 'add order':
         return _materialRoute(AddOrder());
@@ -34,7 +34,7 @@ class AppRoutes {
         return _materialRoute(AddOrderScreen());
 
       case 'container':
-        return _materialRoute(HomeContainerPage());
+        return _materialRoute(HomeNavigationBar());
 
       case 'categoryContainer':
         return _materialRoute(CategoriesContainerPage());
@@ -46,7 +46,9 @@ class AppRoutes {
         return _materialRoute(WorkerProfileScreen());
 
       default:
-        return FirebaseAuth.instance.currentUser == null ?_materialRoute(LoginScreen()):_materialRoute(HomeContainerPage());
+        return FirebaseAuth.instance.currentUser == null
+            ? _materialRoute(LoginScreen())
+            : _materialRoute(HomeNavigationBar());
     }
   }
 

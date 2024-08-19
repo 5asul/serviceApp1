@@ -1,6 +1,7 @@
 import 'package:board_datetime_picker/board_datetime_picker.dart';
 import 'package:flutter/material.dart';
 
+import '../../config/theme/colors_theme.dart';
 import '../../features/screens/user_home_screens/home_navigation_bar.dart';
 
 
@@ -119,7 +120,7 @@ class _TimeDropdownState extends State<TimeDropdown> {
         width: 380.0,
         height: 70.0,
         decoration: BoxDecoration(
-          color: secondary,
+          color: ColorsTheme().secondary,
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
           border: Border.all(
             color: Colors.black54,

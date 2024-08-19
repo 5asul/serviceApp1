@@ -37,7 +37,7 @@ class DontHaveAnAccountRow extends StatelessWidget {
                 ),
                 Text(
                   'Register',
-                  style: TextStyle(color: ColorsTheme.primary),
+                  style: TextStyle(color: ColorsTheme().primary),
                 ),
               ],
             ))

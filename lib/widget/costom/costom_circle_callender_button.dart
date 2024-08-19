@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../config/theme/colors_theme.dart';
 import '../../features/screens/user_home_screens/home_navigation_bar.dart';
 
 class CircleButton extends StatefulWidget {
@@ -64,7 +65,7 @@ class _CircleButtonState extends State<CircleButton> {
                   style: TextStyle(
                     fontSize: 15.0,
                     fontWeight: FontWeight.bold,
-                    color: primary.withOpacity(0.5),
+                    color: ColorsTheme().primary.withOpacity(0.5),
                   ),
                 ),
               ),
@@ -74,7 +75,7 @@ class _CircleButtonState extends State<CircleButton> {
             padding: const EdgeInsets.only(left: 20.0),
             child: CircleAvatar(
               radius: 20.0,
-              backgroundColor: primary,
+              backgroundColor: ColorsTheme().primary,
               child: IconButton(
                 icon: Text(
                     daynum

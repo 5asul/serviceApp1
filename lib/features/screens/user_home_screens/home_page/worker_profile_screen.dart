@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_for_all/config/theme/colors_theme.dart';
 import 'package:project_for_all/features/screens/user_home_screens/home_navigation_bar.dart';
 import 'package:project_for_all/models/worker_work_image.dart';
 import 'package:project_for_all/widget/costom/costom_review_card.dart';
@@ -32,7 +33,7 @@ class _WorkerProfileScreenState extends State<WorkerProfileScreen> {
               width: screenSize.width * 0.3,
               margin: EdgeInsets.symmetric(horizontal: screenSize.width*0.01),
               child: FloatingActionButton(
-                splashColor: primary,
+                splashColor: ColorsTheme().primary,
                 backgroundColor: Colors.white,
                 onPressed: () {
                   Navigator.of(context).pushNamed('add order1');
@@ -42,7 +43,7 @@ class _WorkerProfileScreenState extends State<WorkerProfileScreen> {
                   style: TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
-                    color: primary,
+                    color: ColorsTheme().primary,
                   ),
                 ), // Add an icon
               ),
@@ -51,7 +52,7 @@ class _WorkerProfileScreenState extends State<WorkerProfileScreen> {
               width: screenSize.width * 0.3,
               margin: EdgeInsets.symmetric(horizontal: screenSize.width*0.01),
               child: FloatingActionButton(
-                splashColor: primary,
+                splashColor: ColorsTheme().primary,
                 backgroundColor: Colors.white,
                 onPressed: () {
                   Navigator.of(context).pushNamed('add order1');
@@ -61,7 +62,7 @@ class _WorkerProfileScreenState extends State<WorkerProfileScreen> {
                   style: TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
-                    color: primary,
+                    color: ColorsTheme().primary,
                   ),
                 ), // Add an icon
               ),
@@ -98,7 +99,7 @@ class _WorkerProfileScreenState extends State<WorkerProfileScreen> {
                           margin: EdgeInsets.symmetric(horizontal: screenSize.width*0.01),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(screenSize.width * 0.015),
-                            color: primary
+                            color: ColorsTheme().primary
         
                           ),
                           child: Center(
@@ -125,7 +126,7 @@ class _WorkerProfileScreenState extends State<WorkerProfileScreen> {
                                 child: Icon(
                                   Icons.location_pin,
                                   size: screenSize.width * 0.07,
-                                  color: primary,
+                                  color: ColorsTheme().primary,
                                 ),
                               ),
                               Container(
@@ -156,7 +157,7 @@ class _WorkerProfileScreenState extends State<WorkerProfileScreen> {
                               style: TextStyle(
                                 fontSize: screenSize.width * 0.08,
                                 fontWeight: FontWeight.bold,
-                                color: primary,
+                                color: ColorsTheme().primary,
                               ),
                             ),
                           ),
@@ -190,7 +191,7 @@ class _WorkerProfileScreenState extends State<WorkerProfileScreen> {
                               style: TextStyle(
                                 fontSize: screenSize.width * 0.06,
                                 fontWeight: FontWeight.bold,
-                                color: primary,
+                                color: ColorsTheme().primary,
                               ),
                             ),
                           ),
@@ -226,7 +227,7 @@ class _WorkerProfileScreenState extends State<WorkerProfileScreen> {
                               style: TextStyle(
                                 fontSize: screenSize.width * 0.06,
                                 fontWeight: FontWeight.bold,
-                                color: primary,
+                                color: ColorsTheme().primary,
                               ),
                             ),
                           ),

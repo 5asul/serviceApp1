@@ -32,7 +32,7 @@ class LoginStrokText extends StatelessWidget {
             ],
             fontSize: 40.0,
             fontWeight: FontWeight.bold,
-            color: ColorsTheme.primary),
+            color: ColorsTheme().primary),
       )
     ]);
   }

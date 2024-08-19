@@ -7,7 +7,7 @@ AppBar SignUpAppBar() {
           leading: Container(
             width: 1,
           ),
-          backgroundColor: ColorsTheme.primary,
+          backgroundColor: ColorsTheme().primary,
           title: Center(
             child: Padding(
               padding: const EdgeInsets.only(right: 55.0),

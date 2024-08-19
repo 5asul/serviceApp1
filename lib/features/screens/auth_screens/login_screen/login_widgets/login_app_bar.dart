@@ -4,7 +4,7 @@ import '../../../../../config/theme/colors_theme.dart';
 
 AppBar LoginAppBar() {
     return AppBar(
-        backgroundColor: ColorsTheme.primary,
+        backgroundColor: ColorsTheme().primary,
     
         title: Center(
             child: Text(

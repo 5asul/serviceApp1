@@ -8,7 +8,7 @@ Container SignUpBotton(BuildContext context , String username,String email,Strin
   bool signUp_state = true;
     return Container(
                             width: double.infinity,
-                            color: ColorsTheme.primary,
+                            color: ColorsTheme().primary,
                             child: MaterialButton(
                                 onPressed: () async {
                                   try {

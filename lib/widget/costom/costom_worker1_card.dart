@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../config/theme/colors_theme.dart';
 import '../../features/screens/user_home_screens/home_navigation_bar.dart';
 
 class Worker1Card extends StatelessWidget {
@@ -50,7 +51,7 @@ class Worker1Card extends StatelessWidget {
                     height: screenSize.height*0.04,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5.0),
-                        color: primary
+                        color: ColorsTheme().primary
                     ),
                     child: Icon(
                       icon,
@@ -66,7 +67,7 @@ class Worker1Card extends StatelessWidget {
                     Text(
                       rank,
                       style: TextStyle(
-                          color: primary,
+                          color: ColorsTheme().primary,
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold
                       ),
@@ -83,7 +84,7 @@ class Worker1Card extends StatelessWidget {
                   child: Text(
                     name,
                     style: TextStyle(
-                        color: primary,
+                        color: ColorsTheme().primary,
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold
                     ),
@@ -95,7 +96,7 @@ class Worker1Card extends StatelessWidget {
                   child: Text(
                     "$numberOfOrders Orders ",
                     style: TextStyle(
-                        color: primary,
+                        color: ColorsTheme().primary,
                         fontSize: 11.0
                     ),
                   )

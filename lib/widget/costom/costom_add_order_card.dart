@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../../config/theme/colors_theme.dart';
 import '../../features/screens/user_home_screens/home_navigation_bar.dart';
 
 class CustomAddOrderCard extends StatelessWidget {
@@ -23,7 +24,7 @@ class CustomAddOrderCard extends StatelessWidget {
             height: screenSize.height * 0.10,
             width: screenSize.width * 0.95,
             decoration: BoxDecoration(
-              color: primary,
+              color: ColorsTheme().primary,
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
             ),
             child: Padding(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../config/theme/colors_theme.dart';
 import '../../user_home_screens/home_navigation_bar.dart';
 import '../../../../widget/costom/costom_role_card.dart';
 
@@ -14,7 +15,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: secondary,
+      backgroundColor: ColorsTheme().secondary,
       body: Center(
         child: Container(
           padding: EdgeInsets.all(25.0),

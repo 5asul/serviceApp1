@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_for_all/controller/database/sqfLite.dart';
 import 'package:intl/intl.dart';
+import '../../../../config/theme/colors_theme.dart';
 import '../../../../controller/componentAPI/crud_mysql_api.dart';
 import '../home_navigation_bar.dart';
 import '../../../../widget/costom/costom_category_card.dart';
@@ -96,8 +97,8 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
-          splashColor: primary.withOpacity(0.8),
-          backgroundColor: primary,
+          splashColor: ColorsTheme().primary.withOpacity(0.8),
+          backgroundColor: ColorsTheme().primary,
           onPressed: () {
             Navigator.of(context).pushNamed('add order1');
           }, // Define the onPressed event
@@ -183,7 +184,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                       style: TextStyle(
                         fontSize: screenSize.width * 0.03,
                         fontWeight: FontWeight.bold,
-                        color: primary.withOpacity(0.8),
+                        color: ColorsTheme().primary.withOpacity(0.8),
                       ),
                     ),
                   ),
@@ -197,7 +198,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                   decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          color: primary.withOpacity(0.3), // Shadow color
+                          color: ColorsTheme().primary.withOpacity(0.3), // Shadow color
                           spreadRadius: 0, // Spread radius
                           blurRadius: 10, // Blur radius
                           offset: Offset(0, 5), // Offset in the x and y direction
@@ -205,7 +206,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                       ],
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10.0),
-                      border: Border.all(color: primary)),
+                      border: Border.all(color: ColorsTheme().primary)),
                   child: Column(
                     children: [
                       Row(
@@ -219,7 +220,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                                 style: TextStyle(
                                   fontSize: screenSize.width * 0.045,
                                   fontWeight: FontWeight.bold,
-                                  color: primary,
+                                  color: ColorsTheme().primary,
                                 ),
                               ),
                             ),
@@ -233,7 +234,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                                 style: TextStyle(
                                   fontSize: screenSize.width * 0.045,
                                   fontWeight: FontWeight.bold,
-                                  color: primary,
+                                  color: ColorsTheme().primary,
                                 ),
                               ),
                             ),
@@ -260,7 +261,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                                         style: TextStyle(
                                           fontSize: screenSize.width * 0.035,
                                           fontWeight: FontWeight.bold,
-                                          color: primary.withOpacity(0.5),
+                                          color: ColorsTheme().primary.withOpacity(0.5),
                                         ),
                                       ),
                                     ),
@@ -268,13 +269,13 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                                 ),
                                 CircleAvatar(
                                   radius: 20.0,
-                                  foregroundColor: primary,
+                                  foregroundColor: ColorsTheme().primary,
                                   child: IconButton(
                                     icon: Text(
                                       daynum,
                                       style: TextStyle(
                                         fontSize: screenSize.width * 0.035,
-                                        color: primary,
+                                        color: ColorsTheme().primary,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -301,7 +302,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                                         style: TextStyle(
                                           fontSize: screenSize.width * 0.035,
                                           fontWeight: FontWeight.bold,
-                                          color: primary.withOpacity(0.5),
+                                          color: ColorsTheme().primary.withOpacity(0.5),
                                         ),
                                       ),
                                     ),
@@ -309,7 +310,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                                 ),
                                 CircleAvatar(
                                   radius: 20.0,
-                                  backgroundColor: primary,
+                                  backgroundColor: ColorsTheme().primary,
                                   child: IconButton(
                                     icon: Text(
                                       daynum,
@@ -343,7 +344,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                                         style: TextStyle(
                                           fontSize: screenSize.width * 0.035,
                                           fontWeight: FontWeight.bold,
-                                          color: primary.withOpacity(0.5),
+                                          color: ColorsTheme().primary.withOpacity(0.5),
                                         ),
                                       ),
                                     ),
@@ -351,7 +352,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                                 ),
                                 CircleAvatar(
                                   radius: 20.0,
-                                  backgroundColor: primary,
+                                  backgroundColor: ColorsTheme().primary,
                                   child: IconButton(
                                     icon: Text(
                                       daynum,
@@ -384,7 +385,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                                         style: TextStyle(
                                           fontSize: screenSize.width * 0.035,
                                           fontWeight: FontWeight.bold,
-                                          color: primary.withOpacity(0.5),
+                                          color: ColorsTheme().primary.withOpacity(0.5),
                                         ),
                                       ),
                                     ),
@@ -392,7 +393,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                                 ),
                                 CircleAvatar(
                                   radius: 20.0,
-                                  backgroundColor: primary,
+                                  backgroundColor: ColorsTheme().primary,
                                   child: IconButton(
                                     icon: Text(
                                       daynum,
@@ -425,7 +426,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                                         style: TextStyle(
                                           fontSize: screenSize.width * 0.035,
                                           fontWeight: FontWeight.bold,
-                                          color: primary.withOpacity(0.5),
+                                          color: ColorsTheme().primary.withOpacity(0.5),
                                         ),
                                       ),
                                     ),
@@ -433,7 +434,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                                 ),
                                 CircleAvatar(
                                   radius: 20.0,
-                                  backgroundColor: primary,
+                                  backgroundColor: ColorsTheme().primary,
                                   child: IconButton(
                                     icon: Text(
                                       daynum,
@@ -466,7 +467,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                                         style: TextStyle(
                                           fontSize: screenSize.width * 0.035,
                                           fontWeight: FontWeight.bold,
-                                          color: primary.withOpacity(0.5),
+                                          color: ColorsTheme().primary.withOpacity(0.5),
                                         ),
                                       ),
                                     ),
@@ -474,7 +475,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                                 ),
                                 CircleAvatar(
                                   radius: 20.0,
-                                  backgroundColor: primary,
+                                  backgroundColor: ColorsTheme().primary,
                                   child: IconButton(
                                     icon: Text(
                                       daynum,
@@ -510,7 +511,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10.0),
-                      border: Border.all(color: primary)),
+                      border: Border.all(color: ColorsTheme().primary)),
                   child: Row(
                     children: [
                       Padding(
@@ -518,10 +519,10 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                         child: Container(
                             padding: EdgeInsets.all(3.0),
                             decoration: BoxDecoration(
-                                color: primary.withOpacity(0.8),
+                                color: ColorsTheme().primary.withOpacity(0.8),
                                 borderRadius: BorderRadius.circular(10.0),
                                 border:
-                                    Border.all(color: primary.withOpacity(0.8))),
+                                    Border.all(color: ColorsTheme().primary.withOpacity(0.8))),
                             child: Text(
                               "Morning",
                               style: TextStyle(
@@ -542,7 +543,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                             child: Text(
                               "Afternoon",
                               style: TextStyle(
-                                  color: primary,
+                                  color: ColorsTheme().primary,
                                   fontSize: screenWidth * 0.035,
                                   fontWeight: FontWeight.bold),
                             )),
@@ -559,7 +560,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                             child: Text(
                               "Evening",
                               style: TextStyle(
-                                  color: primary,
+                                  color: ColorsTheme().primary,
                                   fontSize: screenWidth * 0.035,
                                   fontWeight: FontWeight.bold),
                             )),
@@ -576,7 +577,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                             child: Text(
                               "Night",
                               style: TextStyle(
-                                  color: primary,
+                                  color: ColorsTheme().primary,
                                   fontSize: screenWidth * 0.035,
                                   fontWeight: FontWeight.bold),
                             )),
@@ -593,7 +594,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                             child: Text(
                               "Late Night",
                               style: TextStyle(
-                                  color: primary,
+                                  color: ColorsTheme().primary,
                                   fontSize: screenWidth * 0.035,
                                   fontWeight: FontWeight.bold),
                             )),
@@ -622,7 +623,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                             style:  TextStyle(
                               fontSize: screenWidth * 0.03,
                               fontWeight: FontWeight.bold,
-                              color: primary.withOpacity(0.8),
+                              color: ColorsTheme().primary.withOpacity(0.8),
                             ),
                           ),
                         ),
@@ -638,18 +639,18 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
 
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
-                              borderSide: BorderSide(color: primary)
+                              borderSide: BorderSide(color: ColorsTheme().primary)
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
-                            borderSide: BorderSide(color: primary)
+                            borderSide: BorderSide(color: ColorsTheme().primary)
                           ),
                           floatingLabelBehavior: FloatingLabelBehavior.never,
                           labelText: 'Enter your work description here',
                           labelStyle: TextStyle(
                             fontSize: 15.0,
                             fontWeight: FontWeight.bold,
-                            color: primary,
+                            color: ColorsTheme().primary,
                           ),
                           fillColor: Colors.white,
                         ),
@@ -678,7 +679,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                               style: TextStyle(
                                 fontSize: 15.0,
                                 fontWeight: FontWeight.bold,
-                                color: primary.withOpacity(0.8),
+                                color: ColorsTheme().primary.withOpacity(0.8),
                               ),
                             ),
                           ),
@@ -693,7 +694,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10.0),
-                            border: Border.all(color: primary)),
+                            border: Border.all(color: ColorsTheme().primary)),
                         child: Row(
                           children: [
                             Column(
@@ -701,7 +702,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                                 Text(
                                   "Credit Card",
                                   style: TextStyle(
-                                      color: primary,
+                                      color: ColorsTheme().primary,
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                   textAlign: TextAlign.left,
@@ -709,7 +710,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                                 Text(
                                   "**** **** **** 4825",
                                   style: TextStyle(
-                                      color: primary.withOpacity(0.8),
+                                      color: ColorsTheme().primary.withOpacity(0.8),
                                       fontSize: 13,
                                       fontWeight: FontWeight.bold),
                                   textAlign: TextAlign.end,

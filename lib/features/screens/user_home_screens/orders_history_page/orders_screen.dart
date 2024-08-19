@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/cleaning_orders.dart';
 import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/teaching_orders.dart';
 
-import '../home_navigation_bar.dart';
+import '../../../../config/theme/colors_theme.dart';
+
 import 'all_orders.dart';
 
 class OrdersScreen extends StatefulWidget {
@@ -29,12 +30,12 @@ class _OrdersScreenState extends State<OrdersScreen> {
           },
           child: Icon(
             Icons.arrow_back,
-            color: primary,
+            color: ColorsTheme().primary,
           ),
         ),
         title: Text(
           "Categories",
-          style: TextStyle(color: primary),
+          style: TextStyle(color: ColorsTheme().primary),
         ),
         centerTitle: true,
       ),
@@ -66,11 +67,11 @@ class _OrdersScreenState extends State<OrdersScreen> {
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(
                               color: i == index
-                                  ? primary
-                                  : primary.withOpacity(0.3))),
+                                  ? ColorsTheme().primary
+                                  : ColorsTheme().primary.withOpacity(0.3))),
                       child: Text(
                         "${WorkerCategory[index]}",
-                        style: TextStyle(color: i == index ? primary : primary),
+                        style: TextStyle(color: i == index ? ColorsTheme().primary : ColorsTheme().primary),
                       ),
                     ),
                   );

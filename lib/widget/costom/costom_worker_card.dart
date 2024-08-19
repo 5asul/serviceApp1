@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../config/theme/colors_theme.dart';
 import '../../features/screens/user_home_screens/home_navigation_bar.dart';
 
 class WorkerCard extends StatelessWidget {
@@ -40,7 +41,7 @@ class WorkerCard extends StatelessWidget {
                       end: Alignment.bottomCenter,
                       colors: [
                         Colors.transparent,
-                        primary, // End color
+                        ColorsTheme().primary, // End color
                       ],
                     ),
                   ),
@@ -54,7 +55,7 @@ class WorkerCard extends StatelessWidget {
                       height: screenSize.height*0.04,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5.0),
-                        color: primary
+                        color: ColorsTheme().primary
                       ),
                       child: Icon(
                         icon,

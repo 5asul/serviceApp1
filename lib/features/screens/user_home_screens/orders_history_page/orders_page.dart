@@ -3,69 +3,77 @@ import 'package:flutter/material.dart';
 import 'package:project_for_all/features/screens/user_home_screens/home_page/old_pages/all_worker.dart';
 import 'package:project_for_all/features/screens/user_home_screens/home_page/old_pages/cleaning_workers.dart';
 import 'package:project_for_all/features/screens/user_home_screens/home_page/old_pages/teaching_workers.dart';
+import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/all_orders.dart';
+import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/cleaning_orders.dart';
+import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/teaching_orders.dart';
 
-import '../home_navigation_bar.dart';
+import '../../../../config/theme/colors_theme.dart';
 
-class OrdersScreen extends StatefulWidget {
-  const OrdersScreen({super.key});
+class OrdersPage extends StatefulWidget {
+  const OrdersPage({super.key});
 
   @override
-  State<OrdersScreen> createState() =>
-      _OrdersScreenState();
+  State<OrdersPage> createState() => _OrdersPageState();
 }
 
-class _OrdersScreenState extends State<OrdersScreen> {
+class _OrdersPageState extends State<OrdersPage> {
   int i = 0;
-  List<Widget> nav = [AllWorkers(), CleaningWorkers(), TeachingWorkers()];
+  List<Widget> nav = [AllOrders(), CleaningOrders(), TeachingOrders()];
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: screenSize.height * 0.05,
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 10),
-              height: 60,
-              width: double.infinity,
-              child: ListView.builder(
-                physics: BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                itemCount: 3,
-                itemBuilder: (BuildContext context, int index) {
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        i = index;
-                      });
-                    },
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          border: Border.all(
-                              color: i == index
-                                  ? primary
-                                  : primary.withOpacity(0.3))),
-                      child: Text(
-                        "${WorkerCategory[index]}",
-                        style: TextStyle(color: i == index ? primary : primary),
-                      ),
-                    ),
-                  );
-                },
+        child: Container(
+          child: Column(
+            children: [
+              SizedBox(
+                height: screenSize.height * 0.05,
               ),
-            ),
-            SizedBox(
-              height: screenSize.height * 0.05,
-            ),
-            nav.elementAt(i)
-          ],
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                height: 60,
+                width: double.infinity,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 3,
+                  itemBuilder: (BuildContext context, int index) {
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          i = index;
+                        });
+                      },
+                      child: Container(
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(
+                                color: i == index
+                                    ? ColorsTheme().primary
+                                    : ColorsTheme().primary.withOpacity(0.3))),
+                        child: Text(
+                          "${WorkerCategory[index]}",
+                          style: TextStyle(
+                              color: i == index
+                                  ? ColorsTheme().primary
+                                  : ColorsTheme().primary),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              SizedBox(
+                height: screenSize.height * 0.05,
+              ),
+              nav.elementAt(i)
+            ],
+          ),
         ),
       ),
     );

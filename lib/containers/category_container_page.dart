@@ -4,6 +4,7 @@ import 'package:project_for_all/features/screens/user_home_screens/home_page/old
 import 'package:project_for_all/features/screens/user_home_screens/home_page/old_pages/cleaning_workers.dart';
 import 'package:project_for_all/features/screens/user_home_screens/home_page/old_pages/teaching_workers.dart';
 
+import '../config/theme/colors_theme.dart';
 import '../features/screens/user_home_screens/home_navigation_bar.dart';
 
 class CategoriesContainerPage extends StatefulWidget {
@@ -25,16 +26,16 @@ class _CategoriesContainerPageState extends State<CategoriesContainerPage> {
         leading: InkWell(
           onTap: () {
             Navigator.of(context)
-                .pushNamedAndRemoveUntil("container", (route) => false);
+                .pop();
           },
           child: Icon(
             Icons.arrow_back,
-            color: primary,
+            color: ColorsTheme().primary,
           ),
         ),
         title: Text(
           "Categories",
-          style: TextStyle(color: primary),
+          style: TextStyle(color: ColorsTheme().primary),
         ),
         centerTitle: true,
       ),
@@ -66,11 +67,11 @@ class _CategoriesContainerPageState extends State<CategoriesContainerPage> {
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(
                               color: i == index
-                                  ? primary
-                                  : primary.withOpacity(0.3))),
+                                  ? ColorsTheme().primary
+                                  : ColorsTheme().primary.withOpacity(0.3))),
                       child: Text(
                         "${WorkerCategory[index]}",
-                        style: TextStyle(color: i == index ? primary : primary),
+                        style: TextStyle(color: i == index ? ColorsTheme().primary : ColorsTheme().primary),
                       ),
                     ),
                   );

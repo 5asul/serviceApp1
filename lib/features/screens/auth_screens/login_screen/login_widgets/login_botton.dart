@@ -18,7 +18,7 @@ class LoginBotton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      color: ColorsTheme.primary,
+      color: ColorsTheme().primary,
       child: MaterialButton(
         onPressed: () async {
           try {

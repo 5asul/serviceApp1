@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../config/theme/colors_theme.dart';
 import '../../features/screens/user_home_screens/home_navigation_bar.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -30,7 +31,7 @@ class CategoryCard extends StatelessWidget {
               BoxDecoration(
                   borderRadius: BorderRadius.circular(20.0),
                 border: Border.all(
-                  color: primary
+                  color: ColorsTheme().primary
                 )
               ),
               child: Stack(
@@ -52,7 +53,7 @@ class CategoryCard extends StatelessWidget {
                         child:
                         Icon(icon,
                         size: 30.0,
-                        color: primary,)
+                        color: ColorsTheme().primary,)
 
                     ),
                   ]

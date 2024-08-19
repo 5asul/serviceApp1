@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../config/theme/colors_theme.dart';
 import '../../features/screens/user_home_screens/home_navigation_bar.dart';
 
 class OrdersCard extends StatelessWidget {
@@ -19,7 +20,7 @@ class OrdersCard extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
-          border: Border.all(color: primary)),
+          border: Border.all(color: ColorsTheme().primary)),
       child: Column(
         children: [
           Row(
@@ -61,7 +62,7 @@ class OrdersCard extends StatelessWidget {
                           child: Icon(
                             Icons.location_pin,
                             size: screenSize.width * 0.07,
-                            color: primary,
+                            color: ColorsTheme().primary,
                           ),
                         ),
                         Container(
@@ -84,7 +85,7 @@ class OrdersCard extends StatelessWidget {
                     width: screenSize.width * 0.48,
                     height: screenSize.height * 0.0008,
                     decoration: BoxDecoration(
-                      color: primary,
+                      color: ColorsTheme().primary,
                     ),
                   ),
                   Column(
@@ -111,7 +112,7 @@ class OrdersCard extends StatelessWidget {
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontSize: screenSize.width * 0.03,
-                                color: primary,
+                                color: ColorsTheme().primary,
                               ),
                             ),
                           )
@@ -141,7 +142,7 @@ class OrdersCard extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 fontSize: screenSize.width * 0.03,
-                                color: primary,
+                                color: ColorsTheme().primary,
                               ),
                             ),
                           )
@@ -154,7 +155,7 @@ class OrdersCard extends StatelessWidget {
             ],
           ),
           Divider(
-            color: primary,
+            color: ColorsTheme().primary,
             height: screenSize.height * 0.02,
             thickness: screenSize.width * 0.0015,
             indent: screenSize.width * 0.05,
@@ -175,7 +176,7 @@ class OrdersCard extends StatelessWidget {
                       height: screenSize.height * 0.045,
                       onPressed: () {},
                       color:
-                          primary, //(widget.state=='PENDING')?Colors.amberAccent:(widget.state=='COMPLETED')?
+                          ColorsTheme().primary, //(widget.state=='PENDING')?Colors.amberAccent:(widget.state=='COMPLETED')?
                       // Colors.green:Colors.redAccent,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30)),
@@ -204,7 +205,7 @@ class OrdersCard extends StatelessWidget {
                         style: TextStyle(
                           fontSize: screenSize.width * 0.08,
                           fontWeight: FontWeight.bold,
-                          color: primary,
+                          color: ColorsTheme().primary,
                         ),
                       ),
                     ),

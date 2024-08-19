@@ -13,10 +13,15 @@ class AllWorkers extends StatefulWidget {
 class _AllWorkersState extends State<AllWorkers> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    return ListView.builder(itemBuilder: (context, snapshot) {
-      cardInfo[snapshot];
-    });
+    return ListView.builder
+      (
+      physics: BouncingScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: 1,
+      itemBuilder: (BuildContext context, int i) {
+        return cardInfo[i];
+      },
+    );
   }
 }
 

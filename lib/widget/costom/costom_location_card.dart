@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:project_for_all/features/screens/user_home_screens/home_navigation_bar.dart';
 
+import '../../config/theme/colors_theme.dart';
+
 class LocationCard extends StatefulWidget {
   final String name;
   final IconData icon;
@@ -33,7 +35,7 @@ class _LocationCardState extends State<LocationCard> {
         height: screenSize.height*0.18,
         padding: EdgeInsets.only(left: 10,right: 10),
         child: Card(
-          color: primary,
+          color: ColorsTheme().primary,
           elevation: 10,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
@@ -62,7 +64,7 @@ class _LocationCardState extends State<LocationCard> {
                         color: Colors.white.withOpacity(0.8)
                       ),
                       child: Icon(widget.icon,
-                      color: primary,)
+                      color: ColorsTheme().primary,)
                   )
               ),
             ]

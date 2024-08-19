@@ -36,7 +36,7 @@ class LoginToYourAccountRow extends StatelessWidget {
                 ),
                 Text(
                   'Login',
-                  style: TextStyle(color: ColorsTheme.primary),
+                  style: TextStyle(color: ColorsTheme().primary),
                 ),
               ],
             ))

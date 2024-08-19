@@ -2,6 +2,7 @@ import 'package:board_datetime_picker/board_datetime_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:project_for_all/controller/database/sqfLite.dart';
 
+import '../config/theme/colors_theme.dart';
 import '../controller/componentAPI/crud_mysql_api.dart';
 import '../features/screens/user_home_screens/home_navigation_bar.dart';
 import '../main.dart';
@@ -123,7 +124,7 @@ class _AddOrderState extends State<AddOrder> with Crud {
                   width: 380.0,
                   height: 70.0,
                   decoration: BoxDecoration(
-                      color: secondary,
+                      color: ColorsTheme().secondary,
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
                       border: Border.all(
                         color: Colors.black54,
@@ -147,7 +148,7 @@ class _AddOrderState extends State<AddOrder> with Crud {
                 width: 150.0,
                 height: 50.0,
                 decoration: BoxDecoration(
-                  color: primary,
+                  color: ColorsTheme().primary,
                   borderRadius: BorderRadius.all(Radius.circular(8.0)),
                 ),
                 child: MaterialButton(
