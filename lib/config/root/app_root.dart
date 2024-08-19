@@ -46,7 +46,7 @@ class AppRoutes {
         return _materialRoute(WorkerProfileScreen());
 
       default:
-        return _materialRoute(LoginScreen());
+        return FirebaseAuth.instance.currentUser == null ?_materialRoute(LoginScreen()):_materialRoute(HomeContainerPage());
     }
   }
 
