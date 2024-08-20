@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:project_for_all/containers/category_container_page.dart';
+import 'package:project_for_all/features/screens/user_home_screens/home_page/category_screen/category_base.dart';
 import 'package:project_for_all/features/screens/auth_screens/register_screens/select_role_screen.dart';
 import 'package:project_for_all/features/screens/user_home_screens/home_navigation_bar.dart';
-import 'package:project_for_all/features/screens/user_home_screens/home_page/add_order_screen.dart';
-import 'package:project_for_all/features/screens/user_home_screens/home_page/worker_profile_screen.dart';
+import 'package:project_for_all/features/screens/user_home_screens/home_page/add_order_screen/add_order_screen.dart';
+import 'package:project_for_all/features/screens/user_home_screens/home_page/category_screen/worker_profile_screen/worker_profile_screen.dart';
 import 'package:project_for_all/nav_pages/add_order_page.dart';
 
 import '../../features/screens/auth_screens/login_screen/login_screen.dart';

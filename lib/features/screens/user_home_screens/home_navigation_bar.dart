@@ -16,13 +16,8 @@ class HomeNavigationBar extends StatefulWidget {
 }
 
 class _HomeNavigationBarState extends State<HomeNavigationBar> with Crud {
-  // getServic e() async {
-  //   var response = await postRequest(linkOrderView, {
-  //     "id" : sharedPref.get
-  //   });
-  // }
 
-  List<Widget> _page = [HomePage(), OrdersPage(), AddOrder()];
+  List<Widget> _page = [HomePage(),OrdersPage(), AddOrder()];
   static int i = 0;
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
@@ -46,9 +41,6 @@ class _HomeNavigationBarState extends State<HomeNavigationBar> with Crud {
           onTap: (index) {
             setState(() {
               i = index;
-
-              print(index);
-              print(i);
             });
           },
           letIndexChange: (index) => true,
@@ -59,23 +51,4 @@ class _HomeNavigationBarState extends State<HomeNavigationBar> with Crud {
   }
 }
 
-//كلاس عشان نوصل لليست
 
-// اليست الخاص بالخدمات
-
-// كلاس خاص بانشاء الكاردز
-
-
-// class page1 extends StatefulWidget {
-//   const page1({super.key});
-
-//   @override
-//   State<page1> createState() => _page1State();
-// }
-
-// class _page1State extends State<page1> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(child: Text("page 1"));
-//   }
-// }

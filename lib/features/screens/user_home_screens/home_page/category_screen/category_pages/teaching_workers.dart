@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../widget/costom/costom_worker1_card.dart';
+import '../../../../../../widget/costom/costom_worker1_card.dart';
 
 class TeachingWorkers extends StatefulWidget {
   const TeachingWorkers({super.key});

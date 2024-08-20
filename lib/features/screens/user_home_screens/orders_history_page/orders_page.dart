@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:project_for_all/features/screens/user_home_screens/home_page/old_pages/all_worker.dart';
-import 'package:project_for_all/features/screens/user_home_screens/home_page/old_pages/cleaning_workers.dart';
-import 'package:project_for_all/features/screens/user_home_screens/home_page/old_pages/teaching_workers.dart';
 import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/all_orders.dart';
 import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/cleaning_orders.dart';
 import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/teaching_orders.dart';
 
 import '../../../../config/theme/colors_theme.dart';
+import 'orders_history_widgets/orders_nav_bottons.dart';
 
 class OrdersPage extends StatefulWidget {
   const OrdersPage({super.key});
@@ -46,24 +44,7 @@ class _OrdersPageState extends State<OrdersPage> {
                           i = index;
                         });
                       },
-                      child: Container(
-                        margin:
-                            EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            border: Border.all(
-                                color: i == index
-                                    ? ColorsTheme().primary
-                                    : ColorsTheme().primary.withOpacity(0.3))),
-                        child: Text(
-                          "${WorkerCategory[index]}",
-                          style: TextStyle(
-                              color: i == index
-                                  ? ColorsTheme().primary
-                                  : ColorsTheme().primary),
-                        ),
-                      ),
+                      child: OrdersPageNavBottons(i: i,index: index),
                     );
                   },
                 ),
@@ -80,11 +61,9 @@ class _OrdersPageState extends State<OrdersPage> {
   }
 }
 
-List<String> WorkerCategory = [
-  "All Orders",
-  "Cleaning Orders",
-  "Teaching Orders"
-];
+
+
+
 
 
 

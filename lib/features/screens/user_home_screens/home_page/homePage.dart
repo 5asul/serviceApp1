@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-
 import 'package:project_for_all/config/theme/app_size.dart';
-import 'package:project_for_all/widget/costom/costom_category_card.dart';
 import 'package:project_for_all/widget/costom/costom_worker_card.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import '../../../../config/theme/colors_theme.dart';
-import '../home_navigation_bar.dart';
-import '../../../../widget/costom/costom_add_order_card.dart';
-import '../../../../widget/costom/costom_location_card.dart';
+import 'home_page_widgets/best_workers_section.dart';
+import 'home_page_widgets/category_section.dart';
+import 'home_page_widgets/top_three_cards.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -117,121 +115,15 @@ class _MyAppState extends State<HomePage> {
                 Container(
                   child: Column(
                     children: [
-                      CustomAddOrderCard(
-                        title: "Order Your Service ",
-                      ),
-                      SizedBox(height: 10.0),
-                      Row(
-                        children: [
-                          LocationCard(
-                            name: "Your Location",
-                            icon: Icons.my_location,
-                            ontap: _determinePosition,
-                          ),
-                          LocationCard(
-                              name: "All Orders", icon: Icons.shopping_bag)
-                        ],
-                      ),
+                     TopThreeCards(),
                       SizedBox(
                         height: 10.0,
                       ),
-                      Row(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.only(left: 14, top: 15),
-                            child: Text(
-                              "Top Categories",
-                              style: TextStyle(
-                                color: ColorsTheme().primary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: AppSize.width(context) * 0.065,
-                              ),
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                          SizedBox(
-                            width: AppSize.width(context) * 0.40,
-                          ),
-
-                          // IconButton(onPressed: _determinePosition, icon: Icon(Icons.add)),
-                          InkWell(
-                            onTap: () async {
-                              //await _determinePosition;
-                              Navigator.of(context).pushNamed(
-                                  'categoryContainer',
-                                  arguments: (route) => false);
-                            },
-                            child: Icon(
-                              Icons.arrow_forward_ios,
-                              color: ColorsTheme().primary,
-                            ),
-                          )
-                        ],
-                      ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Container(
-                          height: AppSize.height(context) * 0.20,
-                          child: Row(
-                            children: [
-                              CategoryCard(
-                                  name: "Cleaning",
-                                  workerNumber: "+460 workers",
-                                  icon: Icons.cleaning_services),
-                              CategoryCard(
-                                  name: "Teaching",
-                                  workerNumber: "+300 workers",
-                                  icon: Icons.book_rounded),
-                              CategoryCard(
-                                  name: "Cleaning",
-                                  workerNumber: "+460 workers",
-                                  icon: Icons.dry_cleaning),
-                              CategoryCard(
-                                  name: "Cleaning",
-                                  workerNumber: "+460 workers",
-                                  icon: Icons.dry_cleaning),
-                              CategoryCard(
-                                  name: "Cleaning",
-                                  workerNumber: "+460 workers",
-                                  icon: Icons.dry_cleaning)
-                            ],
-                          ),
-                        ),
-                      ),
+                     CategorySection(),
                       SizedBox(
                         height: 10.0,
                       ),
-                      Container(
-                        padding: EdgeInsets.only(left: 14, right: 10, top: 15),
-                        child: Text(
-                          "Best Workers ",
-                          style: TextStyle(
-                            color: ColorsTheme().primary,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25.0,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            WorkerCard(
-                                name: "Ahmed",
-                                numberOfOrders: "10",
-                                image: "assets/teacher.jpg",
-                                rank: "5.0",
-                                icon: Icons.book_rounded),
-                            WorkerCard(
-                                name: "Saleh",
-                                numberOfOrders: "10",
-                                image: "assets/cleaner.jpg",
-                                rank: "5.0",
-                                icon: Icons.cleaning_services),
-                          ],
-                        ),
-                      )
+                      BestWorkersSection()
                     ],
                   ),
                 ),
@@ -243,18 +135,3 @@ class _MyAppState extends State<HomePage> {
     );
   }
 }
-
-List<WorkerCard> cardInfo = [
-  WorkerCard(
-      name: "Ahmed",
-      numberOfOrders: "10",
-      image: "assets/teacher.jpg",
-      rank: "5.0",
-      icon: Icons.book_rounded),
-  WorkerCard(
-      name: "Saleh",
-      numberOfOrders: "15",
-      image: "assets/cleaner.jpg",
-      rank: "4.0",
-      icon: Icons.cleaning_services)
-];

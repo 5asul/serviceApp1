@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../config/theme/colors_theme.dart';
-import '../../features/screens/user_home_screens/home_navigation_bar.dart';
+
 
 class Worker1Card extends StatelessWidget {
   final String name;
