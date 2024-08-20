@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:project_for_all/features/screens/user_home_screens/profile_page/user_profile_page.dart';
 import '../../../config/theme/colors_theme.dart';
 import '../../../controller/componentAPI/crud_mysql_api.dart';
 import '../../../nav_pages/add_order_page.dart';
@@ -16,8 +17,7 @@ class HomeNavigationBar extends StatefulWidget {
 }
 
 class _HomeNavigationBarState extends State<HomeNavigationBar> with Crud {
-
-  List<Widget> _page = [HomePage(),OrdersPage(), AddOrder()];
+  List<Widget> _page = [HomePage(), OrdersPage(), UserProfilePage()];
   static int i = 0;
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
@@ -31,7 +31,7 @@ class _HomeNavigationBarState extends State<HomeNavigationBar> with Crud {
           items: <Widget>[
             Icon(Icons.home, size: 30),
             Icon(Icons.list, size: 30),
-            Icon(Icons.add, size: 30),
+            Icon(Icons.person, size: 30),
           ],
           color: ColorsTheme().primary,
           buttonBackgroundColor: ColorsTheme().primary,
@@ -46,9 +46,7 @@ class _HomeNavigationBarState extends State<HomeNavigationBar> with Crud {
           letIndexChange: (index) => true,
         ),
         appBar: HomePageAppBar(context, 'home page'),
-        backgroundColor: ColorsTheme().secondary,
+        backgroundColor: ColorsTheme().white,
         body: _page.elementAt(i));
   }
 }
-
-
