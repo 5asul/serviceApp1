@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../config/theme/colors_theme.dart';
-import '../../home_page/category_screen/category_base.dart';
 
 class OrdersPageNavBottons extends StatelessWidget {
   const OrdersPageNavBottons({

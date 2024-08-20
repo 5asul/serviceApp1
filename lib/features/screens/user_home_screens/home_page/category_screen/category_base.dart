@@ -5,7 +5,6 @@ import 'package:project_for_all/features/screens/user_home_screens/home_page/cat
 import 'package:project_for_all/features/screens/user_home_screens/home_page/category_screen/category_pages/teaching_workers.dart';
 
 import '../../../../../config/theme/colors_theme.dart';
-import '../../home_navigation_bar.dart';
 
 class CategoriesContainerPage extends StatefulWidget {
   const CategoriesContainerPage({super.key});

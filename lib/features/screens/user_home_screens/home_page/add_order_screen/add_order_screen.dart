@@ -1,21 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import 'package:project_for_all/controller/database/sqfLite.dart';
 
-import '../../../../../config/theme/app_size.dart';
-import '../../../../../config/theme/colors_theme.dart';
 import '../../../../../controller/componentAPI/crud_mysql_api.dart';
-import '../../../../../main.dart';
-import '../../../../../widget/costom/costom_category_card.dart';
-import '../../home_navigation_bar.dart';
 import 'add_order_widgets/add_order-floating_botton.dart';
 import 'add_order_widgets/add_order_app_bar.dart';
 import 'add_order_widgets/add_order_category_cards.dart';
 import 'add_order_widgets/payment_section.dart';
 import 'add_order_widgets/set_date_and_time_section/set_date_and_time_section.dart';
-import 'add_order_widgets/set_date_and_time_section/time_bottons.dart';
 import 'add_order_widgets/work_description_section.dart';
 
 class AddOrderScreen extends StatefulWidget {
