@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../../config/theme/colors_theme.dart';
-import '../../user_home_screens/home_navigation_bar.dart';
 import '../../../../widget/costom/costom_role_card.dart';
 
 class SelectRoleScreen extends StatefulWidget {
