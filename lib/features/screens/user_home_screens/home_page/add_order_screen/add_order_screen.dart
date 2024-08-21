@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:project_for_all/controller/database/sqfLite.dart';
 
+import '../../../../../config/theme/app_size.dart';
 import '../../../../../controller/componentAPI/crud_mysql_api.dart';
 import 'add_order_widgets/add_order-floating_botton.dart';
 import 'add_order_widgets/add_order_app_bar.dart';
@@ -46,11 +47,11 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
                   screenWidth: screenWidth, screenSize: screenSize),
               SetDateAndTimeSection(),
               SizedBox(
-                height: screenSize.height * 0.05,
+                height: AppSize.height(context) * 0.05,
               ),
               WorkDescriptionSection(),
               SizedBox(
-                height: screenSize.height * 0.05,
+                height: AppSize.height(context) * 0.05,
               ),
               PaymentSection(screenWidth: screenWidth, screenHeight: screenHeight, screenSize: screenSize),
             ],

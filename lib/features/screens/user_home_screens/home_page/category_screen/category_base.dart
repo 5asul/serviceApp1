@@ -4,6 +4,7 @@ import 'package:project_for_all/features/screens/user_home_screens/home_page/cat
 import 'package:project_for_all/features/screens/user_home_screens/home_page/category_screen/category_pages/cleaning_workers.dart';
 import 'package:project_for_all/features/screens/user_home_screens/home_page/category_screen/category_pages/teaching_workers.dart';
 
+import '../../../../../config/theme/app_size.dart';
 import '../../../../../config/theme/colors_theme.dart';
 
 class CategoriesContainerPage extends StatefulWidget {
@@ -42,7 +43,7 @@ class _CategoriesContainerPageState extends State<CategoriesContainerPage> {
         child: Column(
           children: [
             SizedBox(
-              height: screenSize.height * 0.05,
+              height: AppSize.height(context) * 0.05,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10),
@@ -78,7 +79,7 @@ class _CategoriesContainerPageState extends State<CategoriesContainerPage> {
               ),
             ),
             SizedBox(
-              height: screenSize.height * 0.05,
+              height: AppSize.height(context) * 0.05,
             ),
             nav.elementAt(i)
           ],

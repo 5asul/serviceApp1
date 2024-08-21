@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../../config/theme/app_size.dart';
 import '../../../../../../config/theme/colors_theme.dart';
 
 class AddOrderFloatingBotton extends StatelessWidget {
@@ -13,10 +14,10 @@ class AddOrderFloatingBotton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: screenSize.height * 0.07, // Set the height of the FAB
-      width: screenSize.width * 0.9,
+      height: AppSize.height(context) * 0.07, // Set the height of the FAB
+      width: AppSize.width(context) * 0.9,
       margin: EdgeInsets.only(
-          bottom: screenSize.height * 0.05), // Set the width of the FAB
+          bottom: AppSize.height(context) * 0.05), // Set the width of the FAB
       child: FloatingActionButton(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),

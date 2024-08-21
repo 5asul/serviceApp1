@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../../config/theme/app_size.dart';
 import '../../../../../../config/theme/colors_theme.dart';
 
 class PaymentSection extends StatelessWidget {
@@ -44,8 +45,8 @@ class PaymentSection extends StatelessWidget {
               padding: EdgeInsets.symmetric(
                   horizontal: screenWidth * 0.02,
                   vertical: screenHeight * 0.005),
-              width: screenSize.width * 1.0,
-              height: screenSize.height * 0.08,
+              width: AppSize.width(context) * 1.0,
+              height: AppSize.height(context) * 0.08,
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10.0),
@@ -79,7 +80,7 @@ class PaymentSection extends StatelessWidget {
                   ),
                   Image.asset(
                     'assets/images/Mastercard.png',
-                    width: screenSize.width * 0.15,
+                    width: AppSize.width(context) * 0.15,
                   )
                 ],
               ),
