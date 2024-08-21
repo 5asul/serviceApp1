@@ -5,7 +5,6 @@ import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 late SharedPreferences sharedPref;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,6 +12,13 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   sharedPref = await SharedPreferences.getInstance();
+  FirebaseAuth.instance.authStateChanges().listen((User? user) {
+    if (user == null) {
+      print('==========User is currently signed out!');
+    } else {
+      print('==========User is signed in!');
+    }
+  });
   runApp(const MyApp());
 }
 
@@ -26,17 +32,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    FirebaseAuth.instance
-  .authStateChanges()
-  .listen((User? user) {
-    if (user == null) {
-      print('==========User is currently signed out!');
-    } else {
-      print('==========User is signed in!');
-    }
-  });
     super.initState();
   }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -47,7 +45,7 @@ class _MyAppState extends State<MyApp> {
         hintColor: Colors.green,
         brightness: Brightness.light,
       ),
-      onGenerateRoute: AppRoutes.onGenerateRoutes ,
+      onGenerateRoute: AppRoutes.onGenerateRoutes,
     );
   }
 }

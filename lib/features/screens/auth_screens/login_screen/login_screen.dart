@@ -1,6 +1,8 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:project_for_all/controller/auth/sign_in_controller.dart';
 import 'package:project_for_all/controller/componentAPI/crud_mysql_api.dart';
-
 
 import 'login_widgets/costom_email_textField.dart';
 import 'login_widgets/costom_password_textField.dart';
@@ -9,21 +11,20 @@ import 'login_widgets/login_app_bar.dart';
 import 'login_widgets/login_botton.dart';
 import 'login_widgets/login_strok_text.dart';
 
-
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> with Crud {
+  SignInController signInController = SignInController();
+
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
   bool isLoading = false;
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,51 @@ class _LoginScreenState extends State<LoginScreen> with Crud {
                     SizedBox(
                       height: 25.0,
                     ),
-                    LoginBotton(email: email, password: password),
+                    LoginBotton(
+                      text: 'LOGIN',
+                      onPressed: () async {
+                        try {
+                          final credential = await FirebaseAuth.instance
+                              .signInWithEmailAndPassword(
+                                  email: email.text, password: password.text);
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                              'container', (root) => false);
+                        } on FirebaseAuthException catch (e) {
+                          if (e.code == 'user-not-found') {
+                            AwesomeDialog(
+                                    context: context,
+                                    dialogType: DialogType.error,
+                                    title: "Error",
+                                    desc: "No user found for that email.")
+                                .show();
+                            print('No user found for that email.');
+                          } else if (e.code == 'wrong-password') {
+                            AwesomeDialog(
+                                    context: context,
+                                    dialogType: DialogType.error,
+                                    title: "Error",
+                                    desc:
+                                        "Wrong password provided for that user.")
+                                .show();
+                            print('Wrong password provided for that user.');
+                          }
+                        }
+                      },
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    LoginBotton(
+                      text: 'LOGIN with google',
+                      onPressed: () async {
+                        await signInController.signInWithGoogle().then(
+                          (value) {
+                            Navigator.of(context).pushNamed('container');
+                          },
+                        );
+                      },
+                      routeName: 'container',
+                    ),
                     SizedBox(
                       height: 10.0,
                     ),
@@ -68,16 +113,4 @@ class _LoginScreenState extends State<LoginScreen> with Crud {
       ),
     );
   }
-
-
 }
-
-
-
-
-
-
-
-
-
-
