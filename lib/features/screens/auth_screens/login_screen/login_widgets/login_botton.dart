@@ -7,12 +7,14 @@ import '../../../../../config/theme/colors_theme.dart';
 class LoginBotton extends StatelessWidget {
   const LoginBotton({
     super.key,
-    required this.email,
-    required this.password,
+    @required this.onPressed,
+    required this.text,
+    @required this.routeName,
   });
 
-  final TextEditingController email;
-  final TextEditingController password;
+  final void Function()? onPressed;
+  final String text;
+  final String? routeName;
 
   @override
   Widget build(BuildContext context) {
@@ -20,36 +22,9 @@ class LoginBotton extends StatelessWidget {
       width: double.infinity,
       color: ColorsTheme().primary,
       child: MaterialButton(
-        onPressed: () async {
-          try {
-            final credential = await FirebaseAuth.instance
-                .signInWithEmailAndPassword(
-                    email: email.text, password: password.text);
-            Navigator.of(context).pushNamedAndRemoveUntil(
-                'container', (root) => false);
-          } on FirebaseAuthException catch (e) {
-            if (e.code == 'user-not-found') {
-              AwesomeDialog(
-                      context: context,
-                      dialogType: DialogType.error,
-                      title: "Error",
-                      desc: "No user found for that email.")
-                  .show();
-              print('No user found for that email.');
-            } else if (e.code == 'wrong-password') {
-              AwesomeDialog(
-                      context: context,
-                      dialogType: DialogType.error,
-                      title: "Error",
-                      desc: "Wrong password provided for that user."
-                      )
-                  .show();
-              print('Wrong password provided for that user.');
-            }
-          }
-        },
+        onPressed: onPressed,
         child: Text(
-          'LOGIN',
+          text,
           style: TextStyle(color: Colors.white),
         ),
       ),
