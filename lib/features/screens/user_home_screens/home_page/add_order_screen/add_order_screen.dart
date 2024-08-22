@@ -30,8 +30,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
+    
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
@@ -40,11 +39,10 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
       appBar: AddOrderAppBar(context),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.only(bottom: screenHeight * 0.15),
+          margin: EdgeInsets.only(bottom: AppSize.height(context) * 0.15),
           child: Column(
             children: [
-              AddOrderCategoryCards(
-                  screenWidth: screenWidth, screenSize: screenSize),
+              AddOrderCategoryCards(),
               SetDateAndTimeSection(),
               SizedBox(
                 height: AppSize.height(context) * 0.05,
@@ -53,7 +51,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
               SizedBox(
                 height: AppSize.height(context) * 0.05,
               ),
-              PaymentSection(screenWidth: screenWidth, screenHeight: screenHeight, screenSize: screenSize),
+              PaymentSection(),
             ],
           ),
         ),

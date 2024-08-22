@@ -94,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> with Crud {
                       onPressed: () async {
                         await signInController.signInWithGoogle().then(
                           (value) {
-                            Navigator.of(context).pushNamed('container');
+                            Navigator.of(context).pushNamed('rolePage');
                           },
                         );
                       },

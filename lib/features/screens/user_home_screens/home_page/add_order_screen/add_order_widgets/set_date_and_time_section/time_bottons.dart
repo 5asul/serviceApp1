@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../../../config/theme/app_size.dart';
 import '../../../../../../../config/theme/colors_theme.dart';
 
 class TimeBottons extends StatelessWidget {
@@ -17,7 +18,8 @@ class TimeBottons extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(left: screenWidth * 0.018),
       child: Container(
-          padding: EdgeInsets.all(3.0),
+          padding: EdgeInsets.symmetric(horizontal: AppSize.width(context)*0.006,
+          vertical: AppSize.height(context)*0.005),
           decoration: BoxDecoration(
               color: ColorsTheme().primary.withOpacity(0.8),
               borderRadius: BorderRadius.circular(10.0),

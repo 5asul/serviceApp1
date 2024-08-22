@@ -6,30 +6,26 @@ import '../../../../../../config/theme/colors_theme.dart';
 class PaymentSection extends StatelessWidget {
   const PaymentSection({
     super.key,
-    required this.screenWidth,
-    required this.screenHeight,
-    required this.screenSize,
+   
   });
 
-  final double screenWidth;
-  final double screenHeight;
-  final Size screenSize;
+ 
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          left: screenWidth * 0.055, right: screenWidth * 0.055),
+          left: AppSize.width(context) * 0.055, right: AppSize.width(context) * 0.055),
       child: Container(
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(bottom: screenHeight * 0.002),
+              padding: EdgeInsets.only(bottom: AppSize.height(context) * 0.002),
               child: Align(
                 alignment: Alignment.topLeft,
                 child: Container(
                   padding:
-                      EdgeInsets.only(bottom: screenHeight * 0.005),
+                      EdgeInsets.only(bottom: AppSize.height(context) * 0.005),
                   child: Text(
                     "Payment",
                     style: TextStyle(
@@ -43,8 +39,8 @@ class PaymentSection extends StatelessWidget {
             ),
             Container(
               padding: EdgeInsets.symmetric(
-                  horizontal: screenWidth * 0.02,
-                  vertical: screenHeight * 0.005),
+                  horizontal: AppSize.width(context) * 0.02,
+                  vertical: AppSize.height(context) * 0.005),
               width: AppSize.width(context) * 1.0,
               height: AppSize.height(context) * 0.08,
               decoration: BoxDecoration(
