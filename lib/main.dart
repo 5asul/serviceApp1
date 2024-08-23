@@ -1,8 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'config/root/app_root.dart';
+import 'features/state_managment/provider/change_notifier_class.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 late SharedPreferences sharedPref;
@@ -19,7 +21,10 @@ void main() async {
       print('==========User is signed in!');
     }
   });
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => ServiceAppProvider(),
+    child: MyApp(),
+  ),);
 }
 
 class MyApp extends StatefulWidget {

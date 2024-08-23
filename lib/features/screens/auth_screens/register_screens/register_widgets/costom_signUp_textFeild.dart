@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../config/theme/colors_theme.dart';
+
 class CustomSignUpTextFeild extends StatelessWidget {
   final AutovalidateMode autovalidateMode;
   final bool obSecure;
-  final Icon? suffixIcon;
+  final IconButton? suffixIcon;
   final Icon? icon;
   final String? label;
   final String? Function(String?) valid;
@@ -29,6 +31,10 @@ class CustomSignUpTextFeild extends StatelessWidget {
         keyboardType: TextInputType.name,
         obscureText: obSecure,
         decoration: InputDecoration(
+          floatingLabelStyle: TextStyle(color: ColorsTheme().primary),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: ColorsTheme().primary)
+          ),
           labelText: label,
           prefixIcon: icon,
           suffixIcon: suffixIcon,

@@ -59,6 +59,7 @@ dependencies:
   intl: any
   dartz: ^0.10.1
   google_sign_in: ^6.2.1
+  provider: ^6.1.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

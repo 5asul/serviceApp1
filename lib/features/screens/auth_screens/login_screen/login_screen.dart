@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:project_for_all/controller/auth/sign_in_controller.dart';
 import 'package:project_for_all/controller/componentAPI/crud_mysql_api.dart';
 
-import 'login_widgets/costom_email_textField.dart';
-import 'login_widgets/costom_password_textField.dart';
+import '../auth_widgets/costom_email_textField.dart';
+import '../auth_widgets/costom_password_textField.dart';
 import 'login_widgets/dont_have_account.dart';
 import 'login_widgets/login_app_bar.dart';
 import 'login_widgets/login_botton.dart';
