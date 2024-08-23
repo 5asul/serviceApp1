@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:project_for_all/config/theme/colors_theme.dart';
 
-import '../../../../../controller/componentAPI/valid.dart';
+import '../../../../controller/componentAPI/valid.dart';
 
 class EmailTextField extends StatelessWidget {
   const EmailTextField({
@@ -26,7 +27,12 @@ class EmailTextField extends StatelessWidget {
         print(value);
       },
       decoration: InputDecoration(
+
+        focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: ColorsTheme().primary)
+        ),
         labelText: 'Email Address',
+        floatingLabelStyle: TextStyle(color: ColorsTheme().primary),
         prefixIcon: Icon(Icons.email),
         border: OutlineInputBorder(),
       ),

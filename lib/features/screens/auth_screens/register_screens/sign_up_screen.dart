@@ -1,10 +1,15 @@
 
 import 'package:flutter/material.dart';
+import 'package:project_for_all/config/theme/app_size.dart';
 
 import 'package:project_for_all/features/screens/auth_screens/register_screens/register_widgets/costom_signUp_textFeild.dart';
+import 'package:provider/provider.dart';
 
 
 import '../../../../controller/componentAPI/valid.dart';
+import '../../../state_managment/provider/change_notifier_class.dart';
+import '../auth_widgets/costom_email_textField.dart';
+import '../auth_widgets/costom_password_textField.dart';
 import 'register_widgets/login_to_your_account_text_row.dart';
 import 'register_widgets/signUp_app_bar.dart';
 import 'register_widgets/signUp_botton.dart';
@@ -27,9 +32,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
+  List <String> roles = ['User','Worker'];
+
   bool signUp_state = true;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
+    var provider = context.watch<ServiceAppProvider>();
+    String currentOption = roles[0];
     return Scaffold(
         appBar: SignUpAppBar(),
         body: Container(
@@ -63,35 +72,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               },
                               myController: username,
                             ),
+                            // SizedBox(
+                            //   height: 15.0,
+                            // ),
+                            // Container(
+                            //   width: AppSize.width(context)*1.0,
+                            //   height: AppSize.height(context)*0.09,
+                            //   child: Row(
+                            //     children: [
+                            //       RadioListTile(
+                            //         title: Text(roles[0]),
+                            //           value: roles[0],
+                            //           groupValue: currentOption,
+                            //           onChanged: (val){
+                            //           currentOption = val.toString();
+                            //           }),
+                            //       RadioListTile(
+                            //           title: Text(roles[1]),
+                            //           value: roles[1],
+                            //           groupValue: currentOption,
+                            //           onChanged: (val){
+                            //             currentOption = val.toString();
+                            //           })
+                            //     ],
+                            //   ),
+                            // ),
                             SizedBox(
                               height: 15.0,
                             ),
-                            CustomSignUpTextFeild(
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              label: "Email",
-                              obSecure: false,
-                              icon: Icon(Icons.email),
-                              valid: (String? val) {
-                                return validInput(val!, 2, 40);
-                              },
-                              myController: email,
-                            ),
+                            EmailTextField(email: email),
                             SizedBox(
                               height: 15.0,
                             ),
-                            CustomSignUpTextFeild(
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              label: "Password",
-                              obSecure: true,
-                              icon: Icon(Icons.password),
-                              suffixIcon: Icon(Icons.remove_red_eye),
-                              valid: (val) {
-                                return validInput(val!, 2, 40);
-                              },
-                              myController: password,
-                            ),
+                            PasswordTextFeild(password: password),
                             SizedBox(
                               height: 25.0,
                             ),
