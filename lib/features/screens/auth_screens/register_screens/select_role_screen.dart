@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:project_for_all/features/screens/auth_screens/register_screens/user_register_screen.dart';
+import 'package:project_for_all/features/screens/auth_screens/register_screens/worker_register_screen.dart';
+import 'package:project_for_all/main.dart';
 import '../../../../config/theme/colors_theme.dart';
 import '../../../../widget/costom/costom_role_card.dart';
 
@@ -36,8 +40,10 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                 explain: "to place any type of order to find a worker",
                 image: "assets/images/customer.png",
                 ontap: () {
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil('container', (route) => false);
+                  Navigator.of(context).push(PageTransition(
+                      child: UserRegisterScreen(),
+                      type: PageTransitionType.leftToRight));
+                  sharedPref.setString('role', 'user');
                 },
               ),
               SizedBox(
@@ -47,6 +53,12 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                 title: "Looking for a work",
                 explain: "You click here to apply to a work as a worker",
                 image: "assets/images/worker.png",
+                ontap: () {
+                  Navigator.of(context).push(PageTransition(
+                      child: WorkerRegisterScreen(),
+                      type: PageTransitionType.leftToRight));
+                  sharedPref.setString('role', 'worker');
+                },
               )
             ],
           ),

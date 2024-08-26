@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:project_for_all/config/theme/app_size.dart';
 
 import 'package:project_for_all/features/screens/auth_screens/register_screens/register_widgets/costom_signUp_textFeild.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../controller/componentAPI/valid.dart';
 import '../../../state_managment/provider/change_notifier_class.dart';
 import '../auth_widgets/costom_email_textField.dart';
 import '../auth_widgets/costom_password_textField.dart';
@@ -13,17 +11,16 @@ import 'register_widgets/signUp_app_bar.dart';
 import 'register_widgets/signUp_botton.dart';
 import 'register_widgets/signUp_strok_text.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+class EmailAuthenticationScreen extends StatefulWidget {
+  const EmailAuthenticationScreen({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<EmailAuthenticationScreen> createState() =>
+      _EmailAuthenticationScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _EmailAuthenticationScreenState extends State<EmailAuthenticationScreen> {
   GlobalKey<FormState> formstate = new GlobalKey<FormState>();
-
-  bool isLoading = false;
 
   TextEditingController username = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -58,10 +55,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            UsernameTextFeild(username: username,),
-                            SizedBox(
-                              height: 15.0,
-                            ),
                             EmailTextField(email: email),
                             SizedBox(
                               height: 15.0,

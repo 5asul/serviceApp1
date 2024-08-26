@@ -29,6 +29,7 @@ class UserProfileContainer extends StatelessWidget {
           top: AppSize.height(context) * 0.17,
         ),
         child: ListView.builder(
+          shrinkWrap: true,
           itemCount: 4,
           itemBuilder: (context, index) {
             return CostomUserProfileTile(

@@ -19,7 +19,7 @@ class LoginToYourAccountRow extends StatelessWidget {
         ),
         TextButton(
             onPressed: () {
-              Navigator.of(context).pop(PageTransition(
+              Navigator.of(context).push(PageTransition(
                   child: LoginScreen(),
                   type: PageTransitionType.rightToLeft));
             },

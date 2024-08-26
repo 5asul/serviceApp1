@@ -7,15 +7,18 @@ import '../../../../controller/componentAPI/valid.dart';
 
 class PasswordTextFeild extends StatelessWidget {
   const PasswordTextFeild({
-    super.key,
-    required this.password,
+    super.key, required this.password,
+    
   });
-
   final TextEditingController password;
+
 
   @override
   Widget build(BuildContext context) {
+
+
     var provider= context.watch<ServiceAppProvider>();
+    var providerSet= context.read<ServiceAppProvider>();
     return TextFormField(
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (val) {

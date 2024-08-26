@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:project_for_all/features/screens/auth_screens/register_screens/email_authentication_screen.dart';
+import 'package:project_for_all/features/screens/auth_screens/register_screens/select_role_screen.dart';
+import 'package:project_for_all/features/screens/auth_screens/register_screens/user_register_screen.dart';
 
 import '../../../../../config/theme/colors_theme.dart';
-
-import '../../register_screens/sign_up_screen.dart';
 
 class DontHaveAnAccountRow extends StatelessWidget {
   const DontHaveAnAccountRow({
@@ -21,7 +22,7 @@ class DontHaveAnAccountRow extends StatelessWidget {
         TextButton(
             onPressed: () {
               Navigator.of(context).push(PageTransition(
-                  child: SignUpScreen(),
+                  child: SelectRoleScreen(),
                   type: PageTransitionType.leftToRight));
             },
             child: Stack(

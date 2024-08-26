@@ -1,43 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:project_for_all/features/state_managment/provider/change_notifier_class.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../config/theme/colors_theme.dart';
+import '../../../../../controller/componentAPI/valid.dart';
 
-class CustomSignUpTextFeild extends StatelessWidget {
-  final AutovalidateMode autovalidateMode;
-  final bool obSecure;
-  final IconButton? suffixIcon;
-  final Icon? icon;
-  final String? label;
-  final String? Function(String?) valid;
-  final TextEditingController myController;
+class UsernameTextFeild extends StatelessWidget {
+  const UsernameTextFeild({
+    super.key, required this.username,
+  });
 
-  const CustomSignUpTextFeild(
-      {super.key,
-      required this.valid,
-      required this.myController,
-      this.label,
-      this.icon,
-      this.suffixIcon,
-      required this.obSecure,
-      required this.autovalidateMode});
+  final TextEditingController username;
 
   @override
   Widget build(BuildContext context) {
+    
+
     return Container(
       child: TextFormField(
-        autovalidateMode: autovalidateMode,
-        validator: valid,
-        controller: myController,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        validator: (var val) {
+          return validInput(val!, 3, 20);
+        },
+        controller: username,
         keyboardType: TextInputType.name,
-        obscureText: obSecure,
+        obscureText: false,
         decoration: InputDecoration(
           floatingLabelStyle: TextStyle(color: ColorsTheme().primary),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: ColorsTheme().primary)
-          ),
-          labelText: label,
-          prefixIcon: icon,
-          suffixIcon: suffixIcon,
+              borderSide: BorderSide(color: ColorsTheme().primary)),
+          labelText: "Username",
+          prefixIcon: Icon(Icons.person),
           border: OutlineInputBorder(),
         ),
       ),
