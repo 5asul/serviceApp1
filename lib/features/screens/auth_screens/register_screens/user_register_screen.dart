@@ -1,33 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:project_for_all/config/theme/app_size.dart';
+import 'package:project_for_all/config/theme/colors_theme.dart';
 
 import 'package:project_for_all/features/screens/auth_screens/register_screens/register_widgets/costom_signUp_textFeild.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../controller/componentAPI/valid.dart';
 import '../../../state_managment/provider/change_notifier_class.dart';
 import '../auth_widgets/costom_email_textField.dart';
 import '../auth_widgets/costom_password_textField.dart';
+import 'register_widgets/location_drop_down.dart';
 import 'register_widgets/login_to_your_account_text_row.dart';
+import 'register_widgets/select_picture.dart';
 import 'register_widgets/signUp_app_bar.dart';
 import 'register_widgets/signUp_botton.dart';
 import 'register_widgets/signUp_strok_text.dart';
+import 'register_widgets/skills_drop_down.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+class UserRegisterScreen extends StatefulWidget {
+  const UserRegisterScreen({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<UserRegisterScreen> createState() => _UserRegisterScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _UserRegisterScreenState extends State<UserRegisterScreen> {
   GlobalKey<FormState> formstate = new GlobalKey<FormState>();
-
-  bool isLoading = false;
 
   TextEditingController username = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  TextEditingController imageController = TextEditingController();
 
   List<String> roles = ['User', 'Worker'];
 
@@ -62,11 +64,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             SizedBox(
                               height: 15.0,
                             ),
-                            EmailTextField(email: email),
+                            LocationDropDown(),
                             SizedBox(
                               height: 15.0,
                             ),
-                            PasswordTextFeild(password: password),
+                            SelectPicture(
+                              imageController: imageController,
+                            ),
                             SizedBox(
                               height: 25.0,
                             ),

@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> with Crud {
                     SizedBox(
                       height: 40.0,
                     ),
-                    EmailTextField(email: email),
+                    EmailTextField(email: email,),
                     SizedBox(
                       height: 15.0,
                     ),

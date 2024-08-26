@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:project_for_all/features/screens/auth_screens/register_screens/email_authentication_screen.dart';
+import 'package:project_for_all/features/screens/auth_screens/register_screens/user_register_screen.dart';
+import 'package:project_for_all/features/screens/auth_screens/register_screens/worker_register_screen.dart';
 import 'package:project_for_all/features/screens/user_home_screens/home_page/category_screen/category_base.dart';
 import 'package:project_for_all/features/screens/auth_screens/register_screens/select_role_screen.dart';
 import 'package:project_for_all/features/screens/user_home_screens/home_navigation_bar.dart';
@@ -18,8 +21,20 @@ class AppRoutes {
       case 'login':
         return _materialRoute(LoginScreen());
 
-      case 'SignUp':
-        return _materialRoute(SignUpScreen());
+      // case 'SignUp':
+      //   return _materialRoute(SignUpScreen());
+
+      case 'verify email':
+        return _materialRoute(EmailAuthenticationScreen());
+
+      case 'role screen':
+        return _materialRoute(SelectRoleScreen());
+
+      case 'user register':
+        return _materialRoute(UserRegisterScreen());
+
+      case 'worker register':
+        return _materialRoute(WorkerRegisterScreen());
 
       case 'home':
         return _materialRoute(HomePage());
@@ -39,14 +54,13 @@ class AppRoutes {
       case 'categoryContainer':
         return _materialRoute(CategoriesContainerPage());
 
-      case 'rolePage':
-        return _materialRoute(SelectRoleScreen());
+      
 
       case 'worker profile':
         return _materialRoute(WorkerProfileScreen());
 
       default:
-        return FirebaseAuth.instance.currentUser == null
+        return (FirebaseAuth.instance.currentUser == null)
             ? _materialRoute(LoginScreen())
             : _materialRoute(HomeNavigationBar());
     }
