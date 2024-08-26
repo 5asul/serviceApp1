@@ -39,7 +39,6 @@ class _LocationCardState extends State<LocationCard> {
             borderRadius: BorderRadius.circular(20),
           ),
           child: Stack(
-
             children: [
               Positioned(
                 top: 95,

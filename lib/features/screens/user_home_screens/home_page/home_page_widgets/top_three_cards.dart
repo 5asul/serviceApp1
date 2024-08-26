@@ -8,24 +8,21 @@ class TopThreeCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
-                        children: [
-                          CustomAddOrderCard(
-                            title: "Order Your Service ",
-                          ),
-                          SizedBox(height: 10.0),
-                          Row(
-                            children: [
-                              LocationCard(
-                                name: "Your Location",
-                                icon: Icons.my_location,
-                                // ontap: _determinePosition,
-                              ),
-                              LocationCard(
-                                  name: "All Orders", icon: Icons.shopping_bag)
-                            ],
-                          ),
-                        ],
-                      );
+    return Column(
+      children: [
+        CustomAddOrderCard(
+          title: "Order Your Service ",
+        ),
+        SizedBox(height: 10.0),
+        Row(
+          children: [
+            LocationCard(name: "Your Location", icon: Icons.my_location
+                // ontap: _determinePosition,
+                ),
+            LocationCard(name: "All Orders", icon: Icons.shopping_bag)
+          ],
+        ),
+      ],
+    );
   }
 }
