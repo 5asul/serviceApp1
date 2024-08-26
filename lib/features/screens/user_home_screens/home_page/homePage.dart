@@ -114,11 +114,11 @@ class _MyAppState extends State<HomePage> {
                 Container(
                   child: Column(
                     children: [
-                     TopThreeCards(),
+                      TopThreeCards(),
                       SizedBox(
                         height: 10.0,
                       ),
-                     CategorySection(),
+                      CategorySection(),
                       SizedBox(
                         height: 10.0,
                       ),

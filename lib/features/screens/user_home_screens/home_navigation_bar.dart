@@ -3,7 +3,6 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:project_for_all/features/screens/user_home_screens/profile_page/user_profile_page.dart';
 import '../../../config/theme/colors_theme.dart';
 import '../../../controller/componentAPI/crud_mysql_api.dart';
-import '../../../nav_pages/add_order_page.dart';
 import 'home_page/homePage.dart';
 import 'orders_history_page/orders_page.dart';
 import 'user_home_screens_widgets/home_screens_appBar.dart';
