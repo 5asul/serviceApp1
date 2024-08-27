@@ -18,10 +18,8 @@ class SignUpButton extends StatefulWidget {
     required this.password,
   });
 
-  
   final String email;
   final String password;
-  
 
   @override
   State<SignUpButton> createState() => _SignUpButtonState();
@@ -50,8 +48,6 @@ class _SignUpButtonState extends State<SignUpButton> {
     timer?.cancel();
     super.dispose();
   }
-
-   
 
   Future checkEmailVerified() async {
     await FirebaseAuth.instance.currentUser!.reload();
