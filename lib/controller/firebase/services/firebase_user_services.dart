@@ -19,14 +19,20 @@ class FirebaseUserServices {
   }
 
   Future<void> addUser(UserModel user) async {
-    await _userRefernce.doc(user.id).set(user.toJson());
+    await _userRefernce.doc(user.id).set(user.toJson())
+    .then((value) => print("User Added"))
+    .catchError((error) => print("Failed to add user: $error"));
   }
   
   Future<void> updateUser(UserModel user) async {
-    await _userRefernce.doc(user.id).update(user.toJson());
+    await _userRefernce.doc(user.id).update(user.toJson())
+    .then((value) => print("User Updated"))
+    .catchError((error) => print("Failed to Update user: $error"));
   }
 
   Future<void> deleteUser(String userId) async {
-    await _userRefernce.doc(userId).delete();
+    await _userRefernce.doc(userId).delete()
+    .then((value) => print("User Deleted"))
+    .catchError((error) => print("Failed to Delete user: $error"));
   }
 }

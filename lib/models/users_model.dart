@@ -7,7 +7,7 @@ class UserModel {
   String? profailePic;
   String? role;
   String? location;
-  List<String>? skills;
+  String? skills;
   String? firebaseUid;
 
   UserModel(

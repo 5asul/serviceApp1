@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:project_for_all/features/screens/auth_screens/register_screens/register_widgets/costom_signUp_textFeild.dart';
 import 'package:provider/provider.dart';
 
-import 'dart:io';
-
 import '../../../state_managment/provider/change_notifier_class.dart';
 
 import '../auth_widgets/costom_email_textField.dart';
@@ -15,7 +13,6 @@ import 'register_widgets/phone_text_field.dart';
 import 'register_widgets/register_botton.dart';
 import 'register_widgets/select_picture.dart';
 import 'register_widgets/signUp_app_bar.dart';
-import 'register_widgets/signUp_botton.dart';
 import 'register_widgets/signUp_strok_text.dart';
 import 'register_widgets/skills_drop_down.dart';
 

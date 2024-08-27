@@ -48,7 +48,7 @@ class AppRoutes {
       case 'add order1':
         return _materialRoute(AddOrderScreen());
 
-      case 'container':
+      case 'home screen':
         return _materialRoute(HomeNavigationBar());
 
       case 'categoryContainer':

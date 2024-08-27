@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:path/path.dart';
 import 'package:project_for_all/controller/firebase/provider/firebase_user_provider.dart';
 import 'config/root/app_root.dart';
 import 'features/state_managment/provider/change_notifier_class.dart';
