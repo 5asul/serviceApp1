@@ -29,7 +29,7 @@ class UserModel {
     profailePic = json['profailePic'];
     role = json['role'];
     location = json['location'];
-    skills = json['skills'].cast<String>();
+    skills = json['skills'];
     firebaseUid = json['firebaseUid'];
   }
 
