@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../config/theme/colors_theme.dart';
+import '../../features/state_managment/provider/add_order_provider.dart';
 
 class CustomAddOrderCard extends StatelessWidget {
   final String title;
@@ -46,6 +48,15 @@ class CustomAddOrderCard extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
+                      context
+                          .read<AddOrderProvider>()
+                          .selectedCategoryCardName = '';
+                      context.read<AddOrderProvider>().selectedDateAndDay = '';
+                      context
+                          .read<AddOrderProvider>()
+                          .workDescriptionController
+                          .text = '';
+                      context.read<AddOrderProvider>().selectedTime = '';
                       Navigator.of(context).pushNamed('add order1');
                     },
                     child: Icon(

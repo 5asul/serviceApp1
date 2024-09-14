@@ -29,6 +29,12 @@ class _AllOrdersState extends State<AllOrders> {
   }
 
   @override
+  void dispose() {
+   
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Consumer<FirebaseRequestProvider>(
