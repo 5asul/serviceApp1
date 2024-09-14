@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:project_for_all/features/screens/auth_screens/register_screens/register_widgets/costom_signUp_textFeild.dart';
 import 'package:provider/provider.dart';
 
-import '../../../state_managment/provider/change_notifier_class.dart';
+import '../../../state_managment/provider/service_app_provider.dart';
 
-import '../auth_widgets/costom_email_textField.dart';
-import '../auth_widgets/costom_password_textField.dart';
 import 'register_widgets/location_drop_down.dart';
 import 'register_widgets/login_to_your_account_text_row.dart';
 import 'register_widgets/phone_text_field.dart';
-import 'register_widgets/register_botton.dart';
-import 'register_widgets/select_picture.dart';
+import 'register_widgets/select_worker_id_picture.dart';
+import 'register_widgets/worker_register_botton.dart';
+import 'register_widgets/select_profile_picture.dart';
 import 'register_widgets/signUp_app_bar.dart';
 import 'register_widgets/signUp_strok_text.dart';
-import 'register_widgets/skills_drop_down.dart';
+import 'register_widgets/services_drop_down.dart';
 
 class WorkerRegisterScreen extends StatefulWidget {
   const WorkerRegisterScreen({super.key});
@@ -30,7 +30,8 @@ class _WorkerRegisterScreenState extends State<WorkerRegisterScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController pictureController = TextEditingController();
-   TextEditingController phoneController = TextEditingController();
+  TextEditingController workerIdPicture = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
 
   List<String> roles = ['User', 'Worker'];
 
@@ -62,23 +63,15 @@ class _WorkerRegisterScreenState extends State<WorkerRegisterScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            UsernameTextFeild(username: usernameController,),
+                            UsernameTextFeild(),
                             SizedBox(
                               height: 15.0,
                             ),
-                            EmailTextField(email: emailController),
+                            PhoneTextField(),
                             SizedBox(
                               height: 15.0,
                             ),
-                            PasswordTextFeild(password: passwordController),
-                            SizedBox(
-                              height: 15.0,
-                            ),
-                            PhoneTextField(phone:phoneController,),
-                            SizedBox(
-                              height: 15.0,
-                            ),
-                            SkillsDropDown(),
+                            ServicesDropDown.ServicesDropDown(),
                             SizedBox(
                               height: 15.0,
                             ),
@@ -86,19 +79,22 @@ class _WorkerRegisterScreenState extends State<WorkerRegisterScreen> {
                             SizedBox(
                               height: 15.0,
                             ),
-                            SelectPicture(
-                              imageController: pictureController,
+                            Row(
+                              children: [
+                                SelectProfilePicture(),
+                                SelectWorkerIdPicture(
+                                    workerIdPictureController: workerIdPicture)
+                              ],
                             ),
                             SizedBox(
                               height: 25.0,
                             ),
-                            RegisterButton(
+                            WorkerRegisterButton(
                               username: usernameController.text,
-                                email: emailController.text,
-                                password: passwordController.text,
-                                phone: phoneController.text,
-                                picture:pictureController.text ,
-                                ),
+                              phone: phoneController.text,
+                              profilePicture: pictureController.text,
+                              workerIdPicture: workerIdPicture.text,
+                            ),
                             SizedBox(
                               height: 10.0,
                             ),

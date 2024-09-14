@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/cleaning_orders.dart';
-import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/teaching_orders.dart';
+import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/orders_navigate_pages/cleaning_orders.dart';
+import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/orders_navigate_pages/teaching_orders.dart';
 
 import '../../../../config/theme/colors_theme.dart';
 
-import 'all_orders.dart';
+import 'orders_navigate_pages/all_orders.dart';
 
 class OrdersScreen extends StatefulWidget {
   const OrdersScreen({super.key});

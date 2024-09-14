@@ -7,7 +7,9 @@ class CategoryCard extends StatelessWidget {
   final String name;
   final String workerNumber;
   final IconData icon;
-  const CategoryCard({super.key, required this.name, required this.workerNumber, required this.icon});
+  final void Function() onTap;
+  final bool isSelected;
+  const CategoryCard({super.key, required this.name, required this.workerNumber, required this.icon, required this.onTap, required this.isSelected});
 
 
   @override
@@ -15,9 +17,7 @@ class CategoryCard extends StatelessWidget {
     var screenSize = MediaQuery.of(context).size;
     bool isHovered = false;
     return InkWell(
-        onTap: (){
-
-        },
+        onTap: onTap,
         onHover: (hovering){
           isHovered = hovering;
         },
@@ -30,8 +30,9 @@ class CategoryCard extends StatelessWidget {
               BoxDecoration(
                   borderRadius: BorderRadius.circular(20.0),
                 border: Border.all(
-                  color: ColorsTheme().primary
-                )
+                  color: isSelected ? Colors.blue : ColorsTheme().primary,
+                ),
+                color: isSelected ? Colors.blue.withOpacity(0.2) : Colors.white,
               ),
               child: Stack(
 

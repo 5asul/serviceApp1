@@ -2,7 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:project_for_all/controller/firebase/provider/firebase_user_provider.dart';
 import 'config/root/app_root.dart';
-import 'features/state_managment/provider/change_notifier_class.dart';
+import 'controller/firebase/provider/firebase_request_provider.dart';
+import 'controller/firebase/provider/firebase_wokrer_provider.dart';
+import 'features/state_managment/provider/add_order_provider.dart';
+import 'features/state_managment/provider/service_app_provider.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,8 +18,6 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   sharedPref = await SharedPreferences.getInstance();
-
-  
 
   runApp(
     MyApp(),
@@ -32,28 +33,33 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  void initState(){
+  void initState() {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
-    if (user == null) {
-      print('==========User is currently signed out!');
-    } else {
-      print('==========User is signed in!');
-    }
-  });
+      if (user == null) {
+        print('==========User is currently signed out!');
+      } else {
+        print('==========User is signed in!');
+      }
+    });
 
-  super.initState();
+    super.initState();
   }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<ServiceAppProvider>(
             create: (_) => ServiceAppProvider()),
         ChangeNotifierProvider<FirebaseUserProvider>(
             create: (_) => FirebaseUserProvider()),
+        ChangeNotifierProvider<FirebaseWorkerProvider>(
+            create: (_) => FirebaseWorkerProvider()),
+        ChangeNotifierProvider<AddOrderProvider>(
+            create: (_) => AddOrderProvider()),
+        ChangeNotifierProvider<FirebaseRequestProvider>(
+            create: (_) => FirebaseRequestProvider())
         // ChangeNotifierProvider<AuthService>(create: (_) => AuthService()),
         // ChangeNotifierProvider<CartModel>(create: (_) => CartModel()),
         // ChangeNotifierProvider<OrderModel>(create: (_) => OrderModel()),

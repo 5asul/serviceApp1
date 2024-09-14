@@ -5,12 +5,12 @@ import 'package:project_for_all/features/screens/auth_screens/register_screens/r
 import 'package:provider/provider.dart';
 
 import '../../../../controller/componentAPI/valid.dart';
-import '../../../state_managment/provider/change_notifier_class.dart';
+import '../../../state_managment/provider/service_app_provider.dart';
 import '../auth_widgets/costom_email_textField.dart';
 import '../auth_widgets/costom_password_textField.dart';
 import 'register_widgets/login_to_your_account_text_row.dart';
 import 'register_widgets/signUp_app_bar.dart';
-import 'register_widgets/signUp_botton.dart';
+import 'register_widgets/email_auth_botton.dart';
 import 'register_widgets/signUp_strok_text.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -58,7 +58,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            UsernameTextFeild(username: username,),
+                            UsernameTextFeild(),
                             SizedBox(
                               height: 15.0,
                             ),
@@ -70,7 +70,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             SizedBox(
                               height: 25.0,
                             ),
-                            SignUpButton(
+                            EmailAuthenticationButton(
                                 email: email.text, password: password.text),
                             SizedBox(
                               height: 10.0,

@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:project_for_all/features/screens/auth_screens/register_screens/register_widgets/costom_signUp_textFeild.dart';
 import 'package:provider/provider.dart';
 
-import '../../../state_managment/provider/change_notifier_class.dart';
+import '../../../state_managment/provider/service_app_provider.dart';
 import '../auth_widgets/costom_email_textField.dart';
 import '../auth_widgets/costom_password_textField.dart';
+import 'register_widgets/email_auth_strok.dart';
 import 'register_widgets/login_to_your_account_text_row.dart';
 import 'register_widgets/signUp_app_bar.dart';
-import 'register_widgets/signUp_botton.dart';
+import 'register_widgets/email_auth_botton.dart';
 import 'register_widgets/signUp_strok_text.dart';
 
 class EmailAuthenticationScreen extends StatefulWidget {
@@ -46,7 +47,7 @@ class _EmailAuthenticationScreenState extends State<EmailAuthenticationScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SignUpStrokText(),
+                      EmailAuthStrokText(),
                       SizedBox(
                         height: 40.0,
                       ),
@@ -63,7 +64,7 @@ class _EmailAuthenticationScreenState extends State<EmailAuthenticationScreen> {
                             SizedBox(
                               height: 25.0,
                             ),
-                            SignUpButton(
+                            EmailAuthenticationButton(
                                 email: email.text, password: password.text),
                             SizedBox(
                               height: 10.0,

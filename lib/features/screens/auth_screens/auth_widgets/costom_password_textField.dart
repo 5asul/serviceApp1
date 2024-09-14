@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_for_all/config/theme/colors_theme.dart';
-import 'package:project_for_all/features/state_managment/provider/change_notifier_class.dart';
+import 'package:project_for_all/features/state_managment/provider/service_app_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../controller/componentAPI/valid.dart';

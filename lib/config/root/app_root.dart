@@ -11,11 +11,11 @@ import 'package:project_for_all/features/screens/user_home_screens/home_page/cat
 import 'package:project_for_all/nav_pages/add_order_page.dart';
 
 import '../../features/screens/auth_screens/login_screen/login_screen.dart';
-import '../../features/screens/auth_screens/register_screens/sign_up_screen.dart';
 import '../../features/screens/user_home_screens/home_page/homePage.dart';
 import '../../features/screens/user_home_screens/orders_history_page/orders_page.dart';
 
 class AppRoutes {
+  
   static Route onGenerateRoutes(RouteSettings settings) {
     switch (settings.name) {
       case 'login':
@@ -60,9 +60,9 @@ class AppRoutes {
         return _materialRoute(WorkerProfileScreen());
 
       default:
-        return (FirebaseAuth.instance.currentUser == null)
-            ? _materialRoute(LoginScreen())
-            : _materialRoute(HomeNavigationBar());
+        return (FirebaseAuth.instance.currentUser != null && FirebaseAuth.instance.currentUser!.emailVerified)
+            ? _materialRoute(HomeNavigationBar())
+            : _materialRoute(LoginScreen());
     }
   }
 

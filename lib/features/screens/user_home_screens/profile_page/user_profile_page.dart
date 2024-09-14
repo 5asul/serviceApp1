@@ -32,10 +32,10 @@ class _UserProfilePageState extends State<UserProfilePage> {
           UserProfileContainer(),
           Consumer<FirebaseUserProvider>(
             builder: (context, firebaseUserProvider, _) {
-              final user = firebaseUserProvider.users[4];
+              final user = firebaseUserProvider.users[2];
               return UsernameAndPhotoSection(
                 name: user.username ?? 'Unknown',
-                id: user.id ?? 'Unknown',
+                id: user.firebaseUid ?? 'Unknown',
               );
             },
           ),

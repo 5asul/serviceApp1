@@ -1,19 +1,38 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:project_for_all/controller/firebase/services/firebase_user_services.dart';
+import 'package:project_for_all/features/screens/auth_screens/register_screens/register_widgets/costom_signUp_textFeild.dart';
 import 'package:project_for_all/models/users_model.dart';
 
 class FirebaseUserProvider with ChangeNotifier {
   final FirebaseUserServices _userService = FirebaseUserServices();
-
-  
 
   List<UserModel> _users = [];
   UserModel _user = UserModel();
   List<UserModel> get users => _users;
   UserModel get user => _user;
 
-  
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController get usernameController => _usernameController;
+  set UsernameController(TextEditingController value) {
+    _usernameController = value;
+    notifyListeners();
+  }
+
+  TextEditingController _phoneController = TextEditingController();
+  TextEditingController get phoneController => _phoneController;
+  set phoneController(TextEditingController value) {
+    _phoneController = value;
+    notifyListeners();
+  }
+
+  TextEditingController _profilePictureController = TextEditingController();
+  TextEditingController get profilePictureController =>
+      _profilePictureController;
+  set profilePictureController(TextEditingController value) {
+    _profilePictureController = value;
+    notifyListeners();
+  }
 
   void fetchUsers() {
     _userService.getUsersStream().listen((UserModel) {

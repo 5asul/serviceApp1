@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/all_orders.dart';
-import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/cleaning_orders.dart';
-import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/teaching_orders.dart';
+import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/orders_navigate_pages/all_orders.dart';
+import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/orders_navigate_pages/cleaning_orders.dart';
+import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/orders_navigate_pages/teaching_orders.dart';
 
 import 'orders_history_widgets/orders_nav_bottons.dart';
 
