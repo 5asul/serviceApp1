@@ -13,9 +13,10 @@ import 'package:project_for_all/nav_pages/add_order_page.dart';
 import '../../features/screens/auth_screens/login_screen/login_screen.dart';
 import '../../features/screens/user_home_screens/home_page/homePage.dart';
 import '../../features/screens/user_home_screens/orders_history_page/orders_page.dart';
+import '../../features/screens/worker_home_screens/worker_home_navigation_bar.dart';
+import '../../main.dart';
 
 class AppRoutes {
-  
   static Route onGenerateRoutes(RouteSettings settings) {
     switch (settings.name) {
       case 'login':
@@ -48,21 +49,28 @@ class AppRoutes {
       case 'add order1':
         return _materialRoute(AddOrderScreen());
 
-      case 'home screen':
+      case 'user home screen':
         return _materialRoute(HomeNavigationBar());
+
+      case 'worker home screen':
+        return _materialRoute(WorkerHomeNavigationBar());
 
       case 'categoryContainer':
         return _materialRoute(CategoriesContainerPage());
-
-      
 
       case 'worker profile':
         return _materialRoute(WorkerProfileScreen());
 
       default:
-        return (FirebaseAuth.instance.currentUser != null && FirebaseAuth.instance.currentUser!.emailVerified)
-            ? _materialRoute(HomeNavigationBar())
-            : _materialRoute(LoginScreen());
+        return (sharedPref.getString('role') == 'costumer')
+            ? (FirebaseAuth.instance.currentUser != null &&
+                    FirebaseAuth.instance.currentUser!.emailVerified)
+                ? _materialRoute(HomeNavigationBar())
+                : _materialRoute(LoginScreen())
+            : (FirebaseAuth.instance.currentUser != null &&
+                    FirebaseAuth.instance.currentUser!.emailVerified)
+                ? _materialRoute(WorkerHomeNavigationBar())
+                : _materialRoute(LoginScreen());
     }
   }
 

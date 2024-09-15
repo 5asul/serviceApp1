@@ -2,12 +2,15 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../../controller/firebase/provider/firebase_user_provider.dart';
 
 class SelectWorkerIdPicture extends StatefulWidget {
   const SelectWorkerIdPicture(
-      {super.key, required this.workerIdPictureController, });
+      {super.key,  });
 
-  final TextEditingController workerIdPictureController;
+  
 
   @override
   State<SelectWorkerIdPicture> createState() => _SelectWorkerIdPictureState();
@@ -17,12 +20,14 @@ class _SelectWorkerIdPictureState extends State<SelectWorkerIdPicture> {
   File? image;
 
   Future<void> _pickImage() async {
+    final userProvider =
+          Provider.of<FirebaseUserProvider>(context, listen: false);
     final pickedFile =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     setState(() {
       if (pickedFile != null) {
         image = File(pickedFile.path);
-        widget.workerIdPictureController.text = pickedFile.path;
+        userProvider.workerIdPictureController.text = pickedFile.path;
       } else {
         print('No image selected.');
       }

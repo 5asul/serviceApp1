@@ -9,12 +9,12 @@ class LoginBotton extends StatelessWidget {
     super.key,
     @required this.onPressed,
     required this.text,
-    @required this.routeName,
+    
   });
 
   final void Function()? onPressed;
   final String text;
-  final String? routeName;
+  
 
   @override
   Widget build(BuildContext context) {

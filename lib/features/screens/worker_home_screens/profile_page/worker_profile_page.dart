@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:project_for_all/config/theme/app_size.dart';
@@ -10,22 +8,21 @@ import 'package:provider/provider.dart';
 import 'profile_page_widgets/user_profile_container.dart';
 import 'profile_page_widgets/username_and_photo_section.dart';
 
-class UserProfilePage extends StatefulWidget {
-  const UserProfilePage({super.key});
+class WorkerProfilePage extends StatefulWidget {
+  const WorkerProfilePage({super.key});
 
   @override
-  _UserProfilePageState createState() => _UserProfilePageState();
+  _WorkerProfilePageState createState() => _WorkerProfilePageState();
 }
 
-class _UserProfilePageState extends State<UserProfilePage> {
+class _WorkerProfilePageState extends State<WorkerProfilePage> {
   @override
   void initState() {
     super.initState();
     final user = FirebaseAuth.instance.currentUser;
     final userProvider =
         Provider.of<FirebaseUserProvider>(context, listen: false);
-    userProvider.getUsersStreamById(user!.uid);
-    
+    userProvider.getUsersStreamById("7pYrEdI8F0aD6e5APhso0teF2m92");
   }
 
   @override

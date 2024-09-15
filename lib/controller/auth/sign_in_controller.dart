@@ -3,29 +3,32 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class SignInController {
-  Future signInWithGoogle() async {
+  Future<Either<Exception, UserCredential>> signInWithGoogle() async {
     try {
-      // Trigger the authentication flow
+
+      
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
       if (googleUser == null) {
-        return ;
+        return Left(Exception('Google sign-in aborted'));
       }
-      // Obtain the auth details from the request
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser.authentication;
 
-      // Create a new credential
+
+      final GoogleSignInAuthentication? googleAuth = await googleUser.authentication;
+
+
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
 
-      // Once signed in, return the UserCredential
-      return Right(
-          await FirebaseAuth.instance.signInWithCredential(credential));
+
+      final userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+
+
+      return Right(userCredential);
     } catch (e) {
-      return Left(Exception('Error to sign in with google: $e'));
+      return Left(Exception('Error signing in with Google: $e'));
     }
   }
 }
+

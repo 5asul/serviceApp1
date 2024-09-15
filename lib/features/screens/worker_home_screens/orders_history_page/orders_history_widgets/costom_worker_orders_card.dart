@@ -1,13 +1,15 @@
-// ignore_for_file: dead_code
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:project_for_all/config/theme/app_size.dart';
 import 'package:project_for_all/controller/firebase/provider/firebase_request_provider.dart';
+import 'package:project_for_all/features/screens/worker_home_screens/orders_history_page/orders_history_widgets/status_button.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../config/theme/colors_theme.dart';
 
-class OrdersCard extends StatelessWidget {
-  const OrdersCard({
+class WorkerOrdersCard extends StatelessWidget {
+  const WorkerOrdersCard({
     super.key,
     required this.screenSize,
     required this.workDescription,
@@ -15,9 +17,10 @@ class OrdersCard extends StatelessWidget {
     required this.serviceType,
     required this.date,
     required this.status,
+    required this.selectedCardId,
+    required this.cancel,
     required this.update,
-    required this.delete,
-    required this.isSelected, required this.selectedStatusButton, required this.cancel,
+    required this.idIsEqual,
   });
 
   final Size screenSize;
@@ -26,15 +29,13 @@ class OrdersCard extends StatelessWidget {
   final String serviceType;
   final String date;
   final String status;
-  final bool isSelected;
+  final bool idIsEqual;
+  final Future<void> Function() update;
   final void Function() cancel;
-  final void Function() selectedStatusButton;
-  final void Function() update;
-  final void Function() delete;
+  final Future<void> Function() selectedCardId;
 
   @override
   Widget build(BuildContext context) {
-    
     return GestureDetector(
       onTap: cancel,
       child: Container(
@@ -50,6 +51,8 @@ class OrdersCard extends StatelessWidget {
           child: Consumer<FirebaseRequestProvider>(
             builder: (context, requestData, _) {
               final request = requestData.requests[0];
+              final requestProvider =
+                  Provider.of<FirebaseRequestProvider>(context, listen: false);
               return Column(
                 children: [
                   Row(
@@ -190,96 +193,55 @@ class OrdersCard extends StatelessWidget {
                     indent: screenSize.width * 0.05,
                     endIndent: screenSize.width * 0.05,
                   ),
-                  Container(
-                    alignment: Alignment.topLeft,
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(
-                            left: screenSize.width * 0.01,
-                          ),
-                          child: Align(
-                            alignment: Alignment.topRight,
-                            child: MaterialButton(
-                              minWidth: screenSize.width * 0.3,
-                              height: screenSize.height * 0.045,
-                              
-                              onPressed: selectedStatusButton,
-                              color: (status == 'On Going')
-                                  ? ColorsTheme().primary
-                                  : (status == 'COMPLETED')
-                                      ? ColorsTheme().tertiary
-                                      : Colors.redAccent,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30)),
-                              child: (isSelected)
-                                  ? AnimatedOpacity(
-                                      opacity: isSelected ? 1.0 : 0.0,
-                                      duration: Duration(milliseconds: 200),
-                                      child: Row(
-                                        children: [
-                                          IconButton(
-                                            icon: Icon(
-                                              Icons.delete,
-                                              color: Colors.red,
-                                              size: screenSize.width * 0.07,
-                                            ),
-                                            onPressed: delete,
-                                          ),
-                                          IconButton(
-                                            icon: Icon(
-                                              Icons.edit,
-                                              color: ColorsTheme().white,
-                                              size: screenSize.width * 0.07,
-                                            ),
-                                            onPressed: update,
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  : Text(
-                                      "$status",
-                                      style: TextStyle(
-                                        fontSize: screenSize.width * 0.035,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: screenSize.width * 0.035,
-                        ),
-                        Row(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.symmetric(
-                                horizontal: screenSize.width * 0.02,
-                              ),
-                              child: Text(
-                                "\$27",
-                                style: TextStyle(
-                                  fontSize: screenSize.width * 0.07,
-                                  fontWeight: FontWeight.bold,
-                                  color: ColorsTheme().primary,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              child: Text(
-                                '(Floor price)',
-                                style: TextStyle(
-                                  fontSize: screenSize.width * 0.05,
-                                  color: Colors.grey.shade600,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                  Row(
+                    children: [
+                      StatusBottun(
+                        screenSize: screenSize,
+                        status: 'On Going',
+                        isSelected: requestProvider.selectedStatusButton ==
+                                'On Going' &&
+                            idIsEqual,
+                        selectedStatusButton: () async {
+                          requestProvider.selectedStatusButton = 'On Going';
+                          await selectedCardId().then((value) {
+                            log('${requestProvider.selectedCardId}');
+                            log('${requestProvider.selectedStatusButton}');
+                          });
+                          await update();
+                        },
+                      ),
+                      StatusBottun(
+                        screenSize: screenSize,
+                        status: 'COMPLETED',
+                        isSelected: requestProvider.selectedStatusButton ==
+                                'COMPLETED' &&
+                            idIsEqual,
+                        selectedStatusButton: () async {
+                          requestProvider.selectedStatusButton = 'COMPLETED';
+                          await selectedCardId().then((value) {
+                            log('${requestProvider.selectedCardId}');
+                            log('${requestProvider.selectedStatusButton}');
+                          });
+                          await update();
+                        },
+                      ),
+                      StatusBottun(
+                        screenSize: screenSize,
+                        status: 'CANCELED',
+                        isSelected: requestProvider.selectedStatusButton ==
+                                'CANCELED' &&
+                            idIsEqual,
+                        selectedStatusButton: () async {
+                          requestProvider.selectedStatusButton = 'CANCELED';
+                          await selectedCardId().then((value) {
+                            log('${requestProvider.selectedCardId}');
+                            log('${requestProvider.selectedStatusButton}');
+                          });
+                          await update();
+                        },
+                      ),
+                    ],
+                  )
                 ],
               );
             },

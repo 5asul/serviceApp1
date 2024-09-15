@@ -43,7 +43,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                   Navigator.of(context).push(PageTransition(
                       child: UserRegisterScreen(),
                       type: PageTransitionType.leftToRight));
-                  sharedPref.setString('role', 'user');
+                  sharedPref.setString('role', 'costumer');
                 },
               ),
               SizedBox(

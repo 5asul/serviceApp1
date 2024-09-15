@@ -8,8 +8,9 @@ class FirebaseUserProvider with ChangeNotifier {
   final FirebaseUserServices _userService = FirebaseUserServices();
 
   List<UserModel> _users = [];
-  UserModel _user = UserModel();
   List<UserModel> get users => _users;
+
+  UserModel _user = UserModel();
   UserModel get user => _user;
 
   TextEditingController _usernameController = TextEditingController();
@@ -31,6 +32,14 @@ class FirebaseUserProvider with ChangeNotifier {
       _profilePictureController;
   set profilePictureController(TextEditingController value) {
     _profilePictureController = value;
+    notifyListeners();
+  }
+
+  TextEditingController _workerIdPictureController = TextEditingController();
+  TextEditingController get workerIdPictureController =>
+      _workerIdPictureController;
+  set workerIdPictureController(TextEditingController value) {
+    _workerIdPictureController = value;
     notifyListeners();
   }
 

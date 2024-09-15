@@ -5,17 +5,22 @@ class UserModel {
   String? password;
   String? phone;
   String? profailePic;
+   String? workerIdPicture;
+   String? serviceName;
   String? role;
   String? location;
   String? docid;
 
   UserModel({
     this.firebaseUid,
+    this.docid,
     this.username,
     this.email,
     this.password,
     this.phone,
     this.profailePic,
+    this.workerIdPicture,
+    this.serviceName,
     this.role,
     this.location,
   });
@@ -27,7 +32,9 @@ class UserModel {
     password = json['password'];
     phone = json['phone'];
     profailePic = json['profailePic'];
+    workerIdPicture = json['workerIdPicture'];
     role = json['role'];
+    serviceName = json['serviceName'];
     location = json['location'];
     this.docid = docid;
   }
@@ -40,7 +47,9 @@ class UserModel {
     data['password'] = this.password;
     data['phone'] = this.phone;
     data['profailePic'] = this.profailePic;
+    data['workerIdPicture'] = this.workerIdPicture;
     data['role'] = this.role;
+    data['serviceName'] = this.serviceName;
     data['location'] = this.location;
 
     return data;

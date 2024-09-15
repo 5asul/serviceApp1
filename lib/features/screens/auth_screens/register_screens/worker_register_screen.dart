@@ -10,7 +10,8 @@ import 'register_widgets/location_drop_down.dart';
 import 'register_widgets/login_to_your_account_text_row.dart';
 import 'register_widgets/phone_text_field.dart';
 import 'register_widgets/select_worker_id_picture.dart';
-import 'register_widgets/worker_register_botton.dart';
+import 'register_widgets/user_register_botton.dart';
+
 import 'register_widgets/select_profile_picture.dart';
 import 'register_widgets/signUp_app_bar.dart';
 import 'register_widgets/signUp_strok_text.dart';
@@ -25,13 +26,6 @@ class WorkerRegisterScreen extends StatefulWidget {
 
 class _WorkerRegisterScreenState extends State<WorkerRegisterScreen> {
   GlobalKey<FormState> formstate = new GlobalKey<FormState>();
-
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController pictureController = TextEditingController();
-  TextEditingController workerIdPicture = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
 
   List<String> roles = ['User', 'Worker'];
 
@@ -82,19 +76,13 @@ class _WorkerRegisterScreenState extends State<WorkerRegisterScreen> {
                             Row(
                               children: [
                                 SelectProfilePicture(),
-                                SelectWorkerIdPicture(
-                                    workerIdPictureController: workerIdPicture)
+                                SelectWorkerIdPicture()
                               ],
                             ),
                             SizedBox(
                               height: 25.0,
                             ),
-                            WorkerRegisterButton(
-                              username: usernameController.text,
-                              phone: phoneController.text,
-                              profilePicture: pictureController.text,
-                              workerIdPicture: workerIdPicture.text,
-                            ),
+                            UserRegisterButton(),
                             SizedBox(
                               height: 10.0,
                             ),

@@ -8,18 +8,19 @@ import 'package:project_for_all/nav_pages/add_order_page.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../controller/firebase/provider/firebase_request_provider.dart';
-import '../../home_page/add_order_screen/add_order_screen.dart';
-import '../orders_history_widgets/costom_orders_card.dart';
+
+import '../../../../../models/requests_model.dart';
+import '../orders_history_widgets/costom_worker_orders_card.dart';
 import '../../../../../widget/costom/costom_worker1_card.dart';
 
-class AllOrders extends StatefulWidget {
-  const AllOrders({super.key});
+class AllWorkerOrders extends StatefulWidget {
+  const AllWorkerOrders({super.key});
 
   @override
-  State<AllOrders> createState() => _AllOrdersState();
+  State<AllWorkerOrders> createState() => _AllWorkerOrdersState();
 }
 
-class _AllOrdersState extends State<AllOrders> {
+class _AllWorkerOrdersState extends State<AllWorkerOrders> {
   @override
   void initState() {
     super.initState();
@@ -44,22 +45,20 @@ class _AllOrdersState extends State<AllOrders> {
         itemCount: requestData.requests.length,
         itemBuilder: ((context, index) {
           final request = requestData.requests[index];
+          final watchOrder = context.watch<AddOrderProvider>();
+          final readOrder = context.read<AddOrderProvider>();
           final requestProvider =
               Provider.of<FirebaseRequestProvider>(context, listen: false);
-          return OrdersCard(
+          return WorkerOrdersCard(
             screenSize: screenSize,
             workDescription: request.workDescription ?? 'Unknown',
             location: request.location ?? 'Unknown',
             serviceType: request.serviceType ?? 'Unknown',
             date: request.timeStamp ?? 'Unknown',
             status: request.status ?? 'Unknown',
-            delete: () {
-              requestProvider.deleteRequest(request.docid ?? 'Unknown');
-            },
-            update: () {
-              Navigator.of(context).push(PageTransition(
-                  child: EditOrdersScreen(),
-                  type: PageTransitionType.rightToLeft));
+            idIsEqual:
+                requestProvider.selectedCardId == request.requestId,
+            update: () async {
               List<String> stamp = request.timeStamp!.split(' at ');
               for (var element in stamp) {
                 log(element.toString());
@@ -70,27 +69,43 @@ class _AllOrdersState extends State<AllOrders> {
                 }
               }
               // stamp.add();
-              context.read<AddOrderProvider>().selectedCategoryCardName =
+              readOrder.selectedCategoryCardName =
                   request.serviceType ?? 'Unknown';
-              context.read<AddOrderProvider>().selectedDateAndDay =
+              readOrder.selectedDateAndDay =
                   stamp[0].replaceFirst(RegExp(r'date:'), '');
-              context.read<AddOrderProvider>().workDescriptionController.text =
+              readOrder.workDescriptionController.text =
                   request.workDescription ?? 'Unknown';
-              context.read<AddOrderProvider>().selectedTime = stamp[1].trim();
-              context.read<AddOrderProvider>().state =
+              readOrder.selectedTime = stamp[1].trim();
+              readOrder.state =
+                  requestProvider.selectedStatusButton;
+              readOrder.state =
                   request.status ?? 'unknown';
-              context.read<AddOrderProvider>().state =
-                  request.status ?? 'unknown';
-              context.read<AddOrderProvider>().requestModel = request;
+              readOrder.requestModel = request;
               log(request.status!);
+
+              RequestsModel newRequest = RequestsModel(
+          docid: watchOrder.requestModel.docid,
+          requestId: request.docid,
+          clientId: watchOrder.requestModel.clientId,
+          workerId: watchOrder.requestModel.workerId,
+          location: watchOrder.requestModel.location,
+          serviceType: watchOrder.selectedCategoryCardName,
+          workDescription: watchOrder.workDescriptionController.text,
+          status: requestProvider.selectedStatusButton,
+          timeStamp:
+              'date:${watchOrder.selectedDateAndDay} at ${watchOrder.selectedTime}',
+        );
+        return requestProvider.updateRequest(newRequest);
+     
             },
-            isSelected: requestProvider.selectedCardId == request.requestId,
-            selectedStatusButton: () {
-              requestProvider.selectedStatusButton =
-                  request.requestId ?? 'unknown';
+            selectedCardId: () async {
+              requestProvider.selectedCardId = request.requestId ?? 'unknown';
+              
+              
+             
             },
             cancel: () {
-              requestProvider.selectedStatusButton = '';
+              requestProvider.selectedCardId = '';
             },
           );
         }),

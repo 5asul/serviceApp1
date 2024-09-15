@@ -17,7 +17,7 @@ class FirebaseUserServices {
   Stream<List<UserModel>> getUsersStreamById(String userId) {
     return _userRefernce.snapshots().map((snapshot) {
       return snapshot.docs
-          .where((userid) => 'firbaseUid' == userid)
+          .where((doc) => doc['firebaseUid'] == userId)
           .map((doc) =>
               UserModel.fromJson(doc.data() as Map<String, dynamic>, doc.id))
           .toList();
@@ -26,8 +26,7 @@ class FirebaseUserServices {
 
   Future<void> addUser(UserModel user) async {
     await _userRefernce
-        .doc(user.firebaseUid)
-        .set(user.toJson())
+       .add(user.toJson())
         .then((value) => print("User Added"))
         .catchError((error) => print("Failed to add user: $error"));
   }

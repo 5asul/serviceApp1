@@ -27,13 +27,13 @@ class _EmailAuthenticationScreenState extends State<EmailAuthenticationScreen> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
-  List<String> roles = ['User', 'Worker'];
+  
 
   bool signUp_state = true;
   @override
   Widget build(BuildContext context) {
     var provider = context.watch<ServiceAppProvider>();
-    String currentOption = roles[0];
+    
     return Scaffold(
         appBar: SignUpAppBar(),
         body: Container(

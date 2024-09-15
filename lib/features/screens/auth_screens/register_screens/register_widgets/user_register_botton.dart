@@ -29,14 +29,18 @@ class _UserRegisterButtonState extends State<UserRegisterButton> {
       final userProvider =
           Provider.of<FirebaseUserProvider>(context, listen: false);
       UserModel newUser = await UserModel(
-          username: userProvider.usernameController.text,
-          email: sharedPref.getString('email'),
-          password:  sharedPref.getString('password'),
-          role: sharedPref.getString('role'),
-          location: sharedPref.getString('location'),
-          profailePic: userProvider.profilePictureController.text,
-          phone: userProvider.phoneController.text,
-          firebaseUid:user!.uid ,
+
+        firebaseUid: user!.uid,
+        username: userProvider.usernameController.text,
+        email: sharedPref.getString('email'),
+        password: sharedPref.getString('password'),
+        phone: userProvider.phoneController.text,
+        location: sharedPref.getString('location'),
+        role: sharedPref.getString('role'),
+        serviceName: sharedPref.getString('serviceName')??'unknown',
+        profailePic: userProvider.profilePictureController.text,
+        workerIdPicture: userProvider.workerIdPictureController.text??'unknown',
+
           );
       return userProvider.addUser(newUser);
     } catch (e) {
