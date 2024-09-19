@@ -107,7 +107,20 @@ class WorkerOrdersCard extends StatelessWidget {
                                       color: Colors.grey.shade600,
                                     ),
                                   ),
-                                )
+                                ),
+                                Container(
+                                  
+                                  child: IconButton(
+                                    
+                                    onPressed: () {
+                                      Navigator.of(context).pushNamed('chat with worker screen');
+                                    },
+                                    icon:Icon(Icons.chat,
+                                    size: screenSize.width * 0.07,
+                                    color: ColorsTheme().primary,),
+                                    
+                                    
+                                  ),)
                               ],
                             ),
                           ),

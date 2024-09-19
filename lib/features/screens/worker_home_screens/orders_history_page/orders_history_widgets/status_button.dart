@@ -16,8 +16,6 @@ class StatusBottun extends StatelessWidget {
   final String status;
   final bool isSelected;
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -29,17 +27,23 @@ class StatusBottun extends StatelessWidget {
         child: Align(
           alignment: Alignment.topLeft,
           child: MaterialButton(
+            focusColor: (status == 'On Going')
+                ? ColorsTheme().primary
+                : (status == 'COMPLETED')
+                    ? ColorsTheme().tertiary
+                    : Colors.redAccent,
             minWidth: screenSize.width * 0.3,
             height: screenSize.height * 0.045,
             onPressed: selectedStatusButton,
-            color: (isSelected)?(status == 'On Going')
-                          ? ColorsTheme().primary
-                          : (status == 'COMPLETED')
-                              ? ColorsTheme().tertiary
-                              : Colors.redAccent:null,
+            color: (isSelected)
+                ? (status == 'On Going')
+                    ? ColorsTheme().primary
+                    : (status == 'COMPLETED')
+                        ? ColorsTheme().tertiary
+                        : Colors.redAccent
+                : null,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
-                
                 side: BorderSide(
                   color: (status == 'On Going')
                       ? ColorsTheme().primary
@@ -58,8 +62,7 @@ class StatusBottun extends StatelessWidget {
                           ? ColorsTheme().primary
                           : (status == 'COMPLETED')
                               ? ColorsTheme().tertiary
-                              : Colors.redAccent
-                      ),
+                              : Colors.redAccent),
             ),
           ),
         ),

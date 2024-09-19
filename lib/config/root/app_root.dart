@@ -11,6 +11,7 @@ import 'package:project_for_all/features/screens/user_home_screens/home_page/cat
 import 'package:project_for_all/nav_pages/add_order_page.dart';
 
 import '../../features/screens/auth_screens/login_screen/login_screen.dart';
+import '../../features/screens/user_home_screens/home_page/category_screen/worker_profile_screen/chat_with_worker_screen.dart';
 import '../../features/screens/user_home_screens/home_page/homePage.dart';
 import '../../features/screens/user_home_screens/orders_history_page/orders_page.dart';
 import '../../features/screens/worker_home_screens/worker_home_navigation_bar.dart';
@@ -48,6 +49,9 @@ class AppRoutes {
 
       case 'add order1':
         return _materialRoute(AddOrderScreen());
+
+      case 'chat with worker screen':
+        return _materialRoute(ChatWithWorkerScreen());
 
       case 'user home screen':
         return _materialRoute(HomeNavigationBar());

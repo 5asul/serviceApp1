@@ -23,6 +23,7 @@ class WorkerProfileFloatingBottons extends StatelessWidget {
             width: screenSize.width * 0.3,
             margin: EdgeInsets.symmetric(horizontal: screenSize.width*0.01),
             child: FloatingActionButton(
+              heroTag: 'bookNow',
               splashColor: ColorsTheme().primary,
               backgroundColor: Colors.white,
               onPressed: () {
@@ -42,10 +43,11 @@ class WorkerProfileFloatingBottons extends StatelessWidget {
             width: screenSize.width * 0.3,
             margin: EdgeInsets.symmetric(horizontal: screenSize.width*0.01),
             child: FloatingActionButton(
+              heroTag: 'message',
               splashColor: ColorsTheme().primary,
               backgroundColor: Colors.white,
               onPressed: () {
-                Navigator.of(context).pushNamed('add order1');
+                Navigator.of(context).pushNamed('chat with worker screen');
               }, // Define the onPressed event
               child: Text(
                 "Message",

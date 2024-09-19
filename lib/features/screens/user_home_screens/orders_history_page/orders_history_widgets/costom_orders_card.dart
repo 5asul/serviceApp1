@@ -1,10 +1,14 @@
 // ignore_for_file: dead_code
 
 import 'package:flutter/material.dart';
+import 'package:project_for_all/config/theme/app_size.dart';
 import 'package:project_for_all/controller/firebase/provider/firebase_request_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../config/theme/colors_theme.dart';
+import 'costom_orders_card_widgets/add_review_bottom_sheet.dart';
+import 'costom_orders_card_widgets/add_review_bottun.dart';
+import 'costom_orders_card_widgets/statuse_bottun.dart';
 
 class OrdersCard extends StatelessWidget {
   const OrdersCard({
@@ -17,7 +21,9 @@ class OrdersCard extends StatelessWidget {
     required this.status,
     required this.update,
     required this.delete,
-    required this.isSelected, required this.selectedStatusButton, required this.cancel,
+    required this.isSelected,
+    required this.selectedStatusButton,
+    required this.cancel,
   });
 
   final Size screenSize;
@@ -34,7 +40,6 @@ class OrdersCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return GestureDetector(
       onTap: cancel,
       child: Container(
@@ -102,6 +107,19 @@ class OrdersCard extends StatelessWidget {
                                     style: TextStyle(
                                       fontSize: screenSize.width * 0.035,
                                       color: Colors.grey.shade600,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  child: IconButton(
+                                    onPressed: () {
+                                      Navigator.of(context)
+                                          .pushNamed('chat with worker screen');
+                                    },
+                                    icon: Icon(
+                                      Icons.chat,
+                                      size: screenSize.width * 0.07,
+                                      color: ColorsTheme().primary,
                                     ),
                                   ),
                                 )
@@ -194,60 +212,13 @@ class OrdersCard extends StatelessWidget {
                     alignment: Alignment.topLeft,
                     child: Row(
                       children: [
-                        Container(
-                          margin: EdgeInsets.only(
-                            left: screenSize.width * 0.01,
-                          ),
-                          child: Align(
-                            alignment: Alignment.topRight,
-                            child: MaterialButton(
-                              minWidth: screenSize.width * 0.3,
-                              height: screenSize.height * 0.045,
-                              
-                              onPressed: selectedStatusButton,
-                              color: (status == 'On Going')
-                                  ? ColorsTheme().primary
-                                  : (status == 'COMPLETED')
-                                      ? ColorsTheme().tertiary
-                                      : Colors.redAccent,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30)),
-                              child: (isSelected)
-                                  ? AnimatedOpacity(
-                                      opacity: isSelected ? 1.0 : 0.0,
-                                      duration: Duration(milliseconds: 200),
-                                      child: Row(
-                                        children: [
-                                          IconButton(
-                                            icon: Icon(
-                                              Icons.delete,
-                                              color: Colors.red,
-                                              size: screenSize.width * 0.07,
-                                            ),
-                                            onPressed: delete,
-                                          ),
-                                          IconButton(
-                                            icon: Icon(
-                                              Icons.edit,
-                                              color: ColorsTheme().white,
-                                              size: screenSize.width * 0.07,
-                                            ),
-                                            onPressed: update,
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  : Text(
-                                      "$status",
-                                      style: TextStyle(
-                                        fontSize: screenSize.width * 0.035,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                            ),
-                          ),
-                        ),
+                        OrdersStatusBottun(
+                            screenSize: screenSize,
+                            selectedStatusButton: selectedStatusButton,
+                            status: status,
+                            isSelected: isSelected,
+                            delete: delete,
+                            update: update),
                         SizedBox(
                           width: screenSize.width * 0.035,
                         ),
@@ -280,6 +251,46 @@ class OrdersCard extends StatelessWidget {
                       ],
                     ),
                   ),
+                  Row(
+                    children: [
+                      AddReviewBottun(
+                          screenSize: screenSize,
+                          addReviewBottomSheet: () async {
+                            await AddReviewBottomSheet().showModelBottomSheet(
+                              context,
+
+                            );
+                          }),
+                      SizedBox(
+                        width: screenSize.width * 0.035,
+                      ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                            size: AppSize.width(context) * 0.07,
+                          ),
+                          SizedBox(
+                            width: AppSize.width(context) * 0.02,
+                          ),
+                          Container(
+                            width: AppSize.width(context) * 0.40,
+                            child: Text(
+                              "${4.9} | (4,263 reviews)",
+                              maxLines: 1,
+                              style: TextStyle(
+                                overflow: TextOverflow.ellipsis,
+                                color: Colors.grey.shade600,
+                                fontSize: screenSize.width * 0.045,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
                 ],
               );
             },

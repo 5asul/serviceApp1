@@ -120,7 +120,7 @@ class WorkerProfileCard extends StatelessWidget {
               top: screenSize.height*0.35,
               left: screenSize.width*0.23,
               child: Row(
-                children: [
+                children: [ 
                   Icon(Icons.star,
                     color: Colors.yellow,),
                   SizedBox(width: 2.0,),

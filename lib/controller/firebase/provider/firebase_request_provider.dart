@@ -6,19 +6,27 @@ import '../services/firebase_requests_services.dart';
 class FirebaseRequestProvider with ChangeNotifier {
   final FirebaseRequestsServices _requestsServices = FirebaseRequestsServices();
 
-  String _selectedCardId='';
+  String _selectedCardId = '';
   String get selectedCardId => _selectedCardId;
-  set selectedCardId(String value){
+  set selectedCardId(String value) {
     _selectedCardId = value;
     notifyListeners();
   }
-    String _selectedStatusButton='';
+
+  String _userSelectedCardId = '';
+  String get userSelectedCardId => _userSelectedCardId;
+  set userSelectedCardId(String value) {
+    _userSelectedCardId = value;
+    notifyListeners();
+  }
+
+  String _selectedStatusButton = '';
   String get selectedStatusButton => _selectedStatusButton;
-  set selectedStatusButton(String value){
+  set selectedStatusButton(String value) {
     _selectedStatusButton = value;
     notifyListeners();
   }
-  
+
   List<RequestsModel> _requests = [];
   List<RequestsModel> get requests => _requests;
 

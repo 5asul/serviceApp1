@@ -30,11 +30,6 @@ class _AllWorkerOrdersState extends State<AllWorkerOrders> {
   }
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Consumer<FirebaseRequestProvider>(
@@ -56,8 +51,7 @@ class _AllWorkerOrdersState extends State<AllWorkerOrders> {
             serviceType: request.serviceType ?? 'Unknown',
             date: request.timeStamp ?? 'Unknown',
             status: request.status ?? 'Unknown',
-            idIsEqual:
-                requestProvider.selectedCardId == request.requestId,
+            idIsEqual: requestProvider.selectedCardId == request.requestId,
             update: () async {
               List<String> stamp = request.timeStamp!.split(' at ');
               for (var element in stamp) {
@@ -76,33 +70,27 @@ class _AllWorkerOrdersState extends State<AllWorkerOrders> {
               readOrder.workDescriptionController.text =
                   request.workDescription ?? 'Unknown';
               readOrder.selectedTime = stamp[1].trim();
-              readOrder.state =
-                  requestProvider.selectedStatusButton;
-              readOrder.state =
-                  request.status ?? 'unknown';
+              readOrder.state = requestProvider.selectedStatusButton;
+              readOrder.state = request.status ?? 'unknown';
               readOrder.requestModel = request;
               log(request.status!);
 
               RequestsModel newRequest = RequestsModel(
-          docid: watchOrder.requestModel.docid,
-          requestId: request.docid,
-          clientId: watchOrder.requestModel.clientId,
-          workerId: watchOrder.requestModel.workerId,
-          location: watchOrder.requestModel.location,
-          serviceType: watchOrder.selectedCategoryCardName,
-          workDescription: watchOrder.workDescriptionController.text,
-          status: requestProvider.selectedStatusButton,
-          timeStamp:
-              'date:${watchOrder.selectedDateAndDay} at ${watchOrder.selectedTime}',
-        );
-        return requestProvider.updateRequest(newRequest);
-     
+                docid: watchOrder.requestModel.docid,
+                requestId: request.docid,
+                clientId: watchOrder.requestModel.clientId,
+                workerId: watchOrder.requestModel.workerId,
+                location: watchOrder.requestModel.location,
+                serviceType: watchOrder.selectedCategoryCardName,
+                workDescription: watchOrder.workDescriptionController.text,
+                status: requestProvider.selectedStatusButton,
+                timeStamp:
+                    'date:${watchOrder.selectedDateAndDay} at ${watchOrder.selectedTime}',
+              );
+              return requestProvider.updateRequest(newRequest);
             },
             selectedCardId: () async {
               requestProvider.selectedCardId = request.requestId ?? 'unknown';
-              
-              
-             
             },
             cancel: () {
               requestProvider.selectedCardId = '';

@@ -29,11 +29,6 @@ class _AllOrdersState extends State<AllOrders> {
   }
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Consumer<FirebaseRequestProvider>(
@@ -84,13 +79,12 @@ class _AllOrdersState extends State<AllOrders> {
               context.read<AddOrderProvider>().requestModel = request;
               log(request.status!);
             },
-            isSelected: requestProvider.selectedCardId == request.requestId,
+            isSelected: requestProvider.userSelectedCardId == request.requestId,
             selectedStatusButton: () {
-              requestProvider.selectedStatusButton =
-                  request.requestId ?? 'unknown';
+              requestProvider.userSelectedCardId = request.requestId ?? 'unknown';
             },
             cancel: () {
-              requestProvider.selectedStatusButton = '';
+              requestProvider.userSelectedCardId = '';
             },
           );
         }),
