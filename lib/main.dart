@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:project_for_all/controller/firebase/provider/firebase_user_provider.dart';
+import 'config/root/app_root.dart';
 import 'config/root/app_root.dart';
 import 'controller/firebase/provider/firebase_request_provider.dart';
     
@@ -36,9 +39,9 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
-        print('==========User is currently signed out!');
+        log('==========User is currently signed out!');
       } else {
-        print('==========User is signed in!');
+        log('==========User is signed in!');
       }
     });
 
