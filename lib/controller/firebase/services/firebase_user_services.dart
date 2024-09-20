@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:project_for_all/models/users_model.dart';
 
 class FirebaseUserServices {
@@ -26,7 +27,8 @@ class FirebaseUserServices {
 
   Future<void> addUser(UserModel user) async {
     await _userRefernce
-       .add(user.toJson())
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .set(user.toJson())
         .then((value) => print("User Added"))
         .catchError((error) => print("Failed to add user: $error"));
   }

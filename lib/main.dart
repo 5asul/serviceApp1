@@ -4,9 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:project_for_all/controller/firebase/provider/firebase_user_provider.dart';
 import 'config/root/app_root.dart';
-import 'config/root/app_root.dart';
 import 'controller/firebase/provider/firebase_request_provider.dart';
-    
+
 import 'features/state_managment/provider/add_order_provider.dart';
 import 'features/state_managment/provider/service_app_provider.dart';
 import 'firebase_options.dart';
@@ -57,7 +56,7 @@ class _MyAppState extends State<MyApp> {
             create: (_) => ServiceAppProvider()),
         ChangeNotifierProvider<FirebaseUserProvider>(
             create: (_) => FirebaseUserProvider()),
-        
+
         ChangeNotifierProvider<AddOrderProvider>(
             create: (_) => AddOrderProvider()),
         ChangeNotifierProvider<FirebaseRequestProvider>(

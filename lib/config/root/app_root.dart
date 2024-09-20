@@ -53,6 +53,9 @@ class AppRoutes {
       case 'chat with worker screen':
         return _materialRoute(ChatWithWorkerScreen());
 
+      case 'chat screen':
+        return _materialRoute(MessageScreen());
+
       case 'user home screen':
         return _materialRoute(HomeNavigationBar());
 

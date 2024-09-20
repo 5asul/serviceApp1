@@ -42,6 +42,7 @@ class _AllOrdersState extends State<AllOrders> {
           final requestProvider =
               Provider.of<FirebaseRequestProvider>(context, listen: false);
           return OrdersCard(
+            requestsModel: requestData.requests[index],
             screenSize: screenSize,
             workDescription: request.workDescription ?? 'Unknown',
             location: request.location ?? 'Unknown',
@@ -81,7 +82,8 @@ class _AllOrdersState extends State<AllOrders> {
             },
             isSelected: requestProvider.userSelectedCardId == request.requestId,
             selectedStatusButton: () {
-              requestProvider.userSelectedCardId = request.requestId ?? 'unknown';
+              requestProvider.userSelectedCardId =
+                  request.requestId ?? 'unknown';
             },
             cancel: () {
               requestProvider.userSelectedCardId = '';

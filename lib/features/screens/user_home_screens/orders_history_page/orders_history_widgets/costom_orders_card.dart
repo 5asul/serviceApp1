@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_for_all/config/theme/app_size.dart';
 import 'package:project_for_all/controller/firebase/provider/firebase_request_provider.dart';
+import 'package:project_for_all/features/screens/user_home_screens/home_page/category_screen/worker_profile_screen/chat_with_worker_screen.dart';
+import 'package:project_for_all/models/requests_model.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../config/theme/colors_theme.dart';
@@ -24,8 +26,9 @@ class OrdersCard extends StatelessWidget {
     required this.isSelected,
     required this.selectedStatusButton,
     required this.cancel,
+    required this.requestsModel,
   });
-
+  final RequestsModel requestsModel;
   final Size screenSize;
   final String workDescription;
   final String location;
@@ -114,7 +117,12 @@ class OrdersCard extends StatelessWidget {
                                   child: IconButton(
                                     onPressed: () {
                                       Navigator.of(context)
-                                          .pushNamed('chat with worker screen');
+                                          .push(MaterialPageRoute(
+                                        builder: (context) => MessageScreen(
+                                          requestsModel: requestsModel,
+                                        ),
+                                      ));
+                                      // .pushNamed('chat with worker screen');
                                     },
                                     icon: Icon(
                                       Icons.chat,
@@ -258,7 +266,6 @@ class OrdersCard extends StatelessWidget {
                           addReviewBottomSheet: () async {
                             await AddReviewBottomSheet().showModelBottomSheet(
                               context,
-
                             );
                           }),
                       SizedBox(
