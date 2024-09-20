@@ -24,6 +24,7 @@ class OrdersCard extends StatelessWidget {
     required this.isSelected,
     required this.selectedStatusButton,
     required this.cancel,
+    required this.addReview,
   });
 
   final Size screenSize;
@@ -37,6 +38,7 @@ class OrdersCard extends StatelessWidget {
   final void Function() selectedStatusButton;
   final void Function() update;
   final void Function() delete;
+  final void Function() addReview;
 
   @override
   Widget build(BuildContext context) {
@@ -256,10 +258,11 @@ class OrdersCard extends StatelessWidget {
                       AddReviewBottun(
                           screenSize: screenSize,
                           addReviewBottomSheet: () async {
+                            addReview();
                             await AddReviewBottomSheet().showModelBottomSheet(
                               context,
-
                             );
+                            
                           }),
                       SizedBox(
                         width: screenSize.width * 0.035,

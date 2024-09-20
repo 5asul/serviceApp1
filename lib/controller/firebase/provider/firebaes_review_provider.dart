@@ -1,46 +1,77 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:project_for_all/models/reviews_model.dart';
 
-import '../../../models/requests_model.dart';
-import '../services/firebase_requests_services.dart';
 import '../services/firebase_reviews_services.dart';
 
 class FirebaseReviewProvider with ChangeNotifier {
-  final FirebaseReviewsServices _requestsServices = FirebaseReviewsServices();
+  final FirebaseReviewsServices _reviewsServices = FirebaseReviewsServices();
 
+  List<File> _selectedImages = [];
+  List<File> get selectedImages => _selectedImages;
+  set selectedImages(List<File> images) {
+    _selectedImages = images;
+    notifyListeners();
+  }
 
+  void removeImage(int index) {
+    _selectedImages.removeAt(index);
+    notifyListeners();
+  }
 
-  List<ReviewsModel> _requests = [];
-  List<ReviewsModel> get requests => _requests;
+  String _comment = '';
+  String get comment => _comment;
+  set comment(String value) {
+    _comment = value;
+    notifyListeners();
+  }
 
-  ReviewsModel _request = ReviewsModel();
-  ReviewsModel get request => _request;
+  double _ratingValue = 0;
+  double get ratingValue => _ratingValue;
+  set ratingValue(double value) {
+    _ratingValue = value;
+    notifyListeners();
+  }
+
+  String _requestId = '';
+  String get requestId => _requestId;
+  set requestId(String value) {
+    _requestId = value;
+    notifyListeners();
+  }
+  
+  List<ReviewsModel> _reviews = [];
+  List<ReviewsModel> get reviews => _reviews;
+
+  ReviewsModel _review = ReviewsModel();
+  ReviewsModel get review => _review;
 
   void fetchRequests() {
-    _requestsServices.getReviewsStream().listen((ReviewsModel) {
-      _requests = ReviewsModel;
+    _reviewsServices.getReviewsStream().listen((ReviewsModel) {
+      _reviews = ReviewsModel;
       notifyListeners();
     });
   }
 
-  void addRequest(ReviewsModel model) async {
-    await _requestsServices.addReview(model);
+  void addReview(ReviewsModel model) async {
+    await _reviewsServices.addReview(model);
     notifyListeners();
   }
 
-  void updateRequest(ReviewsModel model) async {
-    _requestsServices.updateReview(model);
+  void updateReview(ReviewsModel model) async {
+    _reviewsServices.updateReview(model);
     notifyListeners();
   }
 
-  void deleteRequest(String reviewId) async {
-    await _requestsServices.deleteReview(reviewId);
+  void deleteReview(String reviewId) async {
+    await _reviewsServices.deleteReview(reviewId);
     notifyListeners();
   }
 
-  void getRequestsStreamById(requestId) {
-    _requestsServices.getReviewsStreamById(requestId).listen((RequestsModel) {
-      _request = RequestsModel[0];
+  void getReviewsStreamById(reviewId) {
+    _reviewsServices.getReviewsStreamById(reviewId).listen((ReviewsModel) {
+      _review = ReviewsModel[0];
       notifyListeners();
     });
   }

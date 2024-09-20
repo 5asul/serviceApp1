@@ -57,7 +57,7 @@ class FirebaseRequestProvider with ChangeNotifier {
 
   void getRequestsStreamById(requestId) {
     _requestsServices.getRequestsStreamById(requestId).listen((RequestsModel) {
-      _request = RequestsModel[0];
+      _requests = RequestsModel;
       notifyListeners();
     });
   }

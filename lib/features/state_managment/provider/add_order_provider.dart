@@ -11,31 +11,7 @@ class AddOrderProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  List<File> _selectedImages = [];
-  List<File> get selectedImages => _selectedImages;
-  set selectedImages(List<File> images) {
-    _selectedImages = images;
-    notifyListeners();
-  }
-
-  void removeImage(int index) {
-    _selectedImages.removeAt(index);
-    notifyListeners();
-  }
-
-  String _comment = '';
-  String get comment => _comment;
-  set comment(String value) {
-    _comment = value;
-    notifyListeners();
-  }
-
-  double _ratingValue = 0;
-  double get ratingValue => _ratingValue;
-  set ratingValue(double value) {
-    _ratingValue = value;
-    notifyListeners();
-  }
+  
 
   String _selectedDateAndDay = '';
   String get selectedDateAndDay => _selectedDateAndDay;

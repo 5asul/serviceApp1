@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../../../config/theme/app_size.dart';
 import '../../../../../../config/theme/colors_theme.dart';
+import '../../../../../../controller/firebase/provider/firebaes_review_provider.dart';
 import '../../../../../state_managment/provider/add_order_provider.dart';
 
 class AddCommentSection extends StatelessWidget {
@@ -12,7 +13,7 @@ class AddCommentSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<AddOrderProvider>(context, listen: false);
+    final provider = Provider.of<FirebaseReviewProvider>(context, listen: false);
     return Container(
       margin: EdgeInsets.symmetric(vertical: AppSize.height(context) * 0.025),
       child: Column(

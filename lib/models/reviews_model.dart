@@ -1,7 +1,7 @@
 class ReviewsModel {
   String? reviewId;
   String? requestId;
-  int? rating;
+  double? rating;
   String? comment;
   String? timeStamp;
   int? likes;

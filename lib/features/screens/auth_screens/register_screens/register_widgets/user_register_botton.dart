@@ -55,9 +55,16 @@ class _UserRegisterButtonState extends State<UserRegisterButton> {
       color: ColorsTheme().primary,
       child: MaterialButton(
         onPressed: () async {
-          await addRegisterInfo();
-          Navigator.of(context)
-              .pushNamedAndRemoveUntil('home screen', (root) => false);
+          await addRegisterInfo().then((value){
+            if (sharedPref.getString('role')=='costumer') {
+                                Navigator.of(context).pushNamedAndRemoveUntil(
+                                    'user home screen', (root) => false);
+                              } else if (sharedPref.getString('role') == 'worker') {
+                                Navigator.of(context).pushNamedAndRemoveUntil(
+                                    'worker home screen', (root) => false);
+                              }
+          });
+          
         },
         child: Text(
           'Register',
