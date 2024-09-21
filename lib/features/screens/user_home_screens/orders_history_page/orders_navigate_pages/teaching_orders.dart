@@ -34,7 +34,7 @@ class _TeachingOrdersState extends State<TeachingOrders> {
     return Consumer<FirebaseRequestProvider>(
         builder: (context, requestData, _) {
       final cleaningRequestData = requestData.requests
-          .where((request) => request.serviceType == "Teaching").toList();
+          .where((request) => request.serviceType == "Cleaning").toList();
       return ListView.builder(
         physics: BouncingScrollPhysics(),
         shrinkWrap: true,
@@ -45,7 +45,7 @@ class _TeachingOrdersState extends State<TeachingOrders> {
               Provider.of<FirebaseReviewProvider>(context, listen: false);
           final requestProvider =
               Provider.of<FirebaseRequestProvider>(context, listen: false);
-          return OrdersCard(
+          return OrdersCard(requestsModel: requestData.requests[index],
               screenSize: screenSize,
               workDescription: request.workDescription ?? 'Unknown',
               location: request.location ?? 'Unknown',

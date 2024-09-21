@@ -46,7 +46,7 @@ class _CleaningOrdersState extends State<CleaningOrders> {
               Provider.of<FirebaseReviewProvider>(context, listen: false);
           final requestProvider =
               Provider.of<FirebaseRequestProvider>(context, listen: false);
-          return OrdersCard(
+          return OrdersCard(requestsModel: requestData.requests[index],
               screenSize: screenSize,
               workDescription: request.workDescription ?? 'Unknown',
               location: request.location ?? 'Unknown',
