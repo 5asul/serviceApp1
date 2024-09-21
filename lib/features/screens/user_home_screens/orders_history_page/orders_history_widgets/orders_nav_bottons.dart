@@ -5,7 +5,8 @@ import '../../../../../config/theme/colors_theme.dart';
 class OrdersPageNavBottons extends StatelessWidget {
   const OrdersPageNavBottons({
     super.key,
-    required this.i, required this.index,
+    required this.i,
+    required this.index,
   });
 
   final int i;
