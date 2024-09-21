@@ -25,7 +25,18 @@ class FirebaseRequestsServices {
     });
   }
 
+  Stream<List<RequestsModel>> getWorkerRequestsStreamById(String userId) {
+    return _requestsReference.snapshots().map((snapshot) {
+      return snapshot.docs
+          .where((doc) => doc['workerId'] == userId)
+          .map((doc) => RequestsModel.fromJson(
+              doc.data() as Map<String, dynamic>, doc.id))
+          .toList();
+    });
+  }
+
   Future<void> addRequest(RequestsModel request) async {
+    
     await _requestsReference
         .add(request.toJson())
         .then((value) => print("Request Added"))
