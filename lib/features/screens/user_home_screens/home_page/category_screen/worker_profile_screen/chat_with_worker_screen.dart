@@ -148,8 +148,7 @@ class _MessageScreenState extends State<MessageScreen> {
                             .map(
                               (e) => MessageModel.fromJson(e.data()),
                             )
-                            .toList() ??
-                        [];
+                            .toList();
 
                     if (_list.isNotEmpty) {
                       return ListView.builder(
