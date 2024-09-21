@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:project_for_all/config/theme/app_size.dart';
 import 'package:project_for_all/controller/firebase/provider/firebase_request_provider.dart';
 import 'package:project_for_all/features/screens/user_home_screens/home_page/category_screen/worker_profile_screen/chat_with_worker_screen.dart';
+import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/orders_history_widgets/costom_orders_card_widgets/statuse_bottun.dart';
 import 'package:project_for_all/models/requests_model.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +28,7 @@ class OrdersCard extends StatelessWidget {
     required this.selectedStatusButton,
     required this.cancel,
     required this.requestsModel,
+    required this.addReview,
   });
   final RequestsModel requestsModel;
   final Size screenSize;
@@ -40,6 +42,7 @@ class OrdersCard extends StatelessWidget {
   final void Function() selectedStatusButton;
   final void Function() update;
   final void Function() delete;
+  final void Function() addReview;
 
   @override
   Widget build(BuildContext context) {
@@ -264,6 +267,7 @@ class OrdersCard extends StatelessWidget {
                       AddReviewBottun(
                           screenSize: screenSize,
                           addReviewBottomSheet: () async {
+                            addReview();
                             await AddReviewBottomSheet().showModelBottomSheet(
                               context,
                             );

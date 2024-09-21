@@ -5,7 +5,7 @@ import '../../../models/reviews_model.dart';
 
 class FirebaseReviewsServices {
   final CollectionReference _reviewsReference =
-      FirebaseFirestore.instance.collection('requests');
+      FirebaseFirestore.instance.collection('reviews');
 
   Stream<List<ReviewsModel>> getReviewsStream() {
     return _reviewsReference.snapshots().map((snapshot) {

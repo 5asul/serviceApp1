@@ -15,10 +15,10 @@ class FirebaseRequestsServices {
     });
   }
 
-  Stream<List<RequestsModel>> getRequestsStreamById(String requestId) {
+  Stream<List<RequestsModel>> getRequestsStreamById(String userId) {
     return _requestsReference.snapshots().map((snapshot) {
       return snapshot.docs
-          .where((requestId) => 'requestId' == requestId)
+          .where((doc) => doc['clientId'] == userId)
           .map((doc) => RequestsModel.fromJson(
               doc.data() as Map<String, dynamic>, doc.id))
           .toList();

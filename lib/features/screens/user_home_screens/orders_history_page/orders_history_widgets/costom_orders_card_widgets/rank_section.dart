@@ -4,6 +4,7 @@ import 'package:project_for_all/config/theme/colors_theme.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../config/theme/app_size.dart';
+import '../../../../../../controller/firebase/provider/firebaes_review_provider.dart';
 import '../../../../../state_managment/provider/add_order_provider.dart';
 
 class RankSection extends StatelessWidget {
@@ -13,7 +14,7 @@ class RankSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Consumer<AddOrderProvider>(
+    return  Consumer<FirebaseReviewProvider>(
               builder: (context, provider, child) {
             return Container(
                             child: Column(children: [Align(

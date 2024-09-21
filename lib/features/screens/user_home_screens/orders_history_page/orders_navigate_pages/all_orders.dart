@@ -42,6 +42,7 @@ class _AllOrdersState extends State<AllOrders> {
           final requestProvider =
               Provider.of<FirebaseRequestProvider>(context, listen: false);
           return OrdersCard(
+            addReview: () {},
             requestsModel: requestData.requests[index],
             screenSize: screenSize,
             workDescription: request.workDescription ?? 'Unknown',
