@@ -28,7 +28,7 @@ class FirebaseMessagingProvider with ChangeNotifier {
         .collection('requests')
         .doc(requestsModel.docid)
         .collection(
-            'chats/${getConversationID(requestsModel.requestId!)}/messages/')
+            'chats/${getConversationID(requestsModel.workerId!)}/messages/')
         .snapshots();
   }
 
@@ -65,7 +65,7 @@ class FirebaseMessagingProvider with ChangeNotifier {
       type: 'text',
       chatId: getConversationID(requestsModel.requestId!),
       message: msg,
-      receiverId: requestsModel.requestId,
+      receiverId: requestsModel.workerId,
       senderId: user.uid,
       timestamp: time,
     );

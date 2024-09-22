@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:project_for_all/controller/firebase/provider/firebase_messaging_provider.dart';
 
 import '../../../models/requests_model.dart';
 
@@ -11,6 +12,11 @@ class FirebaseRequestsServices {
       return snapshot.docs
           .map((doc) => RequestsModel.fromJson(
               doc.data() as Map<String, dynamic>, doc.id))
+          // .where(
+          //   (element) =>
+          //       element.clientId == FirebaseMessagingProvider.user.uid ||
+          //       element.workerId == FirebaseMessagingProvider.user.uid,
+          // )
           .toList();
     });
   }
@@ -36,7 +42,6 @@ class FirebaseRequestsServices {
   }
 
   Future<void> addRequest(RequestsModel request) async {
-    
     await _requestsReference
         .add(request.toJson())
         .then((value) => print("Request Added"))
