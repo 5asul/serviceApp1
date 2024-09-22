@@ -1,0 +1,80 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:project_for_all/controller/firebase/services/firebase_user_services.dart';
+import 'package:project_for_all/features/screens/auth_screens/register_screens/register_widgets/costom_signUp_textFeild.dart';
+import 'package:project_for_all/models/users_model.dart';
+
+class ApiUserProvider with ChangeNotifier {
+  final ApiUserServices _apiUserService = ApiUserServices();
+
+  List<ApiUserModel> _users = [];
+  List<ApiUserModel> get users => _users;
+
+  ApiUserModel _user = ApiUserModel();
+  ApiUserModel get user => _user;
+
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController get usernameController => _usernameController;
+  set UsernameController(TextEditingController value) {
+    _usernameController = value;
+    notifyListeners();
+  }
+
+  TextEditingController _phoneController = TextEditingController();
+  TextEditingController get phoneController => _phoneController;
+  set phoneController(TextEditingController value) {
+    _phoneController = value;
+    notifyListeners();
+  }
+
+  TextEditingController _profilePictureController = TextEditingController();
+  TextEditingController get profilePictureController =>
+      _profilePictureController;
+  set profilePictureController(TextEditingController value) {
+    _profilePictureController = value;
+    notifyListeners();
+  }
+
+  TextEditingController _workerIdPictureController = TextEditingController();
+  TextEditingController get workerIdPictureController =>
+      _workerIdPictureController;
+  set workerIdPictureController(TextEditingController value) {
+    _workerIdPictureController = value;
+    notifyListeners();
+  }
+
+  void fetchUsers() {
+    __apiUserService.getUsersStream().listen((ApiUserModel) {
+      _users = ApiUserModel;
+      notifyListeners();
+    });
+  }
+
+  void addUser(ApiUserModel model) async {
+    await _apiUserService.addUser(model);
+    notifyListeners();
+  }
+
+  void updateUser(ApiUserModel model) async {
+    await _apiUserService.updateUser(model);
+    notifyListeners();
+  }
+
+  void deleteUser(String userId) async {
+    await _apiUserService.deleteUser(userId);
+    notifyListeners();
+  }
+
+  void getUsersStreamById(userId) {
+    _apiUserService.getUsersStreamById(userId).listen((ApiUserModel) {
+      _user = ApiUserModel[0];
+      notifyListeners();
+    });
+  }
+
+  // @override
+  // void dispose() {
+  //   _timer?.cancel();
+  //   super.dispose();
+  // }
+}
