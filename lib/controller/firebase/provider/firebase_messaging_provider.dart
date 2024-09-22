@@ -51,9 +51,9 @@ class FirebaseMessagingProvider with ChangeNotifier {
   //   ;
   // }
 
-  static Stream<QuerySnapshot<Map<String, dynamic>>> getAllUsers() {
-    return firestore.collection('users').snapshots();
-  }
+  // static Stream<QuerySnapshot<Map<String, dynamic>>> getAllUsers() {
+  //   return firestore.collection('users').snapshots();
+  // }
 
   static Future<void> sendMessage(
       RequestsModel requestsModel, String msg) async {
