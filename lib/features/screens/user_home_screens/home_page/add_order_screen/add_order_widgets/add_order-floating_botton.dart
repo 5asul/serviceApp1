@@ -32,7 +32,7 @@ class AddOrderFloatingBotton extends StatelessWidget {
         RequestsModel newRequest = RequestsModel(
           requestId: random.toString(),
           clientId: user!.uid,
-          workerId: user.uid,
+          workerId: requestProvider.workerId,
           location: sharedPref.getString('location'),
           serviceType: watchOrder.selectedCategoryCardName,
           workDescription: watchOrder.workDescriptionController.text,

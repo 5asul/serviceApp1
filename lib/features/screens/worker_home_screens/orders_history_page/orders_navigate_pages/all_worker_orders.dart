@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/edit_orders_screen.dart';
@@ -24,16 +25,19 @@ class _AllWorkerOrdersState extends State<AllWorkerOrders> {
   @override
   void initState() {
     super.initState();
+    final user = FirebaseAuth.instance.currentUser;
     final requestProvider =
         Provider.of<FirebaseRequestProvider>(context, listen: false);
-    requestProvider.fetchRequests();
+    requestProvider.getWorkerRequestsStreamById(user!.uid);
   }
+
 
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Consumer<FirebaseRequestProvider>(
         builder: (context, requestData, _) {
+          
       return ListView.builder(
         physics: BouncingScrollPhysics(),
         shrinkWrap: true,
@@ -102,17 +106,4 @@ class _AllWorkerOrdersState extends State<AllWorkerOrders> {
   }
 }
 
-List<Worker1Card> cardInfo = [
-  Worker1Card(
-      name: "Ahmed",
-      numberOfOrders: "10",
-      image: "assets/teacher.jpg",
-      rank: "5.0",
-      icon: Icons.book_rounded),
-  Worker1Card(
-      name: "Saleh",
-      numberOfOrders: "15",
-      image: "assets/cleaner.jpg",
-      rank: "4.0",
-      icon: Icons.cleaning_services)
-];
+

@@ -5,6 +5,7 @@ import '../services/firebase_requests_services.dart';
 
 class FirebaseRequestProvider with ChangeNotifier {
   final FirebaseRequestsServices _requestsServices = FirebaseRequestsServices();
+  FirebaseRequestsServices get requestsServices => _requestsServices;
 
   String _selectedCardId = '';
   String get selectedCardId => _selectedCardId;
@@ -12,6 +13,14 @@ class FirebaseRequestProvider with ChangeNotifier {
     _selectedCardId = value;
     notifyListeners();
   }
+
+  String _workerId = '';
+  String get workerId => _workerId;
+  set workerId(String value) {
+    _workerId = value;
+    notifyListeners();
+  }
+
 
   String _userSelectedCardId = '';
   String get userSelectedCardId => _userSelectedCardId;
@@ -57,6 +66,13 @@ class FirebaseRequestProvider with ChangeNotifier {
 
   void getRequestsStreamById(requestId) {
     _requestsServices.getRequestsStreamById(requestId).listen((RequestsModel) {
+      _requests = RequestsModel;
+      notifyListeners();
+    });
+  }
+
+  void getWorkerRequestsStreamById(requestId) {
+    _requestsServices.getWorkerRequestsStreamById(requestId).listen((RequestsModel) {
       _requests = RequestsModel;
       notifyListeners();
     });
