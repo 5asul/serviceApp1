@@ -5,8 +5,8 @@ class UserModel {
   String? password;
   String? phone;
   String? profailePic;
-   String? workerIdPicture;
-   String? serviceName;
+  String? workerIdPicture;
+  String? serviceName;
   String? role;
   String? location;
   String? docid;

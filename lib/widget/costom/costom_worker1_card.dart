@@ -11,15 +11,16 @@ class Worker1Card extends StatelessWidget {
   final String image;
   final String rank;
   final IconData icon;
-  
-  const Worker1Card(
-      {super.key,
-      required this.name,
-      required this.numberOfOrders,
-      required this.image,
-      required this.rank,
-      required this.icon,
-      required this.id, });
+
+  const Worker1Card({
+    super.key,
+    required this.name,
+    required this.numberOfOrders,
+    required this.image,
+    required this.rank,
+    required this.icon,
+    required this.id,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +37,21 @@ class Worker1Card extends StatelessWidget {
         width: screenSize.width * 0.50,
         height: screenSize.height * 0.15,
         padding: EdgeInsets.only(left: 20, right: 10, top: 10, bottom: 10.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5), // Shadow color
+              spreadRadius: 0.5, // Spread radius
+              blurRadius: 7, // Blur radius
+              offset: Offset(0, 5), // Shadow position
+            ),
+          ],
+        ),
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-          ),
+              borderRadius: BorderRadius.circular(10), color: Colors.white),
           child: Stack(
             children: [
               Container(

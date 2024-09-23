@@ -5,30 +5,29 @@ import '../../../../../../../config/theme/colors_theme.dart';
 class WorkTypeAndLocationSection extends StatelessWidget {
   const WorkTypeAndLocationSection({
     super.key,
-    required this.screenSize,
+    required this.screenSize, required this.workerType,
   });
 
   final Size screenSize;
+  final String workerType;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Container(
-            
           height: screenSize.height * 0.04,
-          margin: EdgeInsets.symmetric(horizontal: screenSize.width*0.01),
+          margin: EdgeInsets.symmetric(horizontal: screenSize.width * 0.01),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(screenSize.width * 0.015),
-            color: ColorsTheme().primary
-            
-          ),
+              borderRadius: BorderRadius.circular(screenSize.width * 0.015),
+              color: ColorsTheme().primary),
           child: Center(
             child: Padding(
-              padding: EdgeInsets.only(left: screenSize.width*0.02,
-                  right: screenSize.width*0.02),
+              padding: EdgeInsets.only(
+                  left: screenSize.width * 0.02,
+                  right: screenSize.width * 0.02),
               child: Text(
-                "Teacher",
+                workerType,
                 style: TextStyle(
                   fontSize: screenSize.width * 0.04,
                   fontWeight: FontWeight.bold,
@@ -42,8 +41,9 @@ class WorkTypeAndLocationSection extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                margin: EdgeInsets.only(left: screenSize.width*0.02,
-                right: screenSize.width*0.015),
+                margin: EdgeInsets.only(
+                    left: screenSize.width * 0.02,
+                    right: screenSize.width * 0.015),
                 child: Icon(
                   Icons.location_pin,
                   size: screenSize.width * 0.07,
@@ -51,10 +51,10 @@ class WorkTypeAndLocationSection extends StatelessWidget {
                 ),
               ),
               Container(
-                width: screenSize.width*0.3,
+                width: screenSize.width * 0.3,
                 child: Text(
-                    "679 Eagle Crest Alley",
-                  overflow:TextOverflow.ellipsis ,
+                  "679 Eagle Crest Alley",
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: screenSize.width * 0.035,
                     color: Colors.grey.shade600,

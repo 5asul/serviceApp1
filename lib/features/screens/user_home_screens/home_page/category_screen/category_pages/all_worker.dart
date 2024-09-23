@@ -25,19 +25,20 @@ class _AllWorkersState extends State<AllWorkers> {
   @override
   Widget build(BuildContext context) {
     return Consumer<FirebaseUserProvider>(builder: (context, userProvider, _) {
-      final users = userProvider.users.where((user) => user.role == 'worker').toList();
+      final users =
+          userProvider.users.where((user) => user.role == 'worker').toList();
       return ListView.builder(
         physics: BouncingScrollPhysics(),
         shrinkWrap: true,
         itemCount: users.length,
         itemBuilder: (BuildContext context, int i) {
           final workers = users[i];
-          
+
           return Worker1Card(
-            id: workers.firebaseUid??'Unknown',
-              name: workers.username??'Unknown',
+              id: workers.firebaseUid ?? 'Unknown',
+              name: workers.username ?? 'Unknown',
               numberOfOrders: "10",
-              image: workers.profailePic??'Unknown',
+              image: workers.profailePic ?? 'Unknown',
               rank: "5.0",
               icon: Icons.book_rounded);
         },
@@ -45,5 +46,3 @@ class _AllWorkersState extends State<AllWorkers> {
     });
   }
 }
-
-

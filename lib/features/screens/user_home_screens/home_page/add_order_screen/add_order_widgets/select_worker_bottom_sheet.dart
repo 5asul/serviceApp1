@@ -9,11 +9,12 @@ import '../../../../../state_managment/provider/add_order_provider.dart';
 
 class SelectWorkerBottomSheet extends StatefulWidget {
   @override
-  _SelectWorkerBottomSheetState createState() => _SelectWorkerBottomSheetState();
+  _SelectWorkerBottomSheetState createState() =>
+      _SelectWorkerBottomSheetState();
 }
 
 class _SelectWorkerBottomSheetState extends State<SelectWorkerBottomSheet> {
-   @override
+  @override
   void initState() {
     super.initState();
     final user = FirebaseAuth.instance.currentUser;
@@ -21,6 +22,7 @@ class _SelectWorkerBottomSheetState extends State<SelectWorkerBottomSheet> {
         Provider.of<FirebaseUserProvider>(context, listen: false);
     requestProvider.fetchUsers();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,27 +38,32 @@ class _SelectWorkerBottomSheetState extends State<SelectWorkerBottomSheet> {
           topRight: Radius.circular(25),
         ),
       ),
-      child: Consumer<FirebaseUserProvider>(builder: (context, userProvider, _) {
-      final watchProvider = context.watch<AddOrderProvider>();
+      child:
+          Consumer<FirebaseUserProvider>(builder: (context, userProvider, _) {
+        final watchProvider = context.watch<AddOrderProvider>();
 
-      final users = userProvider.users.where((user) => user.role == 'worker'&& user.serviceName == watchProvider.selectedCategoryCardName ).toList();
-      return ListView.builder(
-        physics: BouncingScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: users.length,
-        itemBuilder: (BuildContext context, int i) {
-          final workers = users[i];
-          
-          return Worker1Card(
-            id: workers.firebaseUid??'Unknown',
-              name: workers.username??'Unknown',
-              numberOfOrders: "10",
-              image: workers.profailePic??'Unknown',
-              rank: "5.0",
-              icon: Icons.book_rounded);
-        },
-      );
-    }),
+        final users = userProvider.users
+            .where((user) =>
+                user.role == 'worker' &&
+                user.serviceName == watchProvider.selectedCategoryCardName)
+            .toList();
+        return ListView.builder(
+          physics: BouncingScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: users.length,
+          itemBuilder: (BuildContext context, int i) {
+            final workers = users[i];
+
+            return Worker1Card(
+                id: workers.firebaseUid ?? 'Unknown',
+                name: workers.username ?? 'Unknown',
+                numberOfOrders: "10",
+                image: workers.profailePic ?? 'Unknown',
+                rank: "5.0",
+                icon: Icons.book_rounded);
+          },
+        );
+      }),
     );
   }
 }

@@ -70,7 +70,7 @@ class FirebaseUserProvider with ChangeNotifier {
 
   void getUsersStreamById(userId) {
     _userService.getUsersStreamById(userId).listen((UserModel) {
-      _user = UserModel[0];
+      _users = UserModel;
       notifyListeners();
     });
   }

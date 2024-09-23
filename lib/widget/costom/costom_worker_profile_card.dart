@@ -28,7 +28,7 @@ class WorkerProfileCard extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                   color: Colors.grey.shade300,
-                  image: DecorationImage(image: AssetImage(image),
+                  image: DecorationImage(image: NetworkImage(image),
                     fit: BoxFit.cover,)
               ),
             ),
