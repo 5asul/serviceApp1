@@ -17,11 +17,13 @@ class UsernameAndPhotoSection extends StatelessWidget {
       top: AppSize.height(context) * 0.02,
       child: Column(
         children: [
+          // Image.network(src),
           Container(
             margin:
                 EdgeInsets.symmetric(horizontal: AppSize.width(context) * 0.35),
             child: CircleAvatar(
-              foregroundImage: AssetImage('assets/cleaner.jpg'),
+              foregroundImage: NetworkImage(
+                  'https://firebasestorage.googleapis.com/v0/b/home-service-app-34655.appspot.com/o/upload%2F1000317496.jpg?alt=media&token=1d794ad4-3c72-4bdf-9e0b-f0f902be90cd'),
               radius: AppSize.width(context) * 0.15,
             ),
           ),

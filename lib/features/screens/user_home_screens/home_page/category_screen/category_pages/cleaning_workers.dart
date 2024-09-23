@@ -25,7 +25,7 @@ class _CleaningWorkersState extends State<CleaningWorkers> {
   @override
   Widget build(BuildContext context) {
     return Consumer<FirebaseUserProvider>(builder: (context, userProvider, _) {
-      final users = userProvider.users.where((user) => user.role == 'worker' && user.serviceName == 'Cleaning').toList();
+      final users = userProvider.users.where((user) => user.role == 'worker' && user.serviceName == 'Cleaner').toList();
       return ListView.builder(
         physics: BouncingScrollPhysics(),
         shrinkWrap: true,

@@ -39,6 +39,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
             builder: (context, firebaseUserProvider, _) {
               final user = firebaseUserProvider.user;
               return UsernameAndPhotoSection(
+              
                 name: user.username ?? 'Unknown',
                 id: user.firebaseUid ?? 'Unknown',
               );

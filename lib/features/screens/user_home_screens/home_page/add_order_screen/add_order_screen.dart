@@ -1,10 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:project_for_all/controller/database/sqfLite.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../config/theme/app_size.dart';
 import '../../../../../controller/componentAPI/crud_mysql_api.dart';
+import '../../../../../controller/firebase/provider/firebase_user_provider.dart';
 import 'add_order_widgets/add_order-floating_botton.dart';
 import 'add_order_widgets/add_order_app_bar.dart';
 import 'add_order_widgets/add_order_category_cards.dart';
@@ -26,7 +29,14 @@ class _AddOrderScreenState extends State<AddOrderScreen> with Crud {
   String? svalue = "-1";
   // datetime picker function
 
-  
+   @override
+  void initState() {
+    super.initState();
+    final user = FirebaseAuth.instance.currentUser;
+    final requestProvider =
+        Provider.of<FirebaseUserProvider>(context, listen: false);
+    requestProvider.fetchUsers();
+  }
 
   @override
   Widget build(BuildContext context) {

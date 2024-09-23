@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:project_for_all/controller/firebase/services/firebase_user_services.dart';
@@ -70,6 +73,20 @@ class FirebaseUserProvider with ChangeNotifier {
       _user = UserModel[0];
       notifyListeners();
     });
+  }
+
+  Future<String?> uploadFile(File file) async {
+    try {
+      final storage = FirebaseStorage.instance
+          .ref()
+          .child('upload/${file.path.split("/").last}');
+      await storage.putFile(file);
+      final downloadUrl = await storage.getDownloadURL();
+      return downloadUrl;
+    } catch (e) {
+      print('error uploading file $e');
+      return null;
+    }
   }
 
   // @override

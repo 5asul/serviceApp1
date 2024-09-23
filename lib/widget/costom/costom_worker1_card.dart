@@ -11,6 +11,7 @@ class Worker1Card extends StatelessWidget {
   final String image;
   final String rank;
   final IconData icon;
+  
   const Worker1Card(
       {super.key,
       required this.name,
@@ -18,7 +19,7 @@ class Worker1Card extends StatelessWidget {
       required this.image,
       required this.rank,
       required this.icon,
-      required this.id});
+      required this.id, });
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,7 @@ class Worker1Card extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                        image: AssetImage(image),
+                        image: NetworkImage(image),
                         fit: BoxFit.cover,
                         alignment: Alignment(1, -0.6))),
               ),
