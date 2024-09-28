@@ -20,18 +20,19 @@ class WorkerProfileScreen extends StatefulWidget {
 }
 
 class _WorkerProfileScreenState extends State<WorkerProfileScreen> {
+
   @override
-  Widget build(BuildContext context) {
-    @override
     void initState() {
       super.initState();
-      final user = FirebaseAuth.instance.currentUser;
+
       final userProvider =
           Provider.of<FirebaseUserProvider>(context, listen: false);
-      final requestProvider =
-          Provider.of<FirebaseRequestProvider>(context, listen: false);
-      userProvider.getUsersStreamById(requestProvider.workerId);
+
+      userProvider.getUsersStreamById(userProvider.workerId);
     }
+  @override
+  Widget build(BuildContext context) {
+    
 
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
@@ -52,7 +53,7 @@ class _WorkerProfileScreenState extends State<WorkerProfileScreen> {
                       child: WorkerProfileCard(
                           name: provider.users[0].username ?? "unknown",
                           numberOfOrders: "10",
-                          image: provider.users[0].profailePic ?? "unknown",
+                          image: provider.users[0].profilePic ?? "unknown",
                           rank: "5.0",
                           icon: Icons.book_rounded),
                     ),
@@ -87,7 +88,7 @@ class _WorkerProfileScreenState extends State<WorkerProfileScreen> {
                           ReviewCard(
                             screenSize: screenSize,
                             name: provider.users[0].username ?? "Unknown",
-                            image: provider.users[0].profailePic ?? "Unknown",
+                            image: provider.users[0].profilePic ?? "Unknown",
                           )
                         ],
                       ),

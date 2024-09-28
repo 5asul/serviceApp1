@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:project_for_all/config/theme/colors_theme.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../config/theme/app_size.dart';
 import '../../../../../../controller/firebase/provider/firebase_user_provider.dart';
 import '../../../../../../widget/costom/costom_worker1_card.dart';
 import '../../../../../state_managment/provider/add_order_provider.dart';
+import 'costom_bottom_sheet_worker_card.dart';
 
 class SelectWorkerBottomSheet extends StatefulWidget {
   @override
@@ -27,12 +29,12 @@ class _SelectWorkerBottomSheetState extends State<SelectWorkerBottomSheet> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: AppSize.width(context) * 0.07,
         vertical: AppSize.height(context) * 0.02,
       ),
       height: AppSize.height(context) * 0.5,
       width: double.infinity,
       decoration: BoxDecoration(
+        color: ColorsTheme().background,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(25),
           topRight: Radius.circular(25),
@@ -54,13 +56,14 @@ class _SelectWorkerBottomSheetState extends State<SelectWorkerBottomSheet> {
           itemBuilder: (BuildContext context, int i) {
             final workers = users[i];
 
-            return Worker1Card(
-                id: workers.firebaseUid ?? 'Unknown',
-                name: workers.username ?? 'Unknown',
-                numberOfOrders: "10",
-                image: workers.profailePic ?? 'Unknown',
-                rank: "5.0",
-                icon: Icons.book_rounded);
+            return BottomSheetWorkerCard(
+              id: workers.firebaseUid ?? 'Unknown',
+              name: workers.username ?? 'Unknown',
+              serviceName: workers.serviceName ?? 'Unknown',
+              image: workers.profilePic ?? 'Unknown',
+              rank: "5.0",
+              location: workers.location ?? 'Unknown',
+            );
           },
         );
       }),

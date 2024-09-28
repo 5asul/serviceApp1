@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:project_for_all/features/screens/auth_screens/register_screens/email_authentication_screen.dart';
 import 'package:project_for_all/features/screens/auth_screens/register_screens/user_register_screen.dart';
 import 'package:project_for_all/features/screens/auth_screens/register_screens/worker_register_screen.dart';
-import 'package:project_for_all/features/screens/user_home_screens/home_page/category_screen/category_base.dart';
+import 'package:project_for_all/features/screens/user_home_screens/home_page/category_screen/all_category_worker.dart';
 import 'package:project_for_all/features/screens/auth_screens/register_screens/select_role_screen.dart';
 import 'package:project_for_all/features/screens/user_home_screens/home_navigation_bar.dart';
 import 'package:project_for_all/features/screens/user_home_screens/home_page/add_order_screen/add_order_screen.dart';
@@ -63,7 +63,7 @@ class AppRoutes {
         return _materialRoute(WorkerHomeNavigationBar());
 
       case 'categoryContainer':
-        return _materialRoute(CategoriesContainerPage());
+        return _materialRoute(AllCategoriesContainerPage());
 
       case 'worker profile':
         return _materialRoute(WorkerProfileScreen());

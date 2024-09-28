@@ -5,10 +5,11 @@ import '../../../../../config/theme/app_size.dart';
 class UsernameAndPhotoSection extends StatelessWidget {
   final String name;
   final String id;
+  final String image;
   const UsernameAndPhotoSection({
     super.key,
     required this.name,
-    required this.id,
+    required this.id, required this.image,
   });
 
   @override
@@ -21,7 +22,7 @@ class UsernameAndPhotoSection extends StatelessWidget {
             margin:
                 EdgeInsets.symmetric(horizontal: AppSize.width(context) * 0.35),
             child: CircleAvatar(
-              foregroundImage: AssetImage('assets/cleaner.jpg'),
+              foregroundImage: NetworkImage(image),
               radius: AppSize.width(context) * 0.15,
             ),
           ),

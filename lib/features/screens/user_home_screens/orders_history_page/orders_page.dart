@@ -3,7 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/orders_navigate_pages/all_orders.dart';
 import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/orders_navigate_pages/cleaning_orders.dart';
 import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/orders_navigate_pages/teaching_orders.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../config/theme/app_size.dart';
+import '../../../../config/theme/colors_theme.dart';
+import '../../../../controller/firebase/provider/firebase_user_provider.dart';
+import '../user_home_screens_widgets/home_screens_appBar.dart';
+import '../user_home_screens_widgets/search_bar_widget.dart';
 import 'orders_history_widgets/orders_nav_bottons.dart';
 
 class OrdersPage extends StatefulWidget {
@@ -15,11 +21,16 @@ class OrdersPage extends StatefulWidget {
 
 class _OrdersPageState extends State<OrdersPage> {
   int i = 0;
-  List<Widget> nav = [AllOrders(), CleaningOrders(), TeachingOrders()];
+  List<Widget> nav = [AllOrders()];
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
+      appBar: HomePageAppBar(
+        context,
+        
+      ),
       body: SingleChildScrollView(
         child: Container(
           child: Column(
@@ -28,25 +39,10 @@ class _OrdersPageState extends State<OrdersPage> {
                 height: screenSize.height * 0.05,
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10),
-                height: 60,
-                width: double.infinity,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 3,
-                  itemBuilder: (BuildContext context, int index) {
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          i = index;
-                        });
-                      },
-                      child: OrdersPageNavBottons(i: i,index: index),
-                    );
-                  },
+                margin: EdgeInsets.symmetric(
+                  horizontal: AppSize.width(context) * 0.03,
                 ),
+                child: SearchBarWidget(),
               ),
               SizedBox(
                 height: screenSize.height * 0.05,
@@ -59,6 +55,8 @@ class _OrdersPageState extends State<OrdersPage> {
     );
   }
 }
+
+
 
 
 

@@ -3,8 +3,9 @@ import 'package:provider/provider.dart';
 
 import '../../../../../config/theme/app_size.dart';
 import '../../../../../config/theme/colors_theme.dart';
-import '../../../../../widget/costom/costom_category_card.dart';
+import 'home_page_sections_widgets/costom_category_card.dart';
 import '../../../../state_managment/provider/add_order_provider.dart';
+import '../category_screen/category_base.dart';
 
 class CategorySection extends StatelessWidget {
   const CategorySection({
@@ -57,40 +58,48 @@ class CategorySection extends StatelessWidget {
                 CategoryCard(
                   name: "Cleaning",
                   workerNumber: "+460 workers",
-                  icon: Icons.cleaning_services,
+                  image: "assets/images/cleaner.png",
                   isSelected:
-                      addOrederProvider.selectedDateAndDay == "Cleaning",
+                      addOrederProvider.selectedCategoryCardName == "Cleaner",
                   onTap: () {
-                    addOrederProvider.selectedDateAndDay = 'Cleaning';
+                    addOrederProvider.selectedCategoryCardName = 'Cleaner';
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context)=>BaseCategoriesContainerPage()));
                   },
                 ),
                 CategoryCard(
                   name: "Teaching",
                   workerNumber: "+300 workers",
-                  icon: Icons.book_rounded,
+                  image:"assets/images/teacher.png" ,
                   isSelected:
-                      addOrederProvider.selectedDateAndDay == "Teaching",
+                      addOrederProvider.selectedCategoryCardName == "Teacher",
                   onTap: () {
-                    addOrederProvider.selectedDateAndDay = 'Teaching';
+                    addOrederProvider.selectedCategoryCardName = 'Teacher';
+                      Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context)=>BaseCategoriesContainerPage()));
                   },
                 ),
                 CategoryCard(
                   name: "Electrical",
                   workerNumber: "+460 workers",
-                  icon: Icons.dry_cleaning,
+                 image:"assets/images/electrical.png" ,
                   isSelected:
-                      addOrederProvider.selectedDateAndDay == "Electrical",
+                      addOrederProvider.selectedCategoryCardName == "Electrical",
                   onTap: () {
-                    addOrederProvider.selectedDateAndDay = 'Electrical';
+                    addOrederProvider.selectedCategoryCardName = 'Electrical';
+                      Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context)=>BaseCategoriesContainerPage()));
                   },
                 ),
                 CategoryCard(
-                  name: "plumper",
+                  name: "Plumbing",
                   workerNumber: "+460 workers",
-                  icon: Icons.dry_cleaning,
-                  isSelected: addOrederProvider.selectedDateAndDay == "plumper",
+                  image:"assets/images/plumber.png" ,
+                  isSelected: addOrederProvider.selectedCategoryCardName == "plumper",
                   onTap: () {
-                    addOrederProvider.selectedDateAndDay = 'plumper';
+                    addOrederProvider.selectedCategoryCardName = 'plumper';
+                      Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context)=>BaseCategoriesContainerPage()));
                   },
                 ),
               ],

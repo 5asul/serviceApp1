@@ -7,6 +7,7 @@ import 'package:project_for_all/config/theme/colors_theme.dart';
 import 'package:project_for_all/controller/firebase/provider/firebase_user_provider.dart';
 import 'package:provider/provider.dart';
 
+import '../user_home_screens_widgets/home_screens_appBar.dart';
 import 'profile_page_widgets/user_profile_container.dart';
 import 'profile_page_widgets/username_and_photo_section.dart';
 
@@ -25,21 +26,23 @@ class _UserProfilePageState extends State<UserProfilePage> {
     final userProvider =
         Provider.of<FirebaseUserProvider>(context, listen: false);
     userProvider.getUsersStreamById(user!.uid);
-    
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: HomePageAppBar(
+        context,
+      ),
       backgroundColor: ColorsTheme().primary,
       body: Stack(
         children: [
           UserProfileContainer(),
           Consumer<FirebaseUserProvider>(
             builder: (context, firebaseUserProvider, _) {
-              final user = firebaseUserProvider.user;
+              final user = firebaseUserProvider.users[0];
               return UsernameAndPhotoSection(
-              
+                image: user.profilePic ?? 'Unknown',
                 name: user.username ?? 'Unknown',
                 id: user.firebaseUid ?? 'Unknown',
               );

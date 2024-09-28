@@ -30,7 +30,7 @@ class StatusBottun extends StatelessWidget {
             focusColor: (status == 'On Going')
                 ? ColorsTheme().primary
                 : (status == 'COMPLETED')
-                    ? ColorsTheme().tertiary
+                    ? ColorsTheme().secondary
                     : Colors.redAccent,
             minWidth: screenSize.width * 0.3,
             height: screenSize.height * 0.045,
@@ -39,7 +39,7 @@ class StatusBottun extends StatelessWidget {
                 ? (status == 'On Going')
                     ? ColorsTheme().primary
                     : (status == 'COMPLETED')
-                        ? ColorsTheme().tertiary
+                        ? ColorsTheme().secondary
                         : Colors.redAccent
                 : null,
             shape: RoundedRectangleBorder(
@@ -48,7 +48,7 @@ class StatusBottun extends StatelessWidget {
                   color: (status == 'On Going')
                       ? ColorsTheme().primary
                       : (status == 'COMPLETED')
-                          ? ColorsTheme().tertiary
+                          ? ColorsTheme().secondary
                           : Colors.redAccent,
                 )),
             child: Text(
@@ -57,11 +57,11 @@ class StatusBottun extends StatelessWidget {
                   fontSize: screenSize.width * 0.030,
                   fontWeight: FontWeight.bold,
                   color: (isSelected)
-                      ? ColorsTheme().white
+                      ? ColorsTheme().background
                       : (status == 'On Going')
                           ? ColorsTheme().primary
                           : (status == 'COMPLETED')
-                              ? ColorsTheme().tertiary
+                              ? ColorsTheme().secondary
                               : Colors.redAccent),
             ),
           ),

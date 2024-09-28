@@ -12,7 +12,7 @@ AppBar HomePageAppBar(BuildContext context, String screenName) {
         onPressed: () {},
       ),
       centerTitle: true,
-      title: Text(screenName),
+      title: Text(screenName), 
       actions: [
         IconButton(
           icon: Icon(Icons.exit_to_app),

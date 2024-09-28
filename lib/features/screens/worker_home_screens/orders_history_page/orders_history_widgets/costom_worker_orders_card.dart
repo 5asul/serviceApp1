@@ -3,7 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:project_for_all/config/theme/app_size.dart';
 import 'package:project_for_all/controller/firebase/provider/firebase_request_provider.dart';
+import 'package:project_for_all/features/screens/user_home_screens/home_page/category_screen/worker_profile_screen/chat_with_worker_screen.dart';
 import 'package:project_for_all/features/screens/worker_home_screens/orders_history_page/orders_history_widgets/status_button.dart';
+import 'package:project_for_all/models/requests_model.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../config/theme/colors_theme.dart';
@@ -20,9 +22,9 @@ class WorkerOrdersCard extends StatelessWidget {
     required this.selectedCardId,
     required this.cancel,
     required this.update,
-    required this.idIsEqual,
+    required this.idIsEqual, required this.requestsModel,
   });
-
+  final RequestsModel requestsModel;
   final Size screenSize;
   final String workDescription;
   final String location;
@@ -109,18 +111,23 @@ class WorkerOrdersCard extends StatelessWidget {
                                   ),
                                 ),
                                 Container(
-                                  
                                   child: IconButton(
-                                    
                                     onPressed: () {
-                                      Navigator.of(context).pushNamed('chat with worker screen');
+                                      // Navigator.of(context).pushNamed('chat with worker screen');
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  MessageScreen(
+                                                    requestsModel: requestsModel,
+                                                  )));
                                     },
-                                    icon:Icon(Icons.chat,
-                                    size: screenSize.width * 0.07,
-                                    color: ColorsTheme().primary,),
-                                    
-                                    
-                                  ),)
+                                    icon: Icon(
+                                      Icons.chat,
+                                      size: screenSize.width * 0.07,
+                                      color: ColorsTheme().primary,
+                                    ),
+                                  ),
+                                )
                               ],
                             ),
                           ),

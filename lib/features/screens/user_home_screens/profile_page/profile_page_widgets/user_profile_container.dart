@@ -20,7 +20,7 @@ class UserProfileContainer extends StatelessWidget {
       width: AppSize.width(context) * 1.0,
       height: AppSize.height(context) * 1.0,
       decoration: BoxDecoration(
-          color: ColorsTheme().white,
+          color: ColorsTheme().background,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(AppSize.width(context) * 0.15),
               topRight: Radius.circular(AppSize.width(context) * 0.15))),

@@ -33,14 +33,14 @@ class _TeachingOrdersState extends State<TeachingOrders> {
     var screenSize = MediaQuery.of(context).size;
     return Consumer<FirebaseRequestProvider>(
         builder: (context, requestData, _) {
-      final cleaningRequestData = requestData.requests
-          .where((request) => request.serviceType == "Cleaning").toList();
+      final teachingRequestData = requestData.requests
+          .where((request) => request.serviceType == "Teaching").toList();
       return ListView.builder(
         physics: BouncingScrollPhysics(),
         shrinkWrap: true,
-        itemCount: requestData.requests.length,
+        itemCount: teachingRequestData.length,
         itemBuilder: ((context, index) {
-          final request = cleaningRequestData[index];
+          final request = teachingRequestData[index];
           final reviewProvider =
               Provider.of<FirebaseReviewProvider>(context, listen: false);
           final requestProvider =

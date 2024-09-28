@@ -6,6 +6,7 @@ import 'package:project_for_all/controller/firebase/provider/firebase_user_provi
 import 'config/root/app_root.dart';
 
 import 'config/root/app_root.dart';
+import 'controller/firebase/provider/api_user_provider.dart';
 import 'controller/firebase/provider/firebaes_review_provider.dart';
 import 'controller/firebase/provider/firebase_request_provider.dart';
 
@@ -60,6 +61,9 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider<FirebaseUserProvider>(
             create: (_) => FirebaseUserProvider()),
 
+        ChangeNotifierProvider<ApiUserProvider>(
+          create: (_) => ApiUserProvider(),
+        ),
         ChangeNotifierProvider<FirebaseReviewProvider>(
           create: (_) => FirebaseReviewProvider(),
         ),

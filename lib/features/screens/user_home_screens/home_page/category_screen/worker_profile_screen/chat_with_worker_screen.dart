@@ -18,8 +18,7 @@ class ChatWithWorkerScreen extends StatefulWidget {
   State<ChatWithWorkerScreen> createState() => _ChatWithWorkerScreenState();
 }
 
-class _ChatWithWorkerScreenState extends State<ChatWithWorkerScreen>
-    {
+class _ChatWithWorkerScreenState extends State<ChatWithWorkerScreen> {
   final List<types.Message> _messages = [];
   final _user = const types.User(id: '82091008-a484-4a89-ae75-a22bf8d6f3ac');
   bool translate_state = true;
@@ -38,7 +37,7 @@ class _ChatWithWorkerScreenState extends State<ChatWithWorkerScreen>
         centerTitle: true,
         title: Text(
           'Chat with Worker',
-          style: TextStyle(color: ColorsTheme().white),
+          style: TextStyle(color: ColorsTheme().background),
         ),
       ),
       body: Chat(
@@ -110,7 +109,6 @@ class _ChatWithWorkerScreenState extends State<ChatWithWorkerScreen>
   }
 }
 
-
 // -----------------------------------------------------
 class MessageScreen extends StatefulWidget {
   final RequestsModel? requestsModel;
@@ -127,6 +125,7 @@ class _MessageScreenState extends State<MessageScreen> {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseMessagingProvider.fetchUserData(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Massage Screen '),
@@ -135,7 +134,8 @@ class _MessageScreenState extends State<MessageScreen> {
         children: [
           Expanded(
             child: StreamBuilder(
-              stream: FirebaseMessagingProvider.getAllMessages(widget.requestsModel!),
+              stream: FirebaseMessagingProvider.getAllMessages(
+                  widget.requestsModel!),
               builder: (context, snapshot) {
                 switch (snapshot.connectionState) {
                   case ConnectionState.waiting:
@@ -145,10 +145,10 @@ class _MessageScreenState extends State<MessageScreen> {
                   case ConnectionState.done:
                     final data = snapshot.data!.docs;
                     _list = data
-                            .map(
-                              (e) => MessageModel.fromJson(e.data()),
-                            )
-                            .toList();
+                        .map(
+                          (e) => MessageModel.fromJson(e.data()),
+                        )
+                        .toList();
 
                     if (_list.isNotEmpty) {
                       return ListView.builder(

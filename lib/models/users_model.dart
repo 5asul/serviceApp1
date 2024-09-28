@@ -4,7 +4,7 @@ class UserModel {
   String? email;
   String? password;
   String? phone;
-  String? profailePic;
+  String? profilePic;
   String? workerIdPicture;
   String? serviceName;
   String? role;
@@ -18,7 +18,7 @@ class UserModel {
     this.email,
     this.password,
     this.phone,
-    this.profailePic,
+    this.profilePic,
     this.workerIdPicture,
     this.serviceName,
     this.role,
@@ -31,7 +31,7 @@ class UserModel {
     email = json['email'];
     password = json['password'];
     phone = json['phone'];
-    profailePic = json['profailePic'];
+    profilePic = json['profailePic'];
     workerIdPicture = json['workerIdPicture'];
     role = json['role'];
     serviceName = json['serviceName'];
@@ -46,7 +46,7 @@ class UserModel {
     data['email'] = this.email;
     data['password'] = this.password;
     data['phone'] = this.phone;
-    data['profailePic'] = this.profailePic;
+    data['profailePic'] = this.profilePic;
     data['workerIdPicture'] = this.workerIdPicture;
     data['role'] = this.role;
     data['serviceName'] = this.serviceName;

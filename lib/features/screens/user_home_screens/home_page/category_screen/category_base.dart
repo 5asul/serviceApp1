@@ -1,32 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:project_for_all/controller/firebase/provider/firebase_user_provider.dart';
 
-import 'package:project_for_all/features/screens/user_home_screens/home_page/category_screen/category_pages/all_worker.dart';
-import 'package:project_for_all/features/screens/user_home_screens/home_page/category_screen/category_pages/cleaning_workers.dart';
-import 'package:project_for_all/features/screens/user_home_screens/home_page/category_screen/category_pages/teaching_workers.dart';
+import 'package:project_for_all/features/state_managment/provider/add_order_provider.dart';
+import 'package:project_for_all/widget/costom/costom_worker1_card.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../config/theme/app_size.dart';
 import '../../../../../config/theme/colors_theme.dart';
+import '../../user_home_screens_widgets/search_bar_widget.dart';
 
-class CategoriesContainerPage extends StatefulWidget {
-  const CategoriesContainerPage({super.key});
+class BaseCategoriesContainerPage extends StatefulWidget {
+  const BaseCategoriesContainerPage({super.key});
 
   @override
-  State<CategoriesContainerPage> createState() =>
-      _CategoriesContainerPageState();
+  State<BaseCategoriesContainerPage> createState() =>
+      _BaseCategoriesContainerPageState();
 }
 
-class _CategoriesContainerPageState extends State<CategoriesContainerPage> {
-  int i = 0;
-  List<Widget> nav = [AllWorkers(), CleaningWorkers(), TeachingWorkers()];
+class _BaseCategoriesContainerPageState
+    extends State<BaseCategoriesContainerPage> {
+  @override
+  void initState() {
+    super.initState();
+    final usersProvider =
+        Provider.of<FirebaseUserProvider>(context, listen: false);
+    usersProvider.fetchUsers();
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: ColorsTheme().background,
       appBar: AppBar(
+        backgroundColor: ColorsTheme().background,
         leading: InkWell(
           onTap: () {
-            Navigator.of(context)
-                .pop();
+            Navigator.of(context).pop();
           },
           child: Icon(
             Icons.arrow_back,
@@ -39,52 +49,48 @@ class _CategoriesContainerPageState extends State<CategoriesContainerPage> {
         ),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: AppSize.height(context) * 0.05,
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 10),
-              height: 60,
-              width: double.infinity,
-              child: ListView.builder(
+      body: Consumer<FirebaseUserProvider>(builder: (context, userProvider, _) {
+        final watchProvider = context.watch<AddOrderProvider>();
+
+        final users = userProvider.users
+            .where((user) =>
+                user.role == 'worker' &&
+                user.serviceName == watchProvider.selectedCategoryCardName)
+            .toList();
+        return Container(
+          child: Column(
+            children: [
+              SizedBox(
+                height: AppSize.height(context) * 0.04,
+              ),
+              Container(
+                  margin: EdgeInsets.symmetric(
+                      horizontal: AppSize.width(context) * 0.04),
+                  child: SearchBarWidget()),
+              SizedBox(
+                height: AppSize.height(context) * 0.05,
+              ),
+              ListView.builder(
                 physics: BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                itemCount: 3,
-                itemBuilder: (BuildContext context, int index) {
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        i = index;
-                      });
-                    },
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          border: Border.all(
-                              color: i == index
-                                  ? ColorsTheme().primary
-                                  : ColorsTheme().primary.withOpacity(0.3))),
-                      child: Text(
-                        "${WorkerCategory[index]}",
-                        style: TextStyle(color: i == index ? ColorsTheme().primary : ColorsTheme().primary),
-                      ),
-                    ),
+                shrinkWrap: true,
+                itemCount: users.length,
+                itemBuilder: (BuildContext context, int i) {
+                  final workers = users[i];
+
+                  return Worker1Card(
+                    id: workers.firebaseUid ?? 'Unknown',
+                    name: workers.username ?? 'Unknown',
+                    serviceName: workers.serviceName ?? 'Unknown',
+                    image: workers.profilePic ?? 'Unknown',
+                    rank: "5.0",
+                    location: workers.location ?? 'Unknown',
                   );
                 },
               ),
-            ),
-            SizedBox(
-              height: AppSize.height(context) * 0.05,
-            ),
-            nav.elementAt(i)
-          ],
-        ),
-      ),
+            ],
+          ),
+        );
+      }),
     );
   }
 }

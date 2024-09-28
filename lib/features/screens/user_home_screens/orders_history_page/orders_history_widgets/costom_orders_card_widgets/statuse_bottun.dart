@@ -32,13 +32,15 @@ class OrdersStatusBottun extends StatelessWidget {
           minWidth: screenSize.width * 0.3,
           height: screenSize.height * 0.045,
           onPressed: selectedStatusButton,
-          color: (status == 'On Going')
-              ? ColorsTheme().primary
-              : (status == 'COMPLETED')
-                  ? ColorsTheme().tertiary
-                  : Colors.redAccent,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30)),
+          color: (status == 'PENDING')
+              ? ColorsTheme().dark
+              : (status == 'On Going')
+                  ? ColorsTheme().secondary
+                  : (status == 'COMPLETED')
+                      ? ColorsTheme().primary
+                      : Colors.redAccent,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           child: (isSelected)
               ? AnimatedOpacity(
                   opacity: isSelected ? 1.0 : 0.0,
@@ -56,7 +58,7 @@ class OrdersStatusBottun extends StatelessWidget {
                       IconButton(
                         icon: Icon(
                           Icons.edit,
-                          color: ColorsTheme().white,
+                          color: ColorsTheme().background,
                           size: screenSize.width * 0.07,
                         ),
                         onPressed: update,

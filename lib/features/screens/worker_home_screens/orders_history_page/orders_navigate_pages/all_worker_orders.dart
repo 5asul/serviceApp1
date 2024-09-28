@@ -31,13 +31,11 @@ class _AllWorkerOrdersState extends State<AllWorkerOrders> {
     requestProvider.getWorkerRequestsStreamById(user!.uid);
   }
 
-
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Consumer<FirebaseRequestProvider>(
         builder: (context, requestData, _) {
-          
       return ListView.builder(
         physics: BouncingScrollPhysics(),
         shrinkWrap: true,
@@ -49,6 +47,7 @@ class _AllWorkerOrdersState extends State<AllWorkerOrders> {
           final requestProvider =
               Provider.of<FirebaseRequestProvider>(context, listen: false);
           return WorkerOrdersCard(
+            requestsModel: request,
             screenSize: screenSize,
             workDescription: request.workDescription ?? 'Unknown',
             location: request.location ?? 'Unknown',
@@ -105,5 +104,3 @@ class _AllWorkerOrdersState extends State<AllWorkerOrders> {
     });
   }
 }
-
-

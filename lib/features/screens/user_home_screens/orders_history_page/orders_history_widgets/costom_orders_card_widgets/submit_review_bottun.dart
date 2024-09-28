@@ -61,13 +61,13 @@ class SubmitReviewBottun extends StatelessWidget {
             children: [
               Icon(
                 Icons.send,
-                color: ColorsTheme().white,
+                color: ColorsTheme().background,
               ),
               SizedBox(width: 10),
               Text(
                 'Submit',
                 style: TextStyle(
-                  color: ColorsTheme().white,
+                  color: ColorsTheme().background,
                 ),
               )
             ],

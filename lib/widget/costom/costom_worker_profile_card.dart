@@ -96,7 +96,8 @@ class WorkerProfileCard extends StatelessWidget {
                       fontSize: 30.0,
                       fontWeight: FontWeight.bold
                   ),
-                )
+                ),
+              
             ),
             Positioned(
                 top: screenSize.height*0.3,

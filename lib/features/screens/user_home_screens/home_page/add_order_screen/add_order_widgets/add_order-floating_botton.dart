@@ -36,7 +36,7 @@ class AddOrderFloatingBotton extends StatelessWidget {
           location: sharedPref.getString('location'),
           serviceType: watchOrder.selectedCategoryCardName,
           workDescription: watchOrder.workDescriptionController.text,
-          status: 'CANCELED',
+          status: 'PENDING',
           timeStamp:
               'date:${watchOrder.selectedDateAndDay} at ${watchOrder.selectedTime}',
         );
@@ -70,7 +70,10 @@ class AddOrderFloatingBotton extends StatelessWidget {
               context.read<AddOrderProvider>().workDescriptionController.text =
                   '';
               context.read<AddOrderProvider>().selectedTime = '';
-              Navigator.pop(context);
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                'user home screen',
+                (route) => false,
+              );
             },
           );
         }, // Define the onPressed event

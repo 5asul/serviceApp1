@@ -4,6 +4,10 @@ import 'package:project_for_all/features/screens/user_home_screens/orders_histor
 import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/orders_navigate_pages/cleaning_orders.dart';
 import 'package:project_for_all/features/screens/user_home_screens/orders_history_page/orders_navigate_pages/teaching_orders.dart';
 
+import '../../../../config/theme/app_size.dart';
+import '../worker_home_screens_widgets/base_worker_home_screens_appBar.dart';
+import '../worker_home_screens_widgets/custom_worker_drawer.dart';
+import '../worker_home_screens_widgets/worker_search_bar_widget.dart';
 import 'orders_history_widgets/orders_nav_bottons.dart';
 import 'orders_navigate_pages/all_worker_orders.dart';
 
@@ -15,15 +19,24 @@ class WorkerOrdersPage extends StatefulWidget {
 }
 
 class _WorkerOrdersPageState extends State<WorkerOrdersPage> {
-  
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
+      drawer:WorkerDrawerWidget(),
+      appBar: BaseWorkerHomePageAppBar(
+        context,
+      ),
       body: SingleChildScrollView(
         child: Container(
-          child:AllWorkerOrders()
-         
+          child: Column(
+            children: [
+              SizedBox(
+                height: screenSize.height * 0.05,
+              ),
+              AllWorkerOrders()
+            ],
+          ),
         ),
       ),
     );

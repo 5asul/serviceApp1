@@ -28,7 +28,7 @@ class CostomUserProfileTile extends StatelessWidget {
               width: AppSize.width(context) * 0.17,
               height: AppSize.height(context) * 0.09,
               decoration: BoxDecoration(
-                  color: ColorsTheme().tertiary,
+                  color: ColorsTheme().secondary,
                   borderRadius:
                       BorderRadius.circular(AppSize.width(context) * 0.06)),
               child: Icon(

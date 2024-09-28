@@ -3,8 +3,10 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:project_for_all/controller/firebase/provider/api_user_provider.dart';
 
 import 'package:project_for_all/main.dart';
+import 'package:project_for_all/models/api_users_model.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../config/theme/colors_theme.dart';
@@ -24,6 +26,7 @@ class _UserRegisterButtonState extends State<UserRegisterButton> {
   Future<void> addRegisterInfo() async {
     final user = FirebaseAuth.instance.currentUser;
     try {
+      final apiProvider = Provider.of<ApiUserProvider>(context, listen: false);
       final userProvider =
           Provider.of<FirebaseUserProvider>(context, listen: false);
       String? uplode;
@@ -32,6 +35,7 @@ class _UserRegisterButtonState extends State<UserRegisterButton> {
 
         uplode = await userProvider.uploadFile(file);
       }
+
       UserModel newUser = await UserModel(
         firebaseUid: user!.uid,
         username: userProvider.usernameController.text,
@@ -41,11 +45,29 @@ class _UserRegisterButtonState extends State<UserRegisterButton> {
         location: sharedPref.getString('location'),
         role: sharedPref.getString('role'),
         serviceName: sharedPref.getString('serviceName') ?? 'unknown',
-        profailePic: uplode ?? null,
+        profilePic: uplode ?? null,
         workerIdPicture:
             userProvider.workerIdPictureController.text ?? 'unknown',
       );
-      return userProvider.addUser(newUser);
+      ApiUserModel apiUserModel = ApiUserModel(
+        firebaseUid: user.uid,
+        id: 0,
+        username: userProvider.usernameController.text,
+        email: sharedPref.getString('email'),
+        phone: userProvider.phoneController.text,
+        location: sharedPref.getString('location'),
+        role: sharedPref.getString('role'),
+        skills: sharedPref.getString('serviceName') ?? 'unknown',
+        profilePic: uplode ?? null,
+        workerIdPicture:
+            userProvider.workerIdPictureController.text ?? 'unknown',
+      );
+      await userProvider.addUser(newUser).then(
+        (value) async {
+          await apiProvider.addUser(apiUserModel);
+        },
+      );
+      return;
     } catch (e) {
       print(e);
     }

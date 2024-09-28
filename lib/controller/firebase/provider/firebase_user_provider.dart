@@ -16,6 +16,13 @@ class FirebaseUserProvider with ChangeNotifier {
   UserModel _user = UserModel();
   UserModel get user => _user;
 
+  String _workerId = '';
+  String get workerId => _workerId;
+  set workerId(String value) {
+    _workerId = value;
+    notifyListeners();
+  }
+
   TextEditingController _usernameController = TextEditingController();
   TextEditingController get usernameController => _usernameController;
   set UsernameController(TextEditingController value) {
@@ -53,7 +60,7 @@ class FirebaseUserProvider with ChangeNotifier {
     });
   }
 
-  void addUser(UserModel model) async {
+  Future<void> addUser(UserModel model) async {
     await _userService.addUser(model);
     notifyListeners();
   }

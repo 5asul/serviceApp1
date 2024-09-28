@@ -1,11 +1,21 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:path/path.dart';
 import 'package:project_for_all/config/theme/app_size.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:project_for_all/controller/firebase/provider/firebase_user_provider.dart';
+import 'package:project_for_all/features/screens/user_home_screens/user_home_screens_widgets/base_home_screens_appBar.dart';
+import 'package:provider/provider.dart';
 import '../../../../config/theme/colors_theme.dart';
-import 'home_page_widgets/best_workers_section.dart';
+import '../user_home_screens_widgets/custom_drawer.dart';
+import '../user_home_screens_widgets/custom_list_tile.dart';
+import 'home_page_widgets/top_rated_section.dart';
 import 'home_page_widgets/category_section.dart';
-import 'home_page_widgets/top_three_cards.dart';
+import 'home_page_widgets/top_card_section.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,97 +23,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _MyAppState extends State<HomePage> {
-  late double latitude;
-  late double longitude;
-  _determinePosition() async {
-    bool serviceEnabled;
-    LocationPermission permission;
-    print("tapped");
-    // Test if location services are enabled.
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      // Location services are not enabled don't continue
-      // accessing the position and request users of the
-      // App to enable the location services.
-      return Future.error('Location services are disabled.');
-    }
-
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        // Permissions are denied, next time you could try
-        // requesting permissions again (this is also where
-        // Android's shouldShowRequestPermissionRationale
-        // returned true. According to Android guidelines
-        // your App should show an explanatory UI now.
-        return Future.error('Location permissions are denied');
-      }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      // Permissions are denied forever, handle appropriately.
-      return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
-    }
-    if (permission == LocationPermission.whileInUse) {
-      Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
-      latitude = position.latitude;
-      longitude = position.longitude;
-    }
-  }
-
-  _getAddressFromLatLng(double latitude, double longitude) async {
-    try {
-      List<Placemark> placemarks =
-          await placemarkFromCoordinates(latitude, longitude);
-      if (placemarks.isNotEmpty) {
-        Placemark placemark = placemarks[0];
-        String address =
-            '${placemark.street}, ${placemark.locality}, ${placemark.postalCode}, ${placemark.country}';
-        print(address);
-        return address;
-      }
-    } catch (e) {
-      print('Error getting address: $e');
-    }
-    return null;
-  }
-
-  void getLocation() async {
-    await Geolocator.checkPermission();
-    await Geolocator.requestPermission();
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-    print(position);
-  }
-
   @override
   Widget build(BuildContext context) {
+    @override
+    void initState() {
+      super.initState();
+      final usersProvider =
+          Provider.of<FirebaseUserProvider>(context, listen: false);
+      usersProvider.fetchUsers();
+    }
+
+    final provider = Provider.of<FirebaseUserProvider>(context, listen: false);
+    final user = provider.users[0];
     return Scaffold(
+      drawer: DrawerWidget(),
+      backgroundColor: ColorsTheme().background,
+      appBar: BaseHomePageAppBar(context),
       body: Column(
         children: [
-          Container(
-            padding: EdgeInsets.only(left: 10, right: 10, top: 10.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20.0),
-                  bottomRight: Radius.circular(20.0)),
-              color: ColorsTheme().primary,
-            ),
-            child: Column(
-              children: [
-                SearchBar(
-                  leading: Icon(Icons.search),
-                  hintText: 'Search for services...',
-                ),
-                SizedBox(
-                  height: AppSize.height(context) * 0.03,
-                )
-              ],
-            ),
-          ),
           SizedBox(
             height: AppSize.height(context) * 0.02,
           ),

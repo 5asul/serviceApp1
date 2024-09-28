@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:project_for_all/controller/firebase/provider/firebase_user_provider.dart';
 import 'package:project_for_all/models/message_model.dart';
 import 'package:project_for_all/models/requests_model.dart';
 import 'package:project_for_all/models/users_model.dart';
+import 'package:provider/provider.dart';
 
 class FirebaseMessagingProvider with ChangeNotifier {
   static FirebaseAuth auth = FirebaseAuth.instance;
@@ -18,17 +20,23 @@ class FirebaseMessagingProvider with ChangeNotifier {
 
   // useful for getting conversation id
 
-  static String getConversationID(String id) => user.uid.hashCode <= id.hashCode
-      ? '${user.uid}_$id'
-      : '${id}_${user.uid}';
+  static fetchUserData(BuildContext context) {
+    final provider = Provider.of<FirebaseUserProvider>(context, listen: false);
+    me = provider.users[0];
+  }
+
+  static String getConversationID(String id) =>
+      //  user.uid.hashCode <= id.hashCode
+      //     ?
+      '${user.uid}_$id';
+  // : '${id}_${user.uid}';
 
   static Stream<QuerySnapshot<Map<String, dynamic>>> getAllMessages(
       RequestsModel requestsModel) {
     return firestore
         .collection('requests')
         .doc(requestsModel.docid)
-        .collection(
-            'chats/${getConversationID(requestsModel.workerId!)}/messages/')
+        .collection('chats/${requestsModel.docid}/messages/')
         .snapshots();
   }
 
@@ -73,8 +81,7 @@ class FirebaseMessagingProvider with ChangeNotifier {
     final ref = firestore
         .collection('requests')
         .doc(requestsModel.docid)
-        .collection(
-            'chats/${getConversationID(requestsModel.requestId!)}/messages/');
+        .collection('chats/${requestsModel.docid}/messages/');
     await ref.doc(time).set(message.toJson());
   }
 }
