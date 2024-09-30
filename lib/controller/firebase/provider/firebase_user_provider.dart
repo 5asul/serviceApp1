@@ -13,6 +13,11 @@ class FirebaseUserProvider with ChangeNotifier {
   List<UserModel> _users = [];
   List<UserModel> get users => _users;
 
+  List<UserModel> _reviewUsers = [];
+  List<UserModel> get reviewUsers => _reviewUsers;
+
+
+
   UserModel _user = UserModel();
   UserModel get user => _user;
 
@@ -59,6 +64,12 @@ class FirebaseUserProvider with ChangeNotifier {
       notifyListeners();
     });
   }
+  void fetchReviewUsers() {
+    _userService.getUsersStream().listen((UserModel) {
+       _reviewUsers = UserModel;
+      notifyListeners();
+    });
+  }
 
   Future<void> addUser(UserModel model) async {
     await _userService.addUser(model);
@@ -81,6 +92,7 @@ class FirebaseUserProvider with ChangeNotifier {
       notifyListeners();
     });
   }
+ 
 
   Future<String?> uploadFile(File file) async {
     try {

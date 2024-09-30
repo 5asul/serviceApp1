@@ -28,8 +28,10 @@ class SubmitReviewBottun extends StatelessWidget {
         var random = Random().nextDouble() * 535.59;
         // var random = Random().nextDouble() * 535.59;
         ReviewsModel newReview = ReviewsModel(
+          clientId: user!.uid ,
           requestId: reviewProvider.requestId,
           reviewId: random.toString(),
+          workerId: reviewProvider.workerId,
           rating: reviewProvider.ratingValue,
           comment: reviewProvider.comment,
           likes: 0,

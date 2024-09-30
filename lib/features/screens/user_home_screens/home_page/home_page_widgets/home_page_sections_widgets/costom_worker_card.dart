@@ -1,28 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:project_for_all/config/theme/app_size.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../../config/theme/colors_theme.dart';
+import '../../../../../../controller/firebase/provider/firebase_user_provider.dart';
 
 class WorkerCard extends StatelessWidget {
+  final String id;
   final String name;
-  final String numberOfOrders;
+  final String location;
+  final String serviceName;
   final String image;
   final String rank;
-  final IconData icon;
   const WorkerCard(
       {super.key,
       required this.name,
-      required this.numberOfOrders,
-      required this.image,
-      required this.rank,
-      required this.icon});
+    required this.image,
+    required this.rank,
+    required this.id,
+    required this.serviceName,
+    required this.location,});
 
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     bool isHovered = false;
+    final userProvider =
+        Provider.of<FirebaseUserProvider>(context, listen: false);
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        userProvider.workerId = id;
+        Navigator.of(context).pushNamed('worker profile');
+      },
       child: Container(
         width: screenSize.width * 1.0,
         height: screenSize.height * 0.2,
@@ -49,8 +58,8 @@ class WorkerCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(
                               AppSize.width(context) * 0.05),
                           image: DecorationImage(
-                              image: AssetImage(
-                                "assets/teacher.jpg",
+                              image: NetworkImage(
+                                image,
                               ),
                               fit: BoxFit.cover)),
 
@@ -67,7 +76,7 @@ class WorkerCard extends StatelessWidget {
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              'Ahmed Mubarak',
+                              name,
                               style: TextStyle(
                                   color: ColorsTheme().primary,
                                   fontSize: AppSize.width(context) * 0.05,
@@ -89,7 +98,7 @@ class WorkerCard extends StatelessWidget {
                                       left: AppSize.width(context) * 0.015,
                                       right: AppSize.width(context) * 0.015),
                                   child: Text(
-                                    "Teacher",
+                                    serviceName,
                                     style: TextStyle(
                                       fontSize: screenSize.width * 0.03,
                                       fontWeight: FontWeight.bold,
@@ -115,7 +124,7 @@ class WorkerCard extends StatelessWidget {
                                   Container(
                                     width: screenSize.width * 0.3,
                                     child: Text(
-                                      "679 Eagle Crest Alley",
+                                      location,
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                         fontSize: screenSize.width * 0.035,

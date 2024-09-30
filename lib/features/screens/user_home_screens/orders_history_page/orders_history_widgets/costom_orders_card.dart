@@ -28,7 +28,7 @@ class OrdersCard extends StatelessWidget {
     required this.selectedStatusButton,
     required this.cancel,
     required this.requestsModel,
-    required this.addReview,
+    required this.addReview, required this.workerImage,
   });
   final RequestsModel requestsModel;
   final Size screenSize;
@@ -38,6 +38,7 @@ class OrdersCard extends StatelessWidget {
   final String date;
   final String status;
   final bool isSelected;
+  final String workerImage;
   final void Function() cancel;
   final void Function() selectedStatusButton;
   final void Function() update;
@@ -74,7 +75,7 @@ class OrdersCard extends StatelessWidget {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
-                                image: AssetImage('assets/teacher.jpg'),
+                                image: NetworkImage(workerImage),
                                 fit: BoxFit.cover,
                                 alignment: Alignment(1, -0.6))),
                       ),

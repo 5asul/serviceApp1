@@ -40,6 +40,13 @@ class FirebaseReviewProvider with ChangeNotifier {
     _requestId = value;
     notifyListeners();
   }
+
+  String _workerId = '';
+  String get workerId => _workerId;
+  set workerId(String value) {
+    _workerId = value;
+    notifyListeners();
+  }
   
   List<ReviewsModel> _reviews = [];
   List<ReviewsModel> get reviews => _reviews;
@@ -71,7 +78,7 @@ class FirebaseReviewProvider with ChangeNotifier {
 
   void getReviewsStreamById(reviewId) {
     _reviewsServices.getReviewsStreamById(reviewId).listen((ReviewsModel) {
-      _review = ReviewsModel[0];
+      _reviews = ReviewsModel;
       notifyListeners();
     });
   }

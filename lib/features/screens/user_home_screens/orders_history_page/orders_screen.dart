@@ -17,7 +17,8 @@ class OrdersScreen extends StatefulWidget {
 
 class _OrdersScreenState extends State<OrdersScreen> {
   int i = 0;
-  List<Widget> nav = [AllOrders(), CleaningOrders(), TeachingOrders()];
+  List<Widget> nav = [AllOrders(),];
+  // List<Widget> nav = [AllOrders(), CleaningOrders(), TeachingOrders()];
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;

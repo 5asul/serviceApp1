@@ -104,7 +104,7 @@ class _EmailAuthenticationButtonState extends State<EmailAuthenticationButton> {
       width: double.infinity,
       color: ColorsTheme().primary,
       child: Consumer<ServiceAppProvider>(
-        builder: (context, provider, child) {
+        builder: (context, provider, _) {
           return MaterialButton(
             onPressed: provider.isLoading ? null : _signUp,
             child: provider.isLoading

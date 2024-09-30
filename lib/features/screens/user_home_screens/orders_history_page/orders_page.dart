@@ -29,7 +29,6 @@ class _OrdersPageState extends State<OrdersPage> {
     return Scaffold(
       appBar: HomePageAppBar(
         context,
-        
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -47,7 +46,7 @@ class _OrdersPageState extends State<OrdersPage> {
               SizedBox(
                 height: screenSize.height * 0.05,
               ),
-              nav.elementAt(i)
+              AllOrders()
             ],
           ),
         ),

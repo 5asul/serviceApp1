@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:project_for_all/widget/costom/costom_review_card.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../../controller/firebase/provider/firebaes_review_provider.dart';
 import '../../../../../../controller/firebase/provider/firebase_request_provider.dart';
 import '../../../../../../controller/firebase/provider/firebase_user_provider.dart';
 import '../../../../../../widget/costom/costom_worker_profile_card.dart';
@@ -27,8 +28,11 @@ class _WorkerProfileScreenState extends State<WorkerProfileScreen> {
 
       final userProvider =
           Provider.of<FirebaseUserProvider>(context, listen: false);
+      
 
       userProvider.getUsersStreamById(userProvider.workerId);
+      
+      
     }
   @override
   Widget build(BuildContext context) {
@@ -44,8 +48,9 @@ class _WorkerProfileScreenState extends State<WorkerProfileScreen> {
         child: Container(
             padding: EdgeInsets.only(bottom: screenSize.height * 0.1),
             decoration: BoxDecoration(color: Colors.white),
-            child: Consumer<FirebaseUserProvider>(
-              builder: (context, provider, _) {
+            child: Consumer2<FirebaseUserProvider,FirebaseRequestProvider>(
+              builder: (context, provider,request, _) {
+                
                 return Column(
                   children: [
                     Container(
@@ -86,9 +91,9 @@ class _WorkerProfileScreenState extends State<WorkerProfileScreen> {
                             endIndent: screenSize.width * 0.05,
                           ),
                           ReviewCard(
+                            
                             screenSize: screenSize,
-                            name: provider.users[0].username ?? "Unknown",
-                            image: provider.users[0].profilePic ?? "Unknown",
+                           
                           )
                         ],
                       ),

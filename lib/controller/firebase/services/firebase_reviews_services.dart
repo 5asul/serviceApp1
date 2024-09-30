@@ -16,10 +16,10 @@ class FirebaseReviewsServices {
     });
   }
 
-  Stream<List<ReviewsModel>> getReviewsStreamById(String requestId) {
+  Stream<List<ReviewsModel>> getReviewsStreamById(String workerId) {
     return _reviewsReference.snapshots().map((snapshot) {
       return snapshot.docs
-          .where((requestId) => 'reviewId' == requestId)
+          .where((doc) => doc['workerId'] == workerId)
           .map((doc) => ReviewsModel.fromJson(
               doc.data() as Map<String, dynamic>, doc.id))
           .toList();

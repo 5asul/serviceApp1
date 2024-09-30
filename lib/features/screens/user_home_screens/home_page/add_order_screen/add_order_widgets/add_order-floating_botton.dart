@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../../../config/theme/app_size.dart';
 import '../../../../../../config/theme/colors_theme.dart';
+import '../../../../../../controller/firebase/provider/firebase_user_provider.dart';
 
 class AddOrderFloatingBotton extends StatelessWidget {
   const AddOrderFloatingBotton({
@@ -25,6 +26,8 @@ class AddOrderFloatingBotton extends StatelessWidget {
       try {
         final watchOrder =
             Provider.of<AddOrderProvider>(context, listen: false);
+        final userProvider =
+            Provider.of<FirebaseUserProvider>(context, listen: false);
         final requestProvider =
             Provider.of<FirebaseRequestProvider>(context, listen: false);
         final user = FirebaseAuth.instance.currentUser;
@@ -32,7 +35,7 @@ class AddOrderFloatingBotton extends StatelessWidget {
         RequestsModel newRequest = RequestsModel(
           requestId: random.toString(),
           clientId: user!.uid,
-          workerId: requestProvider.workerId,
+          workerId: userProvider.workerId,
           location: sharedPref.getString('location'),
           serviceType: watchOrder.selectedCategoryCardName,
           workDescription: watchOrder.workDescriptionController.text,

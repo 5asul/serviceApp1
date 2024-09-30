@@ -10,21 +10,11 @@ import 'package:provider/provider.dart';
 
 AppBar HomePageAppBar(
   BuildContext context,
-
 ) {
   bool majorSwitchval = false;
   final provider = Provider.of<ApiUserProvider>(context, listen: false);
   return AppBar(
       backgroundColor: ColorsTheme().primary,
-      leading: IconButton(
-        icon: Icon(
-          Icons.home,
-          color: ColorsTheme().background,
-        ),
-        onPressed: () {
-          Navigator.of(context);
-        },
-      ),
       centerTitle: true,
       title: Container(
           width: AppSize.width(context) * 0.4,
